@@ -35,6 +35,10 @@ export function useBreadcrumbs() {
     const segments = pathname.split('/').filter(Boolean);
     return segments.map((segment, index) => {
       const path = `/${segments.slice(0, index + 1).join('/')}`;
+      // "dashboard" segment links back to home page, not /dashboard
+      if (segment === 'dashboard') {
+        return { title: 'Home', link: '/' };
+      }
       return {
         title: segment.charAt(0).toUpperCase() + segment.slice(1),
         link: path

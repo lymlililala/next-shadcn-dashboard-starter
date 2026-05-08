@@ -1,10 +1,12 @@
 import {
   IconAdjustmentsHorizontal,
   IconAlertCircle,
+  IconApps,
   IconAlertTriangle,
   IconArrowRight,
   IconBell,
   IconBold,
+  IconBriefcase,
   IconBox,
   IconBrandGithub,
   IconBrandTwitter,
@@ -33,6 +35,7 @@ import {
   IconDotsVertical,
   IconEdit,
   IconExternalLink,
+  IconEye,
   IconEyeOff,
   IconFile,
   IconFileText,
@@ -196,6 +199,7 @@ export const Icons = {
   // Data / Charts
   trendingDown: IconTrendingDown,
   trendingUp: IconTrendingUp,
+  eye: IconEye,
   eyeOff: IconEyeOff,
   adjustments: IconAdjustmentsHorizontal,
 
@@ -219,5 +223,7 @@ export const Icons = {
   slash: IconSlash,
   calendar: IconCalendar,
   galleryVerticalEnd: IconStack2,
-  moreHorizontal: IconDots
+  moreHorizontal: IconDots,
+  skillsHub: IconApps,
+  briefcase: IconBriefcase
 };

@@ -1,6 +1,25 @@
 User-agent: *
-Disallow: /auth
-Disallow: /dashboard
+Allow: /
+Allow: /dashboard/skills
+Allow: /dashboard/agents
+Allow: /dashboard/mcp
+Allow: /dashboard/models
+Allow: /dashboard/tutorials
+Allow: /dashboard/usecases
+Allow: /dashboard/news
+Allow: /about
+Allow: /privacy-policy
+Allow: /terms-of-service
+
+# 禁止爬取后台管理页面
+Disallow: /admin/
+# 禁止爬取认证页面
+Disallow: /auth/
 Disallow: /sign-in
 Disallow: /sign-up
-Disallow: /v1/
+# 禁止爬取 API 路由
+Disallow: /api/
+# 禁止爬取监控路由
+Disallow: /monitoring
+
+Sitemap: https://aiskillnav.com/sitemap.xml

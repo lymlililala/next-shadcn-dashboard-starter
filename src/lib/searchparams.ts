@@ -12,7 +12,18 @@ export const searchParams = {
   gender: parseAsString,
   category: parseAsString,
   role: parseAsString,
-  sort: parseAsString
+  sort: parseAsString,
+  // AI Skill Navigation
+  search: parseAsString,
+  difficulty: parseAsString,
+  status: parseAsString,
+  region: parseAsString,
+  platform: parseAsString,
+  // Agent Hub
+  agent_page: parseAsInteger.withDefault(1),
+  agent_search: parseAsString,
+  agent_type: parseAsString,
+  agent_open_source: parseAsString
   // advanced filter
   // filters: getFiltersStateParser().withDefault([]),
   // joinOperator: parseAsStringEnum(['and', 'or']).withDefault('and')

@@ -1,0 +1,202 @@
+'use client';
+
+import Link from 'next/link';
+import { Badge } from '@/components/ui/badge';
+import { Icons } from '@/components/icons';
+import { cn } from '@/lib/utils';
+import type { Agent, AgentType, AgentOpenSource } from '../api/types';
+
+export const AGENT_TYPE_CONFIG: Record<
+  AgentType,
+  {
+    label: string;
+    icon: React.ComponentType<{ className?: string }>;
+    color: string;
+    bg: string;
+    border: string;
+    gradient: string;
+  }
+> = {
+  general: {
+    label: '通用自主',
+    icon: Icons.sparkles,
+    color: 'text-violet-600 dark:text-violet-400',
+    bg: 'bg-violet-500/10',
+    border: 'border-violet-500/20',
+    gradient: 'from-violet-500/10 to-transparent'
+  },
+  research: {
+    label: '深度研究',
+    icon: Icons.search,
+    color: 'text-blue-600 dark:text-blue-400',
+    bg: 'bg-blue-500/10',
+    border: 'border-blue-500/20',
+    gradient: 'from-blue-500/10 to-transparent'
+  },
+  builder: {
+    label: '构建平台',
+    icon: Icons.settings,
+    color: 'text-emerald-600 dark:text-emerald-400',
+    bg: 'bg-emerald-500/10',
+    border: 'border-emerald-500/20',
+    gradient: 'from-emerald-500/10 to-transparent'
+  },
+  computer: {
+    label: '电脑操控',
+    icon: Icons.laptop,
+    color: 'text-orange-600 dark:text-orange-400',
+    bg: 'bg-orange-500/10',
+    border: 'border-orange-500/20',
+    gradient: 'from-orange-500/10 to-transparent'
+  },
+  creative: {
+    label: '垂直创意',
+    icon: Icons.palette,
+    color: 'text-pink-600 dark:text-pink-400',
+    bg: 'bg-pink-500/10',
+    border: 'border-pink-500/20',
+    gradient: 'from-pink-500/10 to-transparent'
+  },
+  proactive: {
+    label: '主动感知',
+    icon: Icons.trendingUp,
+    color: 'text-amber-600 dark:text-amber-400',
+    bg: 'bg-amber-500/10',
+    border: 'border-amber-500/20',
+    gradient: 'from-amber-500/10 to-transparent'
+  }
+};
+
+export const OPEN_SOURCE_CONFIG: Record<AgentOpenSource, { label: string; color: string }> = {
+  open: {
+    label: '开源',
+    color: 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/20'
+  },
+  closed: { label: '闭源', color: 'text-slate-500 bg-slate-500/10 border-slate-500/20' },
+  partial: {
+    label: '部分开源',
+    color: 'text-amber-600 dark:text-amber-400 bg-amber-500/10 border-amber-500/20'
+  }
+};
+
+export function AgentCard({ agent }: { agent: Agent }) {
+  const type = AGENT_TYPE_CONFIG[agent.agent_type];
+  const oss = OPEN_SOURCE_CONFIG[agent.open_source];
+  const TypeIcon = type.icon;
+  const isExternal = agent.url !== '#';
+
+  const cardContent = (
+    <>
+      {/* Featured badge */}
+      {agent.is_featured && (
+        <div className='absolute -top-2.5 right-4'>
+          <span className='inline-flex items-center gap-1 rounded-full bg-primary px-2.5 py-0.5 text-[10px] font-semibold text-primary-foreground shadow-sm'>
+            <Icons.sparkles className='h-2.5 w-2.5' />
+            精选
+          </span>
+        </div>
+      )}
+
+      {/* Header */}
+      <div className='mb-3 flex items-start gap-3'>
+        <div
+          className={cn('flex h-9 w-9 shrink-0 items-center justify-center rounded-lg', type.bg)}
+        >
+          <TypeIcon className={cn('h-4 w-4', type.color)} />
+        </div>
+        <div className='min-w-0 flex-1'>
+          <h3 className='truncate text-sm font-semibold leading-tight text-foreground group-hover:text-primary transition-colors'>
+            {agent.name}
+          </h3>
+          <p className='mt-0.5 truncate text-[11px] text-muted-foreground'>
+            {isExternal ? agent.url.replace(/^https?:\/\//, '') : '内测中'}
+          </p>
+        </div>
+        <Badge
+          variant='outline'
+          className={cn('shrink-0 text-[10px] font-medium px-1.5 py-0.5', type.color, type.border)}
+        >
+          {type.label}
+        </Badge>
+      </div>
+
+      {/* Description */}
+      <p className='mb-4 line-clamp-2 flex-1 text-xs leading-relaxed text-muted-foreground'>
+        {agent.description}
+      </p>
+
+      {/* Tags */}
+      {agent.tags.length > 0 && (
+        <div className='mb-4 flex flex-wrap gap-1'>
+          {agent.tags.slice(0, 3).map((tag) => (
+            <span
+              key={tag}
+              className='rounded-md border bg-muted/50 px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground'
+            >
+              {tag}
+            </span>
+          ))}
+          {agent.tags.length > 3 && (
+            <span className='rounded-md border bg-muted/50 px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground'>
+              +{agent.tags.length - 3}
+            </span>
+          )}
+        </div>
+      )}
+
+      {/* Footer */}
+      <div className='flex items-center justify-between'>
+        <Badge variant='outline' className={cn('text-[10px]', oss.color)}>
+          {oss.label}
+        </Badge>
+        {isExternal && (
+          <span className='flex items-center gap-1 text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity'>
+            访问 <Icons.externalLink className='h-3 w-3' />
+          </span>
+        )}
+        {!isExternal && <span className='text-[10px] text-muted-foreground/60'>内测中</span>}
+      </div>
+    </>
+  );
+
+  const cardClass = cn(
+    'group relative flex flex-col rounded-xl border bg-card p-5 shadow-sm transition-all duration-200',
+    'hover:shadow-md hover:-translate-y-0.5 hover:border-primary/30',
+    agent.is_featured && 'ring-1 ring-primary/20'
+  );
+
+  if (isExternal) {
+    return (
+      <Link href={agent.url} target='_blank' rel='noopener noreferrer' className={cardClass}>
+        {cardContent}
+      </Link>
+    );
+  }
+
+  return <div className={cardClass}>{cardContent}</div>;
+}
+
+export function AgentCardSkeleton() {
+  return (
+    <div className='flex flex-col rounded-xl border bg-card p-5 shadow-sm'>
+      <div className='mb-3 flex items-start gap-3'>
+        <div className='h-9 w-9 animate-pulse rounded-lg bg-muted' />
+        <div className='flex-1 space-y-1.5'>
+          <div className='h-4 w-3/4 animate-pulse rounded bg-muted' />
+          <div className='h-3 w-1/2 animate-pulse rounded bg-muted' />
+        </div>
+        <div className='h-5 w-14 animate-pulse rounded bg-muted' />
+      </div>
+      <div className='mb-4 space-y-1.5'>
+        <div className='h-3 w-full animate-pulse rounded bg-muted' />
+        <div className='h-3 w-5/6 animate-pulse rounded bg-muted' />
+      </div>
+      <div className='mb-4 flex gap-1'>
+        <div className='h-4 w-12 animate-pulse rounded bg-muted' />
+        <div className='h-4 w-12 animate-pulse rounded bg-muted' />
+        <div className='h-4 w-12 animate-pulse rounded bg-muted' />
+      </div>
+      <div className='h-4 w-10 animate-pulse rounded bg-muted' />
+    </div>
+  );
+}

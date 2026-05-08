@@ -16,8 +16,88 @@ const META_THEME_COLORS = {
 };
 
 export const metadata: Metadata = {
-  title: 'Next Shadcn',
-  description: 'Basic dashboard with Next.js and Shadcn'
+  metadataBase: new URL('https://aiskillnav.com'),
+  title: {
+    default: 'AI Skill Navigation — AI Agent 工具导航',
+    template: '%s | AI Skill Navigation'
+  },
+  description:
+    'AI Skill Navigation — 一站式 AI Agent 资源导航平台，收录精选 Skills、Agents、MCP Server、主流模型对比、实战教程与场景库，助你高效探索 AI Agent 生态。',
+  keywords: [
+    'AI Agent',
+    'AI Skill',
+    'MCP Server',
+    'Model Context Protocol',
+    'AI 工具导航',
+    'AI 导航',
+    'LLM',
+    '大模型',
+    '智能体',
+    'AI Agent 教程',
+    'OpenAI',
+    'Claude',
+    'DeepSeek',
+    'Gemini',
+    'Manus',
+    'Devin',
+    'AutoGPT',
+    'Dify',
+    'n8n',
+    'AI 自动化',
+    'Prompt Engineering',
+    'AI Agent 场景'
+  ],
+  authors: [{ name: 'AI Skill Navigation', url: 'https://aiskillnav.com' }],
+  creator: 'AI Skill Navigation',
+  publisher: 'AI Skill Navigation',
+  category: 'technology',
+  // Open Graph — 影响微信/微博/Facebook 分享展示
+  openGraph: {
+    type: 'website',
+    siteName: 'AI Skill Navigation',
+    locale: 'zh_CN',
+    url: 'https://aiskillnav.com',
+    title: 'AI Skill Navigation — AI Agent 工具导航',
+    description: '一站式 AI Agent 资源导航：Skills、Agents、MCP Server、模型对比、教程与场景库',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'AI Skill Navigation — AI Agent 工具导航平台'
+      }
+    ]
+  },
+  // Twitter Card — 影响 Twitter/X 分享展示
+  twitter: {
+    card: 'summary_large_image',
+    site: '@aiskillnav',
+    creator: '@aiskillnav',
+    title: 'AI Skill Navigation — AI Agent 工具导航',
+    description: '一站式 AI Agent 资源导航：Skills、Agents、MCP Server、模型对比、教程与场景库',
+    images: ['/og-image.png']
+  },
+  // 搜索引擎爬取规则
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1
+    }
+  },
+  // 规范链接
+  alternates: {
+    canonical: 'https://aiskillnav.com'
+  },
+  // 图标
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico'
+  }
 };
 
 export const viewport: Viewport = {
@@ -31,7 +111,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const themeToApply = isValidTheme ? activeThemeValue! : DEFAULT_THEME;
 
   return (
-    <html lang='en' suppressHydrationWarning data-theme={themeToApply}>
+    <html lang='zh-CN' suppressHydrationWarning data-theme={themeToApply}>
       <head>
         <script
           dangerouslySetInnerHTML={{
