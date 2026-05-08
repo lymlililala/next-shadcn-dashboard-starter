@@ -88,7 +88,7 @@ export default async function AdminMcpPage() {
       pageHeaderAction={
         <div className='flex gap-2'>
           <Button variant='outline' size='sm' asChild>
-            <Link href='/dashboard/mcp' target='_blank'>
+            <Link href='/mcp' target='_blank'>
               <Icons.externalLink className='mr-1.5 h-3.5 w-3.5' />
               查看前台
             </Link>

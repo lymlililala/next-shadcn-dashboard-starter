@@ -25,7 +25,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
           </Link>
           <nav className='flex items-center gap-1'>
             <Link
-              href='/dashboard/skills'
+              href='/skills'
               className='flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground hover:bg-accent'
             >
               <Icons.skillsHub className='h-3.5 w-3.5' />

@@ -168,7 +168,7 @@ export function AdminSidebar() {
       {/* Footer: back to front + logout */}
       <div className='border-t p-3 space-y-0.5'>
         <Link
-          href='/dashboard/skills'
+          href='/skills'
           className='flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground'
         >
           <Icons.externalLink className='h-3.5 w-3.5 shrink-0' />

@@ -6,7 +6,7 @@ export const navGroups: NavGroup[] = [
     items: [
       {
         title: 'Skills 浏览',
-        url: '/dashboard/skills',
+        url: '/skills',
         icon: 'skillsHub',
         shortcut: ['s', 'h'],
         isActive: false,
@@ -14,7 +14,7 @@ export const navGroups: NavGroup[] = [
       },
       {
         title: 'Agent Hub',
-        url: '/dashboard/agents',
+        url: '/agents',
         icon: 'sparkles',
         shortcut: ['a', 'h'],
         isActive: false,
@@ -22,7 +22,7 @@ export const navGroups: NavGroup[] = [
       },
       {
         title: 'MCP 专区',
-        url: '/dashboard/mcp',
+        url: '/mcp',
         icon: 'settings',
         shortcut: ['m', 'c'],
         isActive: false,
@@ -30,7 +30,7 @@ export const navGroups: NavGroup[] = [
       },
       {
         title: '模型对比',
-        url: '/dashboard/models',
+        url: '/models',
         icon: 'trendingUp',
         shortcut: ['m', 'o'],
         isActive: false,
@@ -38,7 +38,7 @@ export const navGroups: NavGroup[] = [
       },
       {
         title: '教程中心',
-        url: '/dashboard/tutorials',
+        url: '/tutorials',
         icon: 'post',
         shortcut: ['t', 'u'],
         isActive: false,
@@ -46,7 +46,7 @@ export const navGroups: NavGroup[] = [
       },
       {
         title: '场景库',
-        url: '/dashboard/usecases',
+        url: '/usecases',
         icon: 'checks',
         shortcut: ['u', 'c'],
         isActive: false,
@@ -54,7 +54,7 @@ export const navGroups: NavGroup[] = [
       },
       {
         title: 'AI News',
-        url: '/dashboard/news',
+        url: '/news',
         icon: 'trendingUp',
         shortcut: ['n', 'w'],
         isActive: false,

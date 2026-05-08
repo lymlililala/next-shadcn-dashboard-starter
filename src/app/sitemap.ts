@@ -18,47 +18,85 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0
     },
     {
-      url: `${BASE_URL}/dashboard/skills`,
+      url: `${BASE_URL}/skills`,
       lastModified: now,
       changeFrequency: 'daily',
       priority: 0.9
     },
     {
-      url: `${BASE_URL}/dashboard/agents`,
+      url: `${BASE_URL}/agents`,
       lastModified: now,
       changeFrequency: 'daily',
       priority: 0.9
     },
     {
-      url: `${BASE_URL}/dashboard/mcp`,
+      url: `${BASE_URL}/mcp`,
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.85
     },
     {
-      url: `${BASE_URL}/dashboard/models`,
+      url: `${BASE_URL}/models`,
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.85
     },
     {
-      url: `${BASE_URL}/dashboard/tutorials`,
+      url: `${BASE_URL}/tutorials`,
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.85
     },
     {
-      url: `${BASE_URL}/dashboard/usecases`,
+      url: `${BASE_URL}/usecases`,
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.8
     },
     {
-      url: `${BASE_URL}/dashboard/news`,
+      url: `${BASE_URL}/news`,
       lastModified: now,
       changeFrequency: 'daily',
       priority: 0.9
     },
+    // 教程详情页 — 深度内容，高 SEO 价值
+    {
+      url: `${BASE_URL}/tutorials/deepseek-r1-local-deployment`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9
+    },
+    {
+      url: `${BASE_URL}/tutorials/manus-vs-autogpt-vs-openclaw`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.88
+    },
+    {
+      url: `${BASE_URL}/tutorials/ai-agent-complete-guide-2026`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.92
+    },
+    {
+      url: `${BASE_URL}/tutorials/mcp-server-vs-function-calling`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.88
+    },
+    {
+      url: `${BASE_URL}/tutorials/what-is-mcp`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9
+    },
+    {
+      url: `${BASE_URL}/tutorials/openclaw-personal-assistant`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.85
+    },
+    // 通用页面
     {
       url: `${BASE_URL}/about`,
       lastModified: now,

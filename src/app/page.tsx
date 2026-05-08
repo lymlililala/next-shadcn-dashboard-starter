@@ -65,7 +65,7 @@ const MODULES = [
     title: 'Skills 导航',
     description:
       '精选全球 AI Skill 资源站，覆盖 ClaWHub、OpenClaw 等官方平台及社区聚合站，一键直达。',
-    href: '/dashboard/skills',
+    href: '/skills',
     badge: '精选收录',
     badgeColor: 'bg-blue-500/10 text-blue-600 border-blue-500/20',
     gradient: 'from-blue-500/10 to-transparent',
@@ -76,7 +76,7 @@ const MODULES = [
     icon: Icons.sparkles,
     title: 'Agent Hub',
     description: '汇聚 Manus、Devin、OpenClaw、Dify 等全球顶级 AI Agent 工具，支持类型筛选和对比。',
-    href: '/dashboard/agents',
+    href: '/agents',
     badge: '27+ Agents',
     badgeColor: 'bg-violet-500/10 text-violet-600 border-violet-500/20',
     gradient: 'from-violet-500/10 to-transparent',
@@ -88,7 +88,7 @@ const MODULES = [
     title: 'MCP 专区',
     description:
       'Model Context Protocol Server 精选导航，让 AI 连接文件、数据库、GitHub、Notion 等工具，20+ 实用 Server。',
-    href: '/dashboard/mcp',
+    href: '/mcp',
     badge: '20+ Servers',
     badgeColor: 'bg-emerald-500/10 text-emerald-600 border-emerald-500/20',
     gradient: 'from-emerald-500/10 to-transparent',
@@ -100,7 +100,7 @@ const MODULES = [
     title: '模型对比',
     description:
       'GPT-4o、Claude 3.5、DeepSeek-V3、Gemini 2.0 等主流模型横向对比，含能力评分、价格和 Benchmark 排行。',
-    href: '/dashboard/models',
+    href: '/models',
     badge: '8 大模型',
     badgeColor: 'bg-amber-500/10 text-amber-600 border-amber-500/20',
     gradient: 'from-amber-500/10 to-transparent',
@@ -112,7 +112,7 @@ const MODULES = [
     title: '教程中心',
     description:
       '从"什么是 AI Agent"到实战操作，8 篇系统教程覆盖新手入门、MCP 使用、Dify 搭建、n8n 自动化。',
-    href: '/dashboard/tutorials',
+    href: '/tutorials',
     badge: '8 篇教程',
     badgeColor: 'bg-orange-500/10 text-orange-600 border-orange-500/20',
     gradient: 'from-orange-500/10 to-transparent',
@@ -124,7 +124,7 @@ const MODULES = [
     title: '场景库',
     description:
       '15 个真实落地场景：营销自动化、自动修复 Bug、行业调研报告、邮件分类……附推荐工具组合和实现步骤。',
-    href: '/dashboard/usecases',
+    href: '/usecases',
     badge: '15 个场景',
     badgeColor: 'bg-pink-500/10 text-pink-600 border-pink-500/20',
     gradient: 'from-pink-500/10 to-transparent',
@@ -178,7 +178,7 @@ const jsonLd = {
     '@type': 'SearchAction',
     target: {
       '@type': 'EntryPoint',
-      urlTemplate: 'https://aiskillnav.com/dashboard/skills?search={search_term_string}'
+      urlTemplate: 'https://aiskillnav.com/skills?search={search_term_string}'
     },
     'query-input': 'required name=search_term_string'
   }
@@ -222,21 +222,21 @@ export default function HomePage() {
 
           <div className='flex flex-wrap justify-center gap-3'>
             <Link
-              href='/dashboard/skills'
+              href='/skills'
               className='inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md'
             >
               <Icons.skillsHub className='h-4 w-4' />
               浏览 Skills
             </Link>
             <Link
-              href='/dashboard/agents'
+              href='/agents'
               className='inline-flex items-center gap-2 rounded-xl border bg-card px-5 py-2.5 text-sm font-semibold shadow-sm transition-all hover:bg-accent hover:shadow-md'
             >
               <Icons.sparkles className='h-4 w-4' />
               探索 Agents
             </Link>
             <Link
-              href='/dashboard/news'
+              href='/news'
               className='inline-flex items-center gap-2 rounded-xl border bg-card px-5 py-2.5 text-sm font-semibold shadow-sm transition-all hover:bg-accent hover:shadow-md'
             >
               <Icons.trendingUp className='h-4 w-4' />
@@ -319,7 +319,7 @@ export default function HomePage() {
               <p className='mt-1 text-sm text-muted-foreground'>2024 年至今，行业里程碑时间线</p>
             </div>
             <Link
-              href='/dashboard/news'
+              href='/news'
               className='flex items-center gap-1 text-xs text-primary hover:underline'
             >
               查看全部 <Icons.chevronRight className='h-3.5 w-3.5' />
@@ -350,21 +350,21 @@ export default function HomePage() {
           </p>
           <div className='flex flex-wrap justify-center gap-3'>
             <Link
-              href='/dashboard/tutorials/what-is-ai-agent'
+              href='/tutorials/what-is-ai-agent'
               className='inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors'
             >
               <Icons.post className='h-4 w-4' />
               新手入门教程
             </Link>
             <Link
-              href='/dashboard/mcp'
+              href='/mcp'
               className='inline-flex items-center gap-2 rounded-xl border bg-card px-5 py-2.5 text-sm font-semibold shadow-sm hover:bg-accent transition-colors'
             >
               <Icons.settings className='h-4 w-4' />
               MCP 专区
             </Link>
             <Link
-              href='/dashboard/usecases'
+              href='/usecases'
               className='inline-flex items-center gap-2 rounded-xl border bg-card px-5 py-2.5 text-sm font-semibold shadow-sm hover:bg-accent transition-colors'
             >
               <Icons.checks className='h-4 w-4' />
@@ -397,25 +397,25 @@ export default function HomePage() {
               {
                 title: '工具导航',
                 links: [
-                  { label: 'Skills 导航', href: '/dashboard/skills' },
-                  { label: 'Agent Hub', href: '/dashboard/agents' },
-                  { label: 'MCP 专区', href: '/dashboard/mcp' }
+                  { label: 'Skills 导航', href: '/skills' },
+                  { label: 'Agent Hub', href: '/agents' },
+                  { label: 'MCP 专区', href: '/mcp' }
                 ]
               },
               {
                 title: '资源',
                 links: [
-                  { label: '模型对比', href: '/dashboard/models' },
-                  { label: '教程中心', href: '/dashboard/tutorials' },
-                  { label: '场景库', href: '/dashboard/usecases' }
+                  { label: '模型对比', href: '/models' },
+                  { label: '教程中心', href: '/tutorials' },
+                  { label: '场景库', href: '/usecases' }
                 ]
               },
               {
                 title: '资讯',
                 links: [
                   { label: 'AI News', href: '/news' },
-                  { label: '新手教程', href: '/dashboard/tutorials/what-is-ai-agent' },
-                  { label: '场景库', href: '/dashboard/usecases' }
+                  { label: '新手教程', href: '/tutorials/what-is-ai-agent' },
+                  { label: '场景库', href: '/usecases' }
                 ]
               }
             ].map((col) => (

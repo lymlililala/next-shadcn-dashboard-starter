@@ -6,10 +6,10 @@ import { ThemeSelector } from '@/components/themes/theme-selector';
 import { ThemeModeToggle } from '@/components/themes/theme-mode-toggle';
 
 const NAV_LINKS = [
-  { label: 'Skills', href: '/dashboard/skills' },
-  { label: 'Agents', href: '/dashboard/agents' },
-  { label: 'MCP', href: '/dashboard/mcp' },
-  { label: '模型', href: '/dashboard/models' },
+  { label: 'Skills', href: '/skills' },
+  { label: 'Agents', href: '/agents' },
+  { label: 'MCP', href: '/mcp' },
+  { label: '模型', href: '/models' },
   { label: 'News', href: '/news' }
 ];
 

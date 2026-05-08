@@ -1,36 +1,15 @@
-import PageContainer from '@/components/layout/page-container';
-import SkillListingPage from '@/features/skills/components/skill-listing';
-import { searchParamsCache } from '@/lib/searchparams';
+import { permanentRedirect } from 'next/navigation';
 import type { SearchParams } from 'nuqs/server';
-import type { Metadata } from 'next';
 
-export async function generateMetadata(): Promise<Metadata> {
-  const { resolvePageMeta } = await import('@/features/seo/api/service');
-  const meta = await resolvePageMeta('/dashboard/skills');
-  return {
-    title: meta.title,
-    description: meta.description,
-    keywords: meta.keywords,
-    alternates: { canonical: meta.canonical },
-    openGraph: meta.openGraph,
-    twitter: meta.twitter
-  };
-}
+type PageProps = { searchParams: Promise<SearchParams> };
 
-type PageProps = {
-  searchParams: Promise<SearchParams>;
-};
-
-export default async function SkillsPage(props: PageProps) {
-  const searchParams = await props.searchParams;
-  searchParamsCache.parse(searchParams);
-
-  return (
-    <PageContainer
-      pageTitle='AI Skill Navigation'
-      pageDescription='汇聚 AI Skills & Agent 资源，发现、收藏并使用社区精选工具'
-    >
-      <SkillListingPage />
-    </PageContainer>
+export default async function SkillsPageRedirect({ searchParams }: PageProps) {
+  const params = await searchParams;
+  const qs = new URLSearchParams(
+    Object.fromEntries(
+      Object.entries(params).filter(([, v]) => typeof v === 'string') as [string, string][]
+    )
   );
+  const query = qs.toString() ? `?${qs.toString()}` : '';
+  permanentRedirect(`/skills${query}`);
 }

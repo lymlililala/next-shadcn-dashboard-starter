@@ -216,7 +216,7 @@ export function SkillAnalytics() {
               <Icons.chevronRight className='h-4 w-4 text-muted-foreground' />
             </Link>
             <Link
-              href='/dashboard/skills'
+              href='/skills'
               className='flex items-center justify-between rounded-lg border px-3 py-2.5 hover:bg-muted/50 transition-colors'
             >
               <span className='text-sm font-medium'>查看前台展示</span>

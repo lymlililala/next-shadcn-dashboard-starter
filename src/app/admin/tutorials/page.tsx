@@ -72,7 +72,7 @@ function TutorialRow({ item }: { item: Tutorial }) {
           <span>{formatDate(item.published_at)}</span>
         </div>
         <Link
-          href={`/dashboard/tutorials/${item.slug}`}
+          href={`/tutorials/${item.slug}`}
           target='_blank'
           className='rounded p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground'
         >
@@ -93,7 +93,7 @@ export default async function AdminTutorialsPage() {
       pageHeaderAction={
         <div className='flex gap-2'>
           <Button variant='outline' size='sm' asChild>
-            <Link href='/dashboard/tutorials' target='_blank'>
+            <Link href='/tutorials' target='_blank'>
               <Icons.externalLink className='mr-1.5 h-3.5 w-3.5' />
               查看前台
             </Link>
