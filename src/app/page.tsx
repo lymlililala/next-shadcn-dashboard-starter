@@ -160,7 +160,7 @@ async function getLiveStats() {
     getModelStats().catch(() => ({ total: 0 })),
     getUseCaseStats().catch(() => ({ total: 0 })),
     getTutorialStats().catch(() => ({ total: 0 })),
-    getNewsStats().catch(() => ({ total: 0 }))
+    getNewsStats().catch(() => ({ published: 0 }))
   ]);
 
   return { agents, mcp, models, usecases, tutorials, news };
@@ -173,7 +173,7 @@ function buildStats(live: Awaited<ReturnType<typeof getLiveStats>>) {
     { value: `${live.models.total}`, label: '主流模型', icon: Icons.trendingUp },
     { value: `${live.usecases.total}`, label: '落地场景', icon: Icons.checks },
     { value: `${live.tutorials.total}`, label: '实战教程', icon: Icons.post },
-    { value: `${live.news.total}`, label: '行业资讯', icon: Icons.info }
+    { value: `${live.news.published}`, label: '行业资讯', icon: Icons.info }
   ];
 }
 
@@ -191,7 +191,7 @@ function patchModuleBadges(live: Awaited<ReturnType<typeof getLiveStats>>) {
       case '/usecases':
         return { ...mod, badge: `${live.usecases.total} 个场景` };
       case '/news':
-        return { ...mod, badge: `${live.news.total} 条资讯` };
+        return { ...mod, badge: `${live.news.published} 条资讯` };
       default:
         return mod;
     }
