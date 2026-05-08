@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getMcpBySlug, getAllMcpServers } from '@/features/mcp/api/service';
+import { getMcpBySlug } from '@/features/mcp/api/service';
+import { fakeMcpServers } from '@/constants/mock-api-mcp';
 import { Icons } from '@/components/icons';
 import { Badge } from '@/components/ui/badge';
 import PageContainer from '@/components/layout/page-container';
@@ -21,12 +22,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  try {
-    const servers = await getAllMcpServers();
-    return servers.map((s) => ({ slug: s.slug }));
-  } catch {
-    return [];
-  }
+  const result = await fakeMcpServers.getMcpServers({ limit: 200 });
+  return result.items
+    .filter((s) => typeof s.slug === 'string' && s.slug.length > 0)
+    .map((s) => ({ slug: s.slug }));
 }
 
 const CATEGORY_CONFIG: Record<string, { label: string; color: string; bg: string }> = {
