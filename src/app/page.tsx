@@ -2,6 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Icons } from '@/components/icons';
 import { HomeNavbar } from '@/components/layout/home-navbar';
+import { getAgentStats } from '@/features/agents/api/service';
+import { getMcpStats } from '@/features/mcp/api/service';
+import { getModelStats } from '@/features/models/api/service';
+import { getUseCaseStats } from '@/features/usecases/api/service';
+import { getTutorialStats } from '@/features/tutorials/api/service';
+import { getNewsStats } from '@/features/news/api/service';
 
 export const metadata: Metadata = {
   title: 'AI Skill Navigation — AI Agent 工具导航',
@@ -147,14 +153,50 @@ const MODULES = [
 
 // ── Stats ─────────────────────────────────────────────────────────────────────
 
-const STATS = [
-  { value: '27+', label: 'AI Agent', icon: Icons.sparkles },
-  { value: '20+', label: 'MCP Server', icon: Icons.settings },
-  { value: '8', label: '主流模型', icon: Icons.trendingUp },
-  { value: '15', label: '落地场景', icon: Icons.checks },
-  { value: '8', label: '实战教程', icon: Icons.post },
-  { value: '10', label: '行业资讯', icon: Icons.info }
-];
+async function getLiveStats() {
+  const [agents, mcp, models, usecases, tutorials, news] = await Promise.all([
+    getAgentStats().catch(() => ({ total: 0 })),
+    getMcpStats().catch(() => ({ total: 0 })),
+    getModelStats().catch(() => ({ total: 0 })),
+    getUseCaseStats().catch(() => ({ total: 0 })),
+    getTutorialStats().catch(() => ({ total: 0 })),
+    getNewsStats().catch(() => ({ total: 0 }))
+  ]);
+
+  return { agents, mcp, models, usecases, tutorials, news };
+}
+
+function buildStats(live: Awaited<ReturnType<typeof getLiveStats>>) {
+  return [
+    { value: `${live.agents.total}+`, label: 'AI Agent', icon: Icons.sparkles },
+    { value: `${live.mcp.total}+`, label: 'MCP Server', icon: Icons.settings },
+    { value: `${live.models.total}`, label: '主流模型', icon: Icons.trendingUp },
+    { value: `${live.usecases.total}`, label: '落地场景', icon: Icons.checks },
+    { value: `${live.tutorials.total}`, label: '实战教程', icon: Icons.post },
+    { value: `${live.news.total}`, label: '行业资讯', icon: Icons.info }
+  ];
+}
+
+function patchModuleBadges(live: Awaited<ReturnType<typeof getLiveStats>>) {
+  return MODULES.map((mod) => {
+    switch (mod.href) {
+      case '/agents':
+        return { ...mod, badge: `${live.agents.total}+ Agents` };
+      case '/mcp':
+        return { ...mod, badge: `${live.mcp.total}+ Servers` };
+      case '/models':
+        return { ...mod, badge: `${live.models.total} 大模型` };
+      case '/tutorials':
+        return { ...mod, badge: `${live.tutorials.total} 篇教程` };
+      case '/usecases':
+        return { ...mod, badge: `${live.usecases.total} 个场景` };
+      case '/news':
+        return { ...mod, badge: `${live.news.total} 条资讯` };
+      default:
+        return mod;
+    }
+  });
+}
 
 // ── Timeline preview ──────────────────────────────────────────────────────────
 
@@ -184,7 +226,10 @@ const jsonLd = {
   }
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const liveStats = await getLiveStats();
+  const STATS = buildStats(liveStats);
+  const dynamicModules = patchModuleBadges(liveStats);
   return (
     <div className='min-h-screen bg-background text-foreground'>
       {/* JSON-LD 结构化数据 */}
@@ -269,7 +314,7 @@ export default function HomePage() {
           </div>
 
           <div className='grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-            {MODULES.map((mod) => {
+            {dynamicModules.map((mod) => {
               const ModIcon = mod.icon;
               return (
                 <Link
