@@ -68,6 +68,23 @@ export async function getMcpById(id: number): Promise<McpServer | null> {
   return safeFetch<McpServer>(`${apiBase()}/mcp/${id}`);
 }
 
+export async function getMcpBySlug(slug: string): Promise<McpServer | null> {
+  const data = await safeFetch<McpServer>(`${apiBase()}/mcp?slug=${encodeURIComponent(slug)}`);
+  if (!data) return fakeMcpServers.getBySlug(slug);
+  return data;
+}
+
+export async function getAllMcpServers(): Promise<McpServer[]> {
+  const data = await safeFetch<{ items: McpServer[]; total_items: number }>(
+    `${apiBase()}/mcp?limit=100`
+  );
+  if (!data) {
+    const result = await fakeMcpServers.getMcpServers({ limit: 100 });
+    return result.items;
+  }
+  return data.items;
+}
+
 export async function createMcpServer(payload: CreateMcpPayload): Promise<McpServer> {
   const res = await fetch(`${apiBase()}/mcp`, {
     method: 'POST',

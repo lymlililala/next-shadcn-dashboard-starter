@@ -78,9 +78,7 @@ function McpCard({ server }: { server: McpServer }) {
   const CatIcon = cfg.icon;
   return (
     <Link
-      href={server.url}
-      target='_blank'
-      rel='noopener noreferrer'
+      href={`/dashboard/mcp/${server.slug ?? server.name}`}
       className='group relative flex flex-col rounded-xl border bg-card p-4 shadow-sm transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 hover:border-primary/30'
     >
       {server.is_featured && (

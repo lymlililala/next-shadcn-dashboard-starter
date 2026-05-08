@@ -443,53 +443,53 @@ const NEWS_DATA = [
 
 const MCP_DATA = [
   // ── 文件系统 ──────────────────────────────────────────────────────────────
-  { name: 'filesystem', description: '读写本地文件系统，支持文件创建、修改、删除、目录遍历，是最常用的 MCP Server 之一', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem', category: 'filesystem', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-filesystem', tags: ['文件读写', '目录', '本地文件', '官方'], stars: 28000, is_featured: true, created_at: now },
-  { name: 'everything', description: 'Windows 平台文件极速搜索，通过 Everything 引擎实现毫秒级文件定位', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/everything', category: 'filesystem', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-everything', tags: ['Windows', '文件搜索', 'Everything', '官方'], stars: 28000, is_featured: false, created_at: now },
+  { slug: 'filesystem', name: 'filesystem', description: '读写本地文件系统，支持文件创建、修改、删除、目录遍历，是最常用的 MCP Server 之一', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem', category: 'filesystem', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-filesystem', tags: ['文件读写', '目录', '本地文件', '官方'], stars: 85000, is_featured: true, created_at: now },
+  { slug: 'everything', name: 'everything', description: 'Windows 平台文件极速搜索，通过 Everything 引擎实现毫秒级文件定位', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/everything', category: 'filesystem', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-everything', tags: ['Windows', '文件搜索', 'Everything', '官方'], stars: 85000, is_featured: false, created_at: now },
   // ── 数据库 ────────────────────────────────────────────────────────────────
-  { name: 'sqlite', description: '读写 SQLite 数据库，支持执行 SQL 查询、创建表、插入更新数据，适合本地开发调试', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite', category: 'database', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-sqlite', tags: ['SQLite', '数据库', 'SQL', '官方'], stars: 28000, is_featured: true, created_at: now },
-  { name: 'postgres', description: '连接 PostgreSQL 数据库执行查询，支持完整的 SQL 操作，适合生产环境数据分析', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/postgres', category: 'database', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-postgres', tags: ['PostgreSQL', '数据库', 'SQL', '官方'], stars: 28000, is_featured: false, created_at: now },
-  { name: 'mysql', description: '连接 MySQL/MariaDB 数据库，支持查询、插入、更新等完整操作，社区维护', url: 'https://github.com/benborla/mcp-server-mysql', category: 'database', is_official: false, install_cmd: 'npx mcp-server-mysql', tags: ['MySQL', 'MariaDB', '数据库', '社区'], stars: 800, is_featured: false, created_at: now },
+  { slug: 'sqlite', name: 'sqlite', description: '读写 SQLite 数据库，支持执行 SQL 查询、创建表、插入更新数据，适合本地开发调试', url: 'https://github.com/modelcontextprotocol/servers-archived', category: 'database', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-sqlite', tags: ['SQLite', '数据库', 'SQL', '官方'], stars: 85000, is_featured: true, created_at: now },
+  { slug: 'postgres', name: 'postgres', description: '连接 PostgreSQL 数据库执行查询，支持完整的 SQL 操作，适合生产环境数据分析', url: 'https://github.com/modelcontextprotocol/servers-archived', category: 'database', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-postgres', tags: ['PostgreSQL', '数据库', 'SQL', '官方'], stars: 85000, is_featured: false, created_at: now },
+  { slug: 'mysql', name: 'mysql', description: '连接 MySQL/MariaDB 数据库，支持查询、插入、更新等完整操作，社区维护', url: 'https://github.com/benborla29/mcp-server-mysql', category: 'database', is_official: false, install_cmd: 'npx mcp-server-mysql', tags: ['MySQL', 'MariaDB', '数据库', '社区'], stars: 800, is_featured: false, created_at: now },
   // ── 浏览器/网页 ───────────────────────────────────────────────────────────
-  { name: 'puppeteer', description: '通过 Puppeteer 控制 Chrome 浏览器，支持网页截图、表单填写、点击操作、JavaScript 执行', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer', category: 'browser', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-puppeteer', tags: ['Puppeteer', '浏览器自动化', 'Chrome', '官方'], stars: 28000, is_featured: true, created_at: now },
-  { name: 'fetch', description: '抓取网页内容并转换为 Markdown 格式，AI 可直接阅读和分析任意网页', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/fetch', category: 'browser', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-fetch', tags: ['网页抓取', 'Markdown', 'HTTP', '官方'], stars: 28000, is_featured: true, created_at: now },
-  { name: 'browserbase', description: '云端无头浏览器控制，无需本地安装 Chrome，通过 API 实现规模化浏览器自动化', url: 'https://github.com/browserbase/mcp-server-browserbase', category: 'browser', is_official: false, install_cmd: 'npx @browserbasehq/mcp', tags: ['云端浏览器', '无头', 'Browserbase'], stars: 1200, is_featured: false, created_at: now },
+  { slug: 'puppeteer', name: 'puppeteer', description: '通过 Puppeteer 控制 Chrome 浏览器，支持网页截图、表单填写、点击操作、JavaScript 执行', url: 'https://github.com/modelcontextprotocol/servers-archived', category: 'browser', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-puppeteer', tags: ['Puppeteer', '浏览器自动化', 'Chrome', '官方'], stars: 85000, is_featured: true, created_at: now },
+  { slug: 'fetch', name: 'fetch', description: '抓取网页内容并转换为 Markdown 格式，AI 可直接阅读和分析任意网页', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/fetch', category: 'browser', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-fetch', tags: ['网页抓取', 'Markdown', 'HTTP', '官方'], stars: 85000, is_featured: true, created_at: now },
+  { slug: 'browserbase', name: 'browserbase', description: '云端无头浏览器控制，无需本地安装 Chrome，通过 API 实现规模化浏览器自动化', url: 'https://github.com/browserbase/mcp-server-browserbase', category: 'browser', is_official: false, install_cmd: 'npx @browserbasehq/mcp', tags: ['云端浏览器', '无头', 'Browserbase'], stars: 1200, is_featured: false, created_at: now },
   // ── 开发工具 ──────────────────────────────────────────────────────────────
-  { name: 'github', description: '完整的 GitHub 操作：创建 PR、查看 Issues、提交代码、管理仓库，开发者必备', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/github', category: 'devtools', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-github', tags: ['GitHub', 'PR', 'Issues', '代码仓库', '官方'], stars: 28000, is_featured: true, created_at: now },
-  { name: 'gitlab', description: '对接 GitLab 实例，支持仓库操作、Merge Request、Pipeline 状态查询', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/gitlab', category: 'devtools', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-gitlab', tags: ['GitLab', 'MR', 'CI/CD', '官方'], stars: 28000, is_featured: false, created_at: now },
-  { name: 'git', description: '本地 Git 仓库操作：commit、diff、log、branch 管理，无需离开 AI 界面', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/git', category: 'devtools', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-git', tags: ['Git', 'Commit', 'Diff', '版本控制', '官方'], stars: 28000, is_featured: false, created_at: now },
+  { slug: 'github', name: 'github', description: '完整的 GitHub 操作：创建 PR、查看 Issues、提交代码、管理仓库，开发者必备', url: 'https://github.com/github/github-mcp-server', category: 'devtools', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-github', tags: ['GitHub', 'PR', 'Issues', '代码仓库', '官方'], stars: 12000, is_featured: true, created_at: now },
+  { slug: 'gitlab', name: 'gitlab', description: '对接 GitLab 实例，支持仓库操作、Merge Request、Pipeline 状态查询', url: 'https://github.com/modelcontextprotocol/servers-archived', category: 'devtools', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-gitlab', tags: ['GitLab', 'MR', 'CI/CD', '官方'], stars: 85000, is_featured: false, created_at: now },
+  { slug: 'git', name: 'git', description: '本地 Git 仓库操作：commit、diff、log、branch 管理，无需离开 AI 界面', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/git', category: 'devtools', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-git', tags: ['Git', 'Commit', 'Diff', '版本控制', '官方'], stars: 85000, is_featured: false, created_at: now },
   // ── 效率工具 ──────────────────────────────────────────────────────────────
-  { name: 'slack', description: '在 Slack 中收发消息、查询频道历史、管理通知，让 AI 融入团队沟通', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/slack', category: 'productivity', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-slack', tags: ['Slack', '消息', '团队协作', '官方'], stars: 28000, is_featured: false, created_at: now },
-  { name: 'google-drive', description: '读写 Google Drive 文件，支持 Docs、Sheets、Slides 的创建和编辑', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/gdrive', category: 'productivity', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-gdrive', tags: ['Google Drive', 'Docs', 'Sheets', '云存储', '官方'], stars: 28000, is_featured: false, created_at: now },
-  { name: 'google-maps', description: '地图搜索、地址解析、路线规划、周边 POI 查询，地理位置相关任务必备', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/google-maps', category: 'productivity', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-google-maps', tags: ['Google Maps', '地图', '地址查询', '官方'], stars: 28000, is_featured: false, created_at: now },
-  { name: 'notion', description: '操作 Notion 数据库和页面，支持创建、查询、更新 Block，知识管理利器', url: 'https://github.com/makenotion/notion-mcp-server', category: 'productivity', is_official: false, install_cmd: 'npx @notionhq/notion-mcp-server', tags: ['Notion', '知识库', '数据库', '笔记'], stars: 3500, is_featured: true, created_at: now },
+  { slug: 'slack', name: 'slack', description: '在 Slack 中收发消息、查询频道历史、管理通知，让 AI 融入团队沟通', url: 'https://github.com/modelcontextprotocol/servers-archived', category: 'productivity', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-slack', tags: ['Slack', '消息', '团队协作', '官方'], stars: 85000, is_featured: false, created_at: now },
+  { slug: 'google-drive', name: 'google-drive', description: '读写 Google Drive 文件，支持 Docs、Sheets、Slides 的创建和编辑', url: 'https://github.com/modelcontextprotocol/servers-archived', category: 'productivity', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-gdrive', tags: ['Google Drive', 'Docs', 'Sheets', '云存储', '官方'], stars: 85000, is_featured: false, created_at: now },
+  { slug: 'google-maps', name: 'google-maps', description: '地图搜索、地址解析、路线规划、周边 POI 查询，地理位置相关任务必备', url: 'https://github.com/modelcontextprotocol/servers-archived', category: 'productivity', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-google-maps', tags: ['Google Maps', '地图', '地址查询', '官方'], stars: 85000, is_featured: false, created_at: now },
+  { slug: 'notion', name: 'notion', description: '操作 Notion 数据库和页面，支持创建、查询、更新 Block，知识管理利器', url: 'https://github.com/makenotion/notion-mcp-server', category: 'productivity', is_official: false, install_cmd: 'npx @notionhq/notion-mcp-server', tags: ['Notion', '知识库', '数据库', '笔记'], stars: 3500, is_featured: true, created_at: now },
   // ── 数据/搜索 ─────────────────────────────────────────────────────────────
-  { name: 'brave-search', description: 'Brave 搜索引擎实时搜索，无追踪隐私保护，返回结构化搜索结果', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search', category: 'search', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-brave-search', tags: ['Brave', '搜索', '实时', '隐私', '官方'], stars: 28000, is_featured: true, created_at: now },
-  { name: 'tavily', description: 'AI 优化的搜索 API，专为 Agent 设计，返回高质量摘要而非原始链接列表', url: 'https://github.com/tavily-ai/tavily-mcp', category: 'search', is_official: false, install_cmd: 'npx tavily-mcp', tags: ['Tavily', 'AI搜索', '摘要', 'Agent专用'], stars: 2100, is_featured: true, created_at: now },
-  { name: 'exa', description: '语义搜索引擎，理解搜索意图而非关键词匹配，适合复杂研究任务', url: 'https://github.com/exa-labs/exa-mcp-server', category: 'search', is_official: false, install_cmd: 'npx exa-mcp-server', tags: ['Exa', '语义搜索', '研究', 'RAG'], stars: 1800, is_featured: false, created_at: now },
+  { slug: 'brave-search', name: 'brave-search', description: 'Brave 搜索引擎实时搜索，无追踪隐私保护，返回结构化搜索结果', url: 'https://github.com/modelcontextprotocol/servers-archived', category: 'search', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-brave-search', tags: ['Brave', '搜索', '实时', '隐私', '官方'], stars: 85000, is_featured: true, created_at: now },
+  { slug: 'tavily', name: 'tavily', description: 'AI 优化的搜索 API，专为 Agent 设计，返回高质量摘要而非原始链接列表', url: 'https://github.com/tavily-ai/tavily-mcp', category: 'search', is_official: false, install_cmd: 'npx tavily-mcp', tags: ['Tavily', 'AI搜索', '摘要', 'Agent专用'], stars: 2100, is_featured: true, created_at: now },
+  { slug: 'exa', name: 'exa', description: '语义搜索引擎，理解搜索意图而非关键词匹配，适合复杂研究任务', url: 'https://github.com/exa-labs/exa-mcp-server', category: 'search', is_official: false, install_cmd: 'npx exa-mcp-server', tags: ['Exa', '语义搜索', '研究', 'RAG'], stars: 1800, is_featured: false, created_at: now },
   // ── AI 模型 ───────────────────────────────────────────────────────────────
-  { name: 'openai', description: '在 Claude 中调用 GPT 系列模型，实现多模型协作，适合需要图像生成或特定能力的场景', url: 'https://github.com/openai/openai-mcp', category: 'ai', is_official: false, install_cmd: 'npx openai-mcp', tags: ['OpenAI', 'GPT-4', '多模型', 'DALL-E'], stars: 4200, is_featured: false, created_at: now },
-  { name: 'sequential-thinking', description: '链式推理增强 Server，让 AI 在复杂问题上逐步思考，显著提升逻辑推理质量', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking', category: 'ai', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-sequential-thinking', tags: ['推理增强', '链式思考', 'CoT', '官方'], stars: 28000, is_featured: true, created_at: now },
-  // ── 新增：效率工具 ──────────────────────────────────────────────────────────
-  { name: 'linear', description: '连接 Linear 项目管理工具，AI 可查询/创建 Issues、管理 Sprint、追踪工作进度', url: 'https://github.com/linear/linear-mcp-server', category: 'productivity', is_official: false, install_cmd: 'npx @linear/mcp-server', tags: ['Linear', '项目管理', 'Issue追踪', 'Sprint'], stars: 2800, is_featured: false, created_at: now },
-  { name: 'jira', description: '集成 Atlassian Jira，支持创建和查询 Tickets、管理 Sprint、读取项目看板状态', url: 'https://github.com/atlassian-labs/atlassian-mcp-server', category: 'productivity', is_official: false, install_cmd: 'npx @atlassian/mcp-server', tags: ['Jira', 'Atlassian', 'Ticket管理', '看板'], stars: 1900, is_featured: false, created_at: now },
-  { name: 'calendar', description: 'Google Calendar 读写，AI 可查询日程、创建会议、设置提醒，提升时间管理效率', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/gcalendar', category: 'productivity', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-gcalendar', tags: ['Google Calendar', '日程管理', '会议创建', '官方'], stars: 28000, is_featured: false, created_at: now },
-  { name: 'discord', description: '读取 Discord 频道消息、发送通知、管理服务器，适合构建自动化社区管理 Agent', url: 'https://github.com/discordjs/discord-mcp-server', category: 'productivity', is_official: false, install_cmd: 'npx discord-mcp', tags: ['Discord', '社区管理', '消息自动化', '通知'], stars: 950, is_featured: false, created_at: now },
-  { name: 'confluence', description: '读写 Atlassian Confluence Wiki，AI 可搜索文档、创建页面、更新知识库内容', url: 'https://github.com/atlassian-labs/confluence-mcp-server', category: 'productivity', is_official: false, install_cmd: 'npx @atlassian/confluence-mcp', tags: ['Confluence', 'Wiki', '知识库', 'Atlassian'], stars: 1400, is_featured: false, created_at: now },
-  // ── 新增：开发工具 ──────────────────────────────────────────────────────────
-  { name: 'docker', description: '管理 Docker 容器和镜像，AI 可启动/停止容器、查看日志、管理 Docker Compose', url: 'https://github.com/ckreiling/mcp-server-docker', category: 'devtools', is_official: false, install_cmd: 'npx mcp-server-docker', tags: ['Docker', '容器管理', 'DevOps', '日志查看'], stars: 3200, is_featured: true, created_at: now },
-  { name: 'kubernetes', description: '管理 Kubernetes 集群，查询 Pod 状态、部署应用、查看事件日志，DevOps 必备', url: 'https://github.com/strowk/mcp-k8s-go', category: 'devtools', is_official: false, install_cmd: 'npx mcp-k8s', tags: ['Kubernetes', 'K8s', 'DevOps', '集群管理'], stars: 2100, is_featured: false, created_at: now },
-  { name: 'sentry', description: '连接 Sentry 错误追踪，AI 可查询错误详情、分析堆栈跟踪、关联代码问题', url: 'https://github.com/getsentry/sentry-mcp', category: 'devtools', is_official: false, install_cmd: 'npx sentry-mcp', tags: ['Sentry', '错误追踪', '堆栈分析', '监控'], stars: 1600, is_featured: false, created_at: now },
-  { name: 'aws', description: '访问 AWS 云服务，查询 EC2/S3/Lambda 状态，管理云资源，适合 DevOps 自动化', url: 'https://github.com/aws/aws-mcp-server', category: 'devtools', is_official: false, install_cmd: 'npx @aws/mcp-server', tags: ['AWS', 'S3', 'EC2', 'Lambda', '云服务'], stars: 4500, is_featured: true, created_at: now },
-  // ── 新增：数据库 ────────────────────────────────────────────────────────────
-  { name: 'redis', description: '操作 Redis 缓存数据库，支持 GET/SET/查询 Key、分析内存使用、监控连接状态', url: 'https://github.com/redis-py/redis-mcp', category: 'database', is_official: false, install_cmd: 'npx redis-mcp', tags: ['Redis', '缓存', 'Key-Value', '内存数据库'], stars: 890, is_featured: false, created_at: now },
-  { name: 'mongodb', description: '连接 MongoDB 文档数据库，AI 可执行查询、聚合管道分析，无需记忆 Query 语法', url: 'https://github.com/mongodb-labs/mongodb-mcp-server', category: 'database', is_official: false, install_cmd: 'npx mongodb-mcp', tags: ['MongoDB', '文档数据库', '聚合查询', 'NoSQL'], stars: 1700, is_featured: false, created_at: now },
-  { name: 'supabase', description: '连接 Supabase 后端服务，支持数据库查询、文件存储、认证管理，开发者最爱', url: 'https://github.com/supabase/mcp-server-supabase', category: 'database', is_official: false, install_cmd: 'npx @supabase/mcp-server', tags: ['Supabase', 'PostgreSQL', '后端即服务', '开发者工具'], stars: 5200, is_featured: true, created_at: now },
-  // ── 新增：AI模型 ────────────────────────────────────────────────────────────
-  { name: 'huggingface', description: 'Hugging Face 模型推理 MCP Server，让 AI 直接调用 HF 上的数万个开源模型', url: 'https://github.com/huggingface/huggingface-mcp', category: 'ai', is_official: false, install_cmd: 'npx huggingface-mcp', tags: ['HuggingFace', '开源模型', '模型推理', '模型库'], stars: 3800, is_featured: false, created_at: now },
-  { name: 'replicate', description: '调用 Replicate 上的 AI 模型（图像生成、语音合成等），一行命令运行任意 AI 模型', url: 'https://github.com/replicate/replicate-mcp', category: 'ai', is_official: false, install_cmd: 'npx replicate-mcp', tags: ['Replicate', '图像生成', '语音合成', '多模态'], stars: 2300, is_featured: false, created_at: now },
-  // ── 新增：搜索 ─────────────────────────────────────────────────────────────
-  { name: 'perplexity-search', description: 'Perplexity AI 搜索 MCP，带 AI 摘要的实时搜索，特别适合研究型 Agent 任务', url: 'https://github.com/ppl-ai/perplexity-mcp', category: 'search', is_official: false, install_cmd: 'npx perplexity-mcp', tags: ['Perplexity', 'AI摘要', '实时搜索', '研究Agent'], stars: 1400, is_featured: false, created_at: now },
-  { name: 'arxiv', description: '搜索 arXiv 学术论文数据库，获取最新研究成果，适合科研型 Agent', url: 'https://github.com/blazickjp/arxiv-mcp-server', category: 'search', is_official: false, install_cmd: 'npx arxiv-mcp-server', tags: ['arXiv', '论文搜索', '学术研究', '科研'], stars: 650, is_featured: false, created_at: now }
+  { slug: 'openai', name: 'openai', description: '在 Claude 中调用 GPT 系列模型，实现多模型协作，适合需要图像生成或特定能力的场景', url: 'https://github.com/openai/openai-mcp-server', category: 'ai', is_official: false, install_cmd: 'npx openai-mcp', tags: ['OpenAI', 'GPT-4', '多模型', 'DALL-E'], stars: 4200, is_featured: false, created_at: now },
+  { slug: 'sequential-thinking', name: 'sequential-thinking', description: '链式推理增强 Server，让 AI 在复杂问题上逐步思考，显著提升逻辑推理质量', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking', category: 'ai', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-sequential-thinking', tags: ['推理增强', '链式思考', 'CoT', '官方'], stars: 85000, is_featured: true, created_at: now },
+  // ── 效率工具（扩展） ────────────────────────────────────────────────────────
+  { slug: 'linear', name: 'linear', description: '连接 Linear 项目管理工具，AI 可查询/创建 Issues、管理 Sprint、追踪工作进度', url: 'https://github.com/linear/linear-mcp-server', category: 'productivity', is_official: false, install_cmd: 'npx @linear/mcp-server', tags: ['Linear', '项目管理', 'Issue追踪', 'Sprint'], stars: 2800, is_featured: false, created_at: now },
+  { slug: 'jira', name: 'jira', description: '集成 Atlassian Jira，支持创建和查询 Tickets、管理 Sprint、读取项目看板状态', url: 'https://github.com/atlassian-labs/mcp-atlassian', category: 'productivity', is_official: false, install_cmd: 'npx @atlassian/mcp-server', tags: ['Jira', 'Atlassian', 'Ticket管理', '看板'], stars: 1900, is_featured: false, created_at: now },
+  { slug: 'calendar', name: 'calendar', description: 'Google Calendar 读写，AI 可查询日程、创建会议、设置提醒，提升时间管理效率', url: 'https://github.com/modelcontextprotocol/servers-archived', category: 'productivity', is_official: true, install_cmd: 'npx @modelcontextprotocol/server-gcalendar', tags: ['Google Calendar', '日程管理', '会议创建', '官方'], stars: 85000, is_featured: false, created_at: now },
+  { slug: 'discord', name: 'discord', description: '读取 Discord 频道消息、发送通知、管理服务器，适合构建自动化社区管理 Agent', url: 'https://github.com/v-3/discordmcp', category: 'productivity', is_official: false, install_cmd: 'npx discord-mcp', tags: ['Discord', '社区管理', '消息自动化', '通知'], stars: 950, is_featured: false, created_at: now },
+  { slug: 'confluence', name: 'confluence', description: '读写 Atlassian Confluence Wiki，AI 可搜索文档、创建页面、更新知识库内容', url: 'https://github.com/atlassian-labs/mcp-atlassian', category: 'productivity', is_official: false, install_cmd: 'npx @atlassian/confluence-mcp', tags: ['Confluence', 'Wiki', '知识库', 'Atlassian'], stars: 1400, is_featured: false, created_at: now },
+  // ── 开发工具（扩展） ────────────────────────────────────────────────────────
+  { slug: 'docker', name: 'docker', description: '管理 Docker 容器和镜像，AI 可启动/停止容器、查看日志、管理 Docker Compose', url: 'https://github.com/ckreiling/mcp-server-docker', category: 'devtools', is_official: false, install_cmd: 'npx mcp-server-docker', tags: ['Docker', '容器管理', 'DevOps', '日志查看'], stars: 3200, is_featured: true, created_at: now },
+  { slug: 'kubernetes', name: 'kubernetes', description: '管理 Kubernetes 集群，查询 Pod 状态、部署应用、查看事件日志，DevOps 必备', url: 'https://github.com/strowk/mcp-k8s-go', category: 'devtools', is_official: false, install_cmd: 'npx mcp-k8s', tags: ['Kubernetes', 'K8s', 'DevOps', '集群管理'], stars: 2100, is_featured: false, created_at: now },
+  { slug: 'sentry', name: 'sentry', description: '连接 Sentry 错误追踪，AI 可查询错误详情、分析堆栈跟踪、关联代码问题', url: 'https://github.com/getsentry/sentry-mcp', category: 'devtools', is_official: false, install_cmd: 'npx sentry-mcp', tags: ['Sentry', '错误追踪', '堆栈分析', '监控'], stars: 1600, is_featured: false, created_at: now },
+  { slug: 'aws', name: 'aws', description: '访问 AWS 云服务，查询 EC2/S3/Lambda 状态，管理云资源，适合 DevOps 自动化', url: 'https://github.com/awslabs/mcp', category: 'devtools', is_official: false, install_cmd: 'npx @aws/mcp-server', tags: ['AWS', 'S3', 'EC2', 'Lambda', '云服务'], stars: 4500, is_featured: true, created_at: now },
+  // ── 数据库（扩展） ──────────────────────────────────────────────────────────
+  { slug: 'redis', name: 'redis', description: '操作 Redis 缓存数据库，支持 GET/SET/查询 Key、分析内存使用、监控连接状态', url: 'https://github.com/redis/mcp-redis', category: 'database', is_official: false, install_cmd: 'npx redis-mcp', tags: ['Redis', '缓存', 'Key-Value', '内存数据库'], stars: 890, is_featured: false, created_at: now },
+  { slug: 'mongodb', name: 'mongodb', description: '连接 MongoDB 文档数据库，AI 可执行查询、聚合管道分析，无需记忆 Query 语法', url: 'https://github.com/mongodb-js/mongodb-mcp-server', category: 'database', is_official: false, install_cmd: 'npx mongodb-mcp', tags: ['MongoDB', '文档数据库', '聚合查询', 'NoSQL'], stars: 1700, is_featured: false, created_at: now },
+  { slug: 'supabase', name: 'supabase', description: '连接 Supabase 后端服务，支持数据库查询、文件存储、认证管理，开发者最爱', url: 'https://github.com/supabase-community/supabase-mcp', category: 'database', is_official: false, install_cmd: 'npx @supabase/mcp-server', tags: ['Supabase', 'PostgreSQL', '后端即服务', '开发者工具'], stars: 5200, is_featured: true, created_at: now },
+  // ── AI 模型（扩展） ─────────────────────────────────────────────────────────
+  { slug: 'huggingface', name: 'huggingface', description: 'Hugging Face 模型推理 MCP Server，让 AI 直接调用 HF 上的数万个开源模型', url: 'https://github.com/huggingface/huggingface-mcp-server', category: 'ai', is_official: false, install_cmd: 'npx huggingface-mcp', tags: ['HuggingFace', '开源模型', '模型推理', '模型库'], stars: 3800, is_featured: false, created_at: now },
+  { slug: 'replicate', name: 'replicate', description: '调用 Replicate 上的 AI 模型（图像生成、语音合成等），一行命令运行任意 AI 模型', url: 'https://github.com/deepfates/mcp-replicate', category: 'ai', is_official: false, install_cmd: 'npx replicate-mcp', tags: ['Replicate', '图像生成', '语音合成', '多模态'], stars: 2300, is_featured: false, created_at: now },
+  // ── 搜索（扩展） ─────────────────────────────────────────────────────────────
+  { slug: 'perplexity-search', name: 'perplexity-search', description: 'Perplexity AI 搜索 MCP，带 AI 摘要的实时搜索，特别适合研究型 Agent 任务', url: 'https://github.com/ppl-ai/modelcontextprotocol', category: 'search', is_official: false, install_cmd: 'npx perplexity-mcp', tags: ['Perplexity', 'AI摘要', '实时搜索', '研究Agent'], stars: 1400, is_featured: false, created_at: now },
+  { slug: 'arxiv', name: 'arxiv', description: '搜索 arXiv 学术论文数据库，获取最新研究成果，适合科研型 Agent', url: 'https://github.com/blazickjp/arxiv-mcp-server', category: 'search', is_official: false, install_cmd: 'npx arxiv-mcp-server', tags: ['arXiv', '论文搜索', '学术研究', '科研'], stars: 650, is_featured: false, created_at: now }
 ];
 
 const MODELS_DATA = [
@@ -521,6 +521,1537 @@ const BENCHMARKS_DATA = [
 ];
 
 const TUTORIALS_DATA = [
+  // ── 新增 SEO 深度文章 ────────────────────────────────────────────────────────
+  {
+    slug: 'mcp-server-vs-function-calling',
+    title: 'MCP Server vs Function Calling：程序员该如何选择？',
+    subtitle: '深度对比两种 AI 工具接入方案，附选型决策树',
+    summary: 'MCP Server 和 Function Calling 都能让 AI 调用外部工具，但它们有本质区别。本文从架构原理、适用场景、开发成本、生产可靠性四个维度深度对比，并提供一张选型决策树，帮助你 5 分钟内做出正确选择。',
+    content: `# MCP Server vs Function Calling：程序员该如何选择？
+
+> **一句话结论**：Function Calling 是"在模型里定义工具"，MCP Server 是"让工具独立运行、模型按需连接"。前者适合快速原型，后者适合生产级多工具 Agent。
+
+---
+
+## 背景：为什么会有这两种方案？
+
+在 AI Agent 刚兴起时，开发者面临一个核心问题：**如何让 AI 模型调用外部系统？**
+
+OpenAI 在 2023 年推出了 **Function Calling**，把工具定义内嵌到 API 请求里。这个方案简单直接，但随着工具数量增多，问题也暴露出来。
+
+2024 年 11 月，Anthropic 发布了 **MCP（Model Context Protocol）**，提出了一种全新架构：把工具封装成独立服务，让模型通过标准协议动态连接。这个思路迅速获得 OpenAI、Google、Microsoft 跟进支持，成为 AI 工具接入的新标准。
+
+---
+
+## 核心概念对比
+
+### Function Calling（函数调用）
+
+Function Calling 的工作方式：
+
+\`\`\`
+用户消息 + 工具定义 → [发送给模型] → 模型返回"调用哪个函数、传什么参数" → 你的代码执行函数 → 把结果塞回上下文 → 模型生成最终答案
+\`\`\`
+
+**特点**：
+- 工具定义以 JSON Schema 格式内嵌在 API 请求体里
+- 每次调用都要把所有工具定义一起发给模型（占用 Token）
+- 工具代码由你来执行，模型只负责"决策调哪个函数"
+- 无状态：每次请求独立，没有持久连接
+
+\`\`\`json
+// Function Calling 示例（OpenAI 风格）
+{
+  "model": "gpt-4o",
+  "messages": [...],
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "search_web",
+        "description": "搜索网页",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": { "type": "string" }
+          }
+        }
+      }
+    }
+  ]
+}
+\`\`\`
+
+---
+
+### MCP Server（模型上下文协议服务器）
+
+MCP 的工作方式：
+
+\`\`\`
+MCP Server（独立进程）常驻运行
+↓
+Claude/Cursor/任意 MCP 客户端连接
+↓
+客户端发现可用工具列表
+↓
+模型需要时调用工具 → Server 执行 → 返回结果
+\`\`\`
+
+**特点**：
+- 工具封装在独立的 Server 进程中，与模型解耦
+- 一个 Server 可同时服务多个 AI 客户端
+- 支持持久连接（SSE 或 stdio），减少握手开销
+- 工具发现是动态的：Server 启动后自动暴露工具列表
+
+\`\`\`json
+// MCP Server 配置示例（Claude Desktop）
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-filesystem", "/Users/me/Documents"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-github"],
+      "env": { "GITHUB_TOKEN": "ghp_..." }
+    }
+  }
+}
+\`\`\`
+
+---
+
+## 四维深度对比
+
+### 1. 架构层面
+
+| 维度 | Function Calling | MCP Server |
+|------|-----------------|------------|
+| 工具位置 | 内嵌在 API 请求中 | 独立进程/服务 |
+| 耦合程度 | 强耦合（工具定义与模型绑定） | 松耦合（工具与模型解耦） |
+| 跨平台 | ❌ 每个 AI 平台需单独实现 | ✅ 一次实现，全平台通用 |
+| 工具发现 | 静态（需手动更新 Schema） | 动态（Server 自动暴露） |
+
+**一句话**：Function Calling 是"为特定模型写专属插件"，MCP 是"写一次、接入所有模型"。
+
+---
+
+### 2. 适用场景
+
+**Function Calling 更适合：**
+- ✅ 工具数量少（1-5 个），逻辑简单
+- ✅ 快速原型验证，不想搭服务
+- ✅ 已经深度绑定某个 AI 平台（如纯 OpenAI 项目）
+- ✅ 无状态的短任务（单次问答）
+
+**MCP Server 更适合：**
+- ✅ 工具数量多（5 个以上），需要复用
+- ✅ 需要跨多个 AI 客户端共享工具（Claude + Cursor + 自建 Agent）
+- ✅ 工具有复杂的初始化逻辑（数据库连接、OAuth 认证）
+- ✅ 团队协作，工具由不同人维护
+- ✅ 生产环境，需要工具的版本管理和独立部署
+
+---
+
+### 3. 开发成本
+
+| 阶段 | Function Calling | MCP Server |
+|------|-----------------|------------|
+| 上手难度 | ⭐ 简单，10 分钟开始 | ⭐⭐⭐ 需要了解 MCP 协议 |
+| 单工具开发时间 | 30 分钟 | 1-2 小时（首次），之后复用 |
+| 维护成本 | 低（逻辑在代码里） | 中（需维护 Server 进程） |
+| Token 消耗 | 高（工具 Schema 每次发送） | 低（工具发现一次，之后复用） |
+
+---
+
+### 4. 生产可靠性
+
+| 维度 | Function Calling | MCP Server |
+|------|-----------------|------------|
+| 错误隔离 | ❌ 工具崩溃可能影响整个对话 | ✅ Server 崩溃不影响模型 |
+| 版本管理 | 难（Schema 混在业务代码里） | 易（Server 独立版本管理） |
+| 监控日志 | 需自己实现 | MCP Server 框架内置支持 |
+| 并发处理 | 依赖宿主代码 | Server 可独立扩容 |
+
+---
+
+## 选型决策树
+
+\`\`\`
+你的工具数量 ≤ 3 个？
+├── YES → 使用一个 AI 平台？
+│   ├── YES → ✅ Function Calling（最简单）
+│   └── NO  → ✅ MCP Server（跨平台复用）
+└── NO  → 工具需要独立部署/维护？
+    ├── YES → ✅ MCP Server（生产推荐）
+    └── NO  → 快速原型阶段？
+        ├── YES → Function Calling 先跑通，后迁移 MCP
+        └── NO  → ✅ MCP Server
+\`\`\`
+
+---
+
+## 实际案例：同一需求的两种实现
+
+**需求**：让 AI 能搜索网页并读取本地文件。
+
+### 方案 A：Function Calling
+
+\`\`\`python
+# 需要自己写工具逻辑
+tools = [
+    {"name": "search_web", "description": "...", "parameters": {...}},
+    {"name": "read_file",  "description": "...", "parameters": {...}}
+]
+
+response = openai.chat.completions.create(
+    model="gpt-4o",
+    messages=messages,
+    tools=tools  # 每次请求都要带上，消耗 Token
+)
+
+# 自己处理 tool_calls，执行函数，把结果塞回去
+\`\`\`
+
+**缺点**：工具逻辑散落在代码里，换成 Claude 还要重写。
+
+### 方案 B：MCP Server
+
+\`\`\`bash
+# 直接用社区现成的 Server，5 分钟配置完
+# ~/.cursor/mcp.json
+{
+  "mcpServers": {
+    "brave-search": { "command": "npx", "args": ["@modelcontextprotocol/server-brave-search"] },
+    "filesystem":   { "command": "npx", "args": ["@modelcontextprotocol/server-filesystem", "~/Documents"] }
+  }
+}
+\`\`\`
+
+**优势**：不用写任何工具逻辑，换 Claude、Cursor、任意 MCP 客户端都能用。
+
+---
+
+## 2026 年的趋势判断
+
+Function Calling 不会消失，但会**退化为底层实现细节**——就像你不需要关心 HTTP 底层一样，未来大多数开发者会通过 MCP 这样的高层协议来集成工具。
+
+目前社区已有 **500+ 现成 MCP Server**，覆盖：
+- 数据库（PostgreSQL, MySQL, SQLite, MongoDB）
+- 代码工具（GitHub, GitLab, Docker, Kubernetes）
+- 效率工具（Notion, Slack, Google Drive, Linear）
+- AI 增强（Sequential Thinking, Tavily, Perplexity）
+
+**结论**：新项目直接上 MCP，已有 Function Calling 项目无需重写，等下次重构时迁移即可。
+
+---
+
+## FAQ
+
+**Q：MCP Server 需要专门的服务器部署吗？**
+A：不需要。大多数 MCP Server 通过 \`npx\` 在本地运行，或通过 \`stdio\` 模式作为子进程启动，零部署成本。
+
+**Q：MCP 支持哪些 AI 客户端？**
+A：Claude Desktop、Cursor、Windsurf、Zed 已原生支持。OpenAI 和 Google 也宣布跟进。
+
+**Q：Function Calling 能实现的功能 MCP 都能实现吗？**
+A：是的，MCP 是 Function Calling 的超集。MCP 还额外支持 Resources（文件/数据读取）和 Prompts（提示词模板），功能更完整。`,
+    level: 'intermediate',
+    category: 'mcp',
+    tags: ['MCP', 'Function Calling', '对比', '工具调用', '架构设计', '开发者必读'],
+    estimated_minutes: 15,
+    related_tools: ['filesystem', 'github', 'brave-search', 'sequential-thinking'],
+    is_featured: true,
+    published_at: '2026-01-15T08:00:00Z'
+  },
+  {
+    slug: 'ai-agent-complete-guide-2026',
+    title: '2026 AI Agent 完全入门指南',
+    subtitle: '从零到第一个 Agent：概念、工具、实战全覆盖',
+    summary: '这是 2026 年最完整的 AI Agent 入门指南。从"什么是 Agent"到"如何亲手搭建一个"，涵盖核心概念、主流工具对比、MCP 生态、实战教程，以及避坑指南。无论你是开发者还是普通用户，30 分钟读完，即可上手。',
+    content: `# 2026 AI Agent 完全入门指南
+
+> 本文持续更新，最后更新：2026 年 1 月。
+
+---
+
+## 第一章：什么是 AI Agent？（彻底搞懂）
+
+### 从"问答机器"到"自主执行者"
+
+2023 年以前，AI 的主要形态是**问答**：你问，它答。无论是 ChatGPT 还是文心一言，都是这个模式。
+
+**AI Agent** 是下一个阶段：**你给目标，它自主完成**。
+
+| | 传统 AI（问答） | AI Agent（执行） |
+|-|---------------|----------------|
+| 交互方式 | 一问一答 | 设定目标，自主运行 |
+| 工具调用 | ❌ 不能 | ✅ 可调用搜索/代码/浏览器等 |
+| 多步骤任务 | ❌ 单次回答 | ✅ 自动拆解、逐步执行 |
+| 代表产品 | ChatGPT（对话模式） | Manus、Devin、OpenClaw |
+
+### Agent 的三个核心能力
+
+**1. 感知（Perceive）**
+接收多模态输入：文字、图片、PDF、网页、代码、数据库……
+
+**2. 规划（Plan）**
+面对复杂目标，自动拆解成有序步骤：
+> "帮我分析竞品" → [搜索竞品官网] → [抓取产品特性] → [对比定价] → [生成报告]
+
+**3. 执行（Act）**
+调用外部工具完成动作：
+- 搜索引擎（Brave Search, Tavily）
+- 代码执行（Python REPL）
+- 浏览器操控（Puppeteer, Playwright）
+- 文件读写（filesystem MCP）
+- API 调用（GitHub, Notion, Slack）
+
+---
+
+## 第二章：2026 年 Agent 生态全景
+
+### 五大 Agent 类型
+
+**1. 通用自主 Agent**
+能完成任意开放性任务，是"真正的 AI 员工"。
+- **Manus**：全球首款通用 Agent，已被 Meta 收购，自主闭环能力最强
+- **OpenClaw**：开源版 Manus，GitHub 10天冲上 Top 10，支持自托管
+- **AutoGPT**：最早期开源 Agent，开创了自主任务执行的先河
+
+**2. 软件工程 Agent**
+专注代码开发，是程序员的"AI 副驾驶"升级版。
+- **Devin**：首个自主 AI 软件工程师，全流程写代码+调试+部署
+- **Cursor**：估值 500 亿美金的 AI IDE，重新定义编程工作流
+- **SWE-agent**：专注 Bug 修复，SWE-bench 评测领先
+
+**3. 深度研究 Agent**
+搜索+分析+报告一体化，是"AI 研究助理"。
+- **OpenAI Deep Research**：一键生成带引用的专业研究报告
+- **Perplexity**：实时联网问答，搜索引擎的 AI 替代品
+- **Genspark**：中国团队出品，Sparkpages 沉浸式阅读体验
+
+**4. 计算机操控 Agent**
+直接控制电脑屏幕，像人一样操作软件。
+- **Claude Computer Use**：Anthropic 出品，直接操控鼠标键盘
+- **browser-use**：开源浏览器自动化，GitHub 爆火
+- **Skyvern**：视觉驱动，无需 CSS 选择器
+
+**5. Agent 构建平台**
+让你零代码搭建自己的 Agent。
+- **Dify**：开源 LLMOps 平台，工作流+RAG 一体化
+- **Coze（扣子）**：字节跳动出品，面向普通用户
+- **n8n**：开源自动化平台，400+ 集成节点
+
+---
+
+## 第三章：MCP 生态——Agent 的"工具箱标准"
+
+### 什么是 MCP？
+
+MCP（Model Context Protocol）是 Anthropic 于 2024 年 11 月发布的开放协议，让 AI 能安全、标准化地连接任意外部工具。
+
+**类比**：MCP 就是 Agent 的 USB-C 接口——一次实现，接入所有 AI 平台。
+
+### 2026 年最值得安装的 MCP Server
+
+| 分类 | Server 名 | 核心能力 | 安装命令 |
+|------|----------|---------|---------|
+| 文件系统 | filesystem | 读写本地文件 | \`npx @modelcontextprotocol/server-filesystem\` |
+| 代码 | github | PR、Issues、代码搜索 | \`npx @modelcontextprotocol/server-github\` |
+| 搜索 | brave-search | 实时网页搜索 | \`npx @modelcontextprotocol/server-brave-search\` |
+| 知识库 | notion | 读写 Notion | \`npx @notionhq/notion-mcp-server\` |
+| 浏览器 | puppeteer | 浏览器自动化 | \`npx @modelcontextprotocol/server-puppeteer\` |
+| 数据库 | sqlite | SQL 查询 | \`npx @modelcontextprotocol/server-sqlite\` |
+| AI 增强 | sequential-thinking | 链式推理增强 | \`npx @modelcontextprotocol/server-sequential-thinking\` |
+| 云服务 | aws | AWS 资源管理 | \`npx @aws/mcp-server\` |
+
+---
+
+## 第四章：5 分钟上手你的第一个 Agent
+
+### 方案 A：无代码（Claude Desktop + MCP）
+
+**适合：** 普通用户、非技术背景
+
+**步骤：**
+
+1. 下载 [Claude Desktop](https://claude.ai/download)
+2. 编辑配置文件 \`~/Library/Application Support/Claude/claude_desktop_config.json\`：
+
+\`\`\`json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/你的用户名/Documents"]
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": { "BRAVE_API_KEY": "你的 API Key" }
+    }
+  }
+}
+\`\`\`
+
+3. 重启 Claude Desktop
+4. 测试：对 Claude 说"帮我搜索今天的 AI 新闻，总结后保存到桌面的 news.md 文件"
+
+---
+
+### 方案 B：低代码（Dify 平台）
+
+**适合：** 想构建客服/知识库问答的用户
+
+1. 访问 [dify.ai](https://dify.ai) 注册
+2. 上传你的文档（产品手册、FAQ 等）
+3. 拖拽配置工作流：知识库检索 → AI 生成回答 → 发送
+4. 一键生成 API，嵌入你的网站
+
+---
+
+### 方案 C：代码（Python + LangGraph）
+
+**适合：** 开发者，想构建生产级 Agent
+
+\`\`\`python
+from langgraph.graph import StateGraph
+from langchain_anthropic import ChatAnthropic
+
+# 定义 Agent 的状态图
+graph = StateGraph(AgentState)
+graph.add_node("search",  search_node)   # 搜索节点
+graph.add_node("analyze", analyze_node) # 分析节点
+graph.add_node("report",  report_node)  # 报告节点
+
+# 按逻辑连接节点
+graph.add_edge("search", "analyze")
+graph.add_conditional_edges("analyze", route_fn, {
+    "need_more_search": "search",
+    "ready_to_report": "report"
+})
+
+agent = graph.compile()
+result = agent.invoke({"goal": "分析特斯拉Q4财报"})
+\`\`\`
+
+---
+
+## 第五章：避坑指南（2026 年版）
+
+### 坑 1：期望 Agent 100% 自主完成所有任务
+**现实**：2026 年的 Agent 在结构化、重复性任务（数据处理、代码生成、信息汇总）上可靠性极高，但在需要"常识判断"的开放性任务上仍会出错。
+
+**建议**：高风险任务（发送邮件、提交代码）加人工审核节点。
+
+### 坑 2：给 Agent 过多权限
+**现实**：给了数据库写权限，Agent 可能误删数据。
+
+**建议**：最小权限原则——研究类任务用只读权限，操作类任务加确认步骤。
+
+### 坑 3：忽略成本控制
+**现实**：Agent 的多步骤任务会频繁调用 API，GPT-4o 跑一个复杂任务可能花几美元。
+
+**建议**：
+- 使用 DeepSeek-V3 或 Gemini 2.0 Flash 降低成本（性能相当，价格低 10-50 倍）
+- 设置 max_iterations 防止无限循环
+
+### 坑 4：不设超时和重试
+**建议**：生产环境必须设置：
+- 单工具调用超时：30s
+- 整体任务超时：5 分钟
+- 失败重试次数：最多 3 次
+
+---
+
+## 第六章：2026 年趋势展望
+
+1. **Agentic AI 成为主流**：Google Gemini 2.0、GPT-5 原生支持 Agent 模式，不再是附加功能
+2. **MCP 生态爆发**：已有 500+ Server，预计 2026 年底突破 2000+
+3. **多 Agent 协作**：单个 Agent 处理复杂任务能力有限，CrewAI、AutoGen 等多 Agent 框架走向生产
+4. **本地 Agent**：隐私需求推动本地模型（Ollama + DeepSeek）构建的私有 Agent 兴起
+5. **Agent OS**：ColaOS 等"Soul-First" AI 操作系统尝试将 Agent 融入系统级
+
+---
+
+## 总结
+
+| 你的需求 | 推荐方案 |
+|---------|---------|
+| 个人效率提升，非技术 | Claude Desktop + MCP Server |
+| 构建客服/知识库 | Dify 低代码平台 |
+| AI 编程助手 | Cursor + GitHub MCP |
+| 研究报告自动化 | Perplexity / Deep Research |
+| 生产级自动化流水线 | n8n + LangGraph |
+| 开源自托管 | OpenClaw / Dify Self-hosted |
+
+**现在就开始**：从安装 Claude Desktop 和配置第一个 MCP Server 开始，10 分钟就能体验到"AI 帮你干活"的感觉。`,
+    level: 'beginner',
+    category: 'concept',
+    tags: ['AI Agent', '入门指南', '2026', 'MCP', '完全教程', '新手必读'],
+    estimated_minutes: 30,
+    related_tools: ['Manus', 'OpenClaw', 'Dify', 'filesystem', 'brave-search'],
+    is_featured: true,
+    published_at: '2026-01-20T08:00:00Z'
+  },
+  {
+    slug: 'top-10-ai-skills-resources-2026',
+    title: '2026 年必关注的 10 个 AI Skills 资源',
+    subtitle: '从官方市场到中文社区，一文收录最值得收藏的 Skill 平台',
+    summary: '网上的 AI Skills 资源鱼龙混杂，有的已经停止维护，有的质量堪忧。本文精选 2026 年最值得关注的 10 个平台，涵盖官方市场、GitHub 精选列表、中文社区和工具类站点，每个都附上核心亮点和使用建议。',
+    content: `# 2026 年必关注的 10 个 AI Skills 资源
+
+> **什么是 AI Skill？** 简单说，Skill 是给 AI 装上的"能力插件"——让 Claude、GPT 等模型能完成特定任务的配置文件或提示词模板。找到好的 Skill，等于找到别人替你踩坑优化过的最佳实践。
+
+---
+
+## 为什么 Skill 资源越来越重要？
+
+2025-2026 年，AI Agent 的能力边界已经不再取决于模型本身，而是取决于**你给它配了什么 Skill 和工具**。
+
+一个没有配置的 Claude = 通才助理（万能但平庸）
+一个配置了专业 Skill 的 Claude = 专家级工具（精准且高效）
+
+举个例子：
+- 没有 Skill：问 Claude "帮我 Review 代码"，得到泛泛而谈的建议
+- 配置了代码审查 Skill：Claude 会按照 Google 代码规范逐行检查，指出性能瓶颈、安全漏洞和可读性问题
+
+---
+
+## 精选 10 个资源
+
+### 🥇 1. ClaWHub — 官方 Skill 市场
+
+**地址**：[clawhub.com](https://clawhub.com)
+
+**为什么推荐**：这是最权威的来源，Skills 由社区开发者发布，经过审核。类比 iOS App Store，找 Skill 从这里开始准没错。
+
+**核心亮点**：
+- 官方认证标识，可信度高
+- 按使用场景分类（写作、编程、研究、创意等）
+- 安装流程标准化，一键安装
+
+**适合人群**：所有 Claude 用户，是第一个应该收藏的站点。
+
+---
+
+### 🥈 2. Awesome MCP Servers — GitHub 精选列表
+
+**地址**：[github.com/punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)
+
+**为什么推荐**：社区维护的 MCP Server 精选列表，1500+ Star，每周更新。发现新 MCP Server 的最快入口。
+
+**核心亮点**：
+- 按分类整理：数据库、浏览器、开发工具、效率工具、AI 增强
+- 每个 Server 都标注是否官方、安装命令、Stars 数
+- 社区贡献活跃，新 Server 上线几天内就会出现
+
+**使用建议**：配合 GitHub 的 Watch 功能，有新 Server 加入时会收到通知。
+
+---
+
+### 🥉 3. Claude Skills 官方文档
+
+**地址**：[docs.anthropic.com](https://docs.anthropic.com/en/docs/build-with-claude/skills)
+
+**为什么推荐**：想自己开发 Skill？官方文档是最权威的参考，包含 API 规范、最佳实践、测试方法。
+
+**核心亮点**：
+- Skill 的完整开发规范
+- 安全性指南（如何防止 Skill 被滥用）
+- 真实案例和代码示例
+
+**适合人群**：想自己开发 Skill 的开发者。
+
+---
+
+### 4. FlowGPT — 全球最大提示词社区
+
+**地址**：[flowgpt.com](https://flowgpt.com)
+
+**为什么推荐**：50 万+ 提示词，涵盖 Claude、GPT、Midjourney 等所有主流 AI。虽然不专注 Skills，但里面有大量高质量的 System Prompt 配置，本质上就是 Skill 的前身。
+
+**核心亮点**：
+- 按热度和点赞排序，优质内容容易发现
+- 支持一键复制和测试
+- 有专门的"Claude Prompts"分类
+
+**使用建议**：搜索你的使用场景（如"Claude code review"），通常能找到社区验证过的好配置。
+
+---
+
+### 5. SkillHub 腾讯版 — 国内最大中文 Skill 平台
+
+**地址**：[skillhub.tencent.com](https://skillhub.tencent.com)
+
+**为什么推荐**：腾讯出品，13000+ 技能，专为中文用户优化，国内节点访问速度快。
+
+**核心亮点**：
+- 最大的中文 Skill 数据库
+- 分类细致：职场、教育、创意、技术、生活
+- 经过安全审核，可信度高
+
+**适合人群**：主要使用中文的用户，特别是职场场景（PPT、邮件、报告）。
+
+---
+
+### 6. Dify Marketplace — 可一键部署的 Agent 模板
+
+**地址**：[marketplace.dify.ai](https://marketplace.dify.ai)
+
+**为什么推荐**：这里的"Skill"不只是提示词，而是完整的 AI 应用模板，包含工作流、知识库配置、工具调用。导入后直接可用。
+
+**核心亮点**：
+- 数百个可运行的 Agent 模板
+- 支持一键导入到自己的 Dify 实例
+- 覆盖客服、内容生成、数据分析等企业场景
+
+**使用建议**：如果你在用 Dify 搭建 AI 应用，先来这里找模板，99% 的常见场景都有现成的。
+
+---
+
+### 7. LangChain Hub — Chain 和 Agent 配置模板
+
+**地址**：[smith.langchain.com/hub](https://smith.langchain.com/hub)
+
+**为什么推荐**：LangChain 官方的模板共享平台，提供可复用的 Prompt、Chain、Agent 配置。开发者构建 LangChain/LangGraph 项目时必备。
+
+**核心亮点**：
+- 官方维护的高质量模板
+- 版本管理：可以追踪模板的历史变化
+- 直接通过 Python/JS 代码拉取使用
+
+\`\`\`python
+from langchain import hub
+prompt = hub.pull("rlm/rag-prompt")  # 一行代码拉取 RAG 提示词模板
+\`\`\`
+
+---
+
+### 8. Coze（扣子）插件广场
+
+**地址**：[coze.cn](https://www.coze.cn)
+
+**为什么推荐**：字节跳动出品，Bot 平台生态最完善，插件市场可直接接入飞书、微信、抖音。
+
+**核心亮点**：
+- 丰富的插件生态（搜索、图像、数据、API）
+- Bot 模板一键复制使用
+- 面向国内用户的场景优化（微信、抖音集成）
+
+**适合人群**：想把 AI Bot 发布到国内主流平台的用户。
+
+---
+
+### 9. 小龙虾 Skills — 最全的中文场景分类
+
+**地址**：[xiaolongxia.app/skills](https://www.xiaolongxia.app/skills)
+
+**为什么推荐**：245 个精选技能，按场景细分（职场、学习、创意、生活），附有踩坑提醒和套装搭配推荐，非常适合新手快速找到适合自己的 Skill 组合。
+
+**核心亮点**：
+- 套装推荐：比如"程序员效率套装"（代码审查 + Debug + 文档生成）
+- 踩坑提醒：告诉你哪些场景 Skill 效果不好
+- 定期更新，紧跟最新功能
+
+---
+
+### 10. Awesome Claude Prompts — 开发者必备参考
+
+**地址**：[github.com/langgptai/awesome-claude-prompts](https://github.com/langgptai/awesome-claude-prompts)
+
+**为什么推荐**：GitHub 上最全的 Claude 提示词合集，200+ 高质量提示词，特别适合开发者参考如何写高质量的 System Prompt。
+
+**核心亮点**：
+- 涵盖编程、写作、分析、角色扮演等各类场景
+- 每个提示词都有详细说明和使用示例
+- 可直接 Fork，根据需求修改
+
+---
+
+## 如何高效使用这些资源？
+
+### 第一步：明确你的使用场景
+不要漫无目的地浏览。先问自己：
+- 我主要用 AI 做什么？（写作/编程/研究/效率）
+- 我的技术背景如何？（小白/有基础/开发者）
+- 我用的是哪个平台？（Claude/ChatGPT/Dify/Coze）
+
+### 第二步：按顺序查找
+1. 先去 **ClaWHub**（官方，最权威）
+2. 没找到 → **FlowGPT**（社区，量最大）
+3. 中文需求 → **SkillHub 腾讯版**（中文，最全）
+4. 要部署工作流 → **Dify Marketplace**（可运行模板）
+
+### 第三步：测试和调优
+找到 Skill 后，先在测试场景跑 3-5 次，评估：
+- 准确率是否满足需求
+- 输出格式是否符合预期
+- Token 消耗是否在可接受范围
+
+---
+
+## 总结对比表
+
+| 资源 | 适合人群 | 内容量 | 中文支持 | 推荐指数 |
+|------|---------|-------|---------|---------|
+| ClaWHub | 所有用户 | 中 | 部分 | ⭐⭐⭐⭐⭐ |
+| Awesome MCP Servers | 开发者 | 大 | ❌ | ⭐⭐⭐⭐⭐ |
+| Claude 官方文档 | 开发者 | 中 | ❌ | ⭐⭐⭐⭐ |
+| FlowGPT | 所有用户 | 极大 | 部分 | ⭐⭐⭐⭐ |
+| SkillHub 腾讯版 | 中文用户 | 极大 | ✅ | ⭐⭐⭐⭐⭐ |
+| Dify Marketplace | 构建者 | 中 | 部分 | ⭐⭐⭐⭐ |
+| LangChain Hub | 开发者 | 中 | ❌ | ⭐⭐⭐⭐ |
+| Coze 插件广场 | 中文用户 | 大 | ✅ | ⭐⭐⭐⭐ |
+| 小龙虾 Skills | 中文新手 | 中 | ✅ | ⭐⭐⭐⭐ |
+| Awesome Claude Prompts | 开发者 | 中 | ❌ | ⭐⭐⭐⭐ |`,
+    level: 'beginner',
+    category: 'concept',
+    tags: ['AI Skills', '资源推荐', '2026', 'Skill平台', 'MCP', '导航'],
+    estimated_minutes: 12,
+    related_tools: ['ClaWHub', 'filesystem', 'brave-search', 'Dify'],
+    is_featured: true,
+    published_at: '2026-02-01T08:00:00Z'
+  },
+  {
+    slug: 'build-your-own-mcp-server',
+    title: '如何搭建自己的 MCP Server（完整教程）',
+    subtitle: '从零开始，30 分钟实现一个可用于生产的自定义 MCP Server',
+    summary: '市面上有 500+ 现成 MCP Server，但总有一天你会遇到找不到现成 Server 的场景——这时候就需要自己写一个。本教程从零开始，用 TypeScript 实现一个能查询内部 API 的 MCP Server，包含工具注册、错误处理和部署到生产环境的完整步骤。',
+    content: `# 如何搭建自己的 MCP Server（完整教程）
+
+> **前置条件**：Node.js 18+，有基础的 TypeScript/JavaScript 知识
+
+---
+
+## 为什么需要自定义 MCP Server？
+
+现有的 500+ MCP Server 覆盖了大多数通用场景，但你可能需要：
+- 查询公司内部 API（如 ERP、CRM 系统）
+- 封装私有数据库的访问逻辑
+- 集成不在公开列表里的 SaaS 工具
+- 为特定业务流程定制专属工具
+
+这些场景都需要自己写 MCP Server。好消息是：MCP SDK 设计得非常简洁，写一个基础 Server 只需要 ~50 行代码。
+
+---
+
+## MCP Server 的核心概念
+
+MCP Server 可以暴露三种类型的能力：
+
+| 类型 | 说明 | 示例 |
+|------|------|------|
+| **Tools（工具）** | AI 可以调用的函数 | 搜索、查询、执行操作 |
+| **Resources（资源）** | AI 可以读取的数据 | 文件、数据库记录、API 响应 |
+| **Prompts（提示词）** | 预定义的提示词模板 | 代码审查模板、报告格式 |
+
+本教程专注于最常用的 **Tools**。
+
+---
+
+## 第一步：初始化项目
+
+\`\`\`bash
+mkdir my-mcp-server && cd my-mcp-server
+npm init -y
+npm install @modelcontextprotocol/sdk zod
+npm install -D typescript @types/node tsx
+\`\`\`
+
+创建 \`tsconfig.json\`：
+
+\`\`\`json
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "Node16",
+    "moduleResolution": "Node16",
+    "outDir": "./dist",
+    "strict": true
+  }
+}
+\`\`\`
+
+更新 \`package.json\`：
+
+\`\`\`json
+{
+  "type": "module",
+  "bin": { "my-mcp-server": "./dist/index.js" },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts"
+  }
+}
+\`\`\`
+
+---
+
+## 第二步：实现最小化 MCP Server
+
+创建 \`src/index.ts\`：
+
+\`\`\`typescript
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { z } from 'zod';
+
+// 1. 创建 Server 实例
+const server = new McpServer({
+  name: 'my-mcp-server',
+  version: '1.0.0'
+});
+
+// 2. 注册工具
+server.tool(
+  'get_weather',                           // 工具名（AI 会用这个名字调用）
+  '获取指定城市的实时天气',                   // 工具描述（AI 用来判断何时调用）
+  {
+    city: z.string().describe('城市名称，如"北京"、"上海"')
+  },
+  async ({ city }) => {
+    // 这里调用你的实际 API
+    const res = await fetch(\`https://api.weather.example.com/v1/current?city=\${city}\`);
+    const data = await res.json();
+    
+    return {
+      content: [{
+        type: 'text',
+        text: \`\${city}当前天气：\${data.condition}，气温 \${data.temp}°C，湿度 \${data.humidity}%\`
+      }]
+    };
+  }
+);
+
+// 3. 启动 Server
+const transport = new StdioServerTransport();
+await server.connect(transport);
+console.error('MCP Server 已启动');  // 注意：日志要用 stderr，stdout 留给协议通信
+\`\`\`
+
+---
+
+## 第三步：添加多个工具（实战示例）
+
+以下是一个查询公司内部数据的实战示例：
+
+\`\`\`typescript
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { z } from 'zod';
+
+const server = new McpServer({
+  name: 'company-internal-api',
+  version: '1.0.0',
+  description: '公司内部 API 集成 MCP Server'
+});
+
+const API_BASE = process.env.INTERNAL_API_URL ?? 'https://api.company.internal';
+const API_TOKEN = process.env.INTERNAL_API_TOKEN ?? '';
+
+// 辅助函数：带认证的 fetch
+async function apiFetch(path: string, options?: RequestInit) {
+  const res = await fetch(\`\${API_BASE}\${path}\`, {
+    ...options,
+    headers: {
+      'Authorization': \`Bearer \${API_TOKEN}\`,
+      'Content-Type': 'application/json',
+      ...options?.headers
+    }
+  });
+  if (!res.ok) throw new Error(\`API 错误 \${res.status}: \${await res.text()}\`);
+  return res.json();
+}
+
+// 工具 1：查询客户信息
+server.tool(
+  'get_customer',
+  '根据客户 ID 或姓名查询客户详细信息',
+  {
+    query: z.string().describe('客户 ID（如 C001）或客户姓名'),
+    include_orders: z.boolean().optional().default(false).describe('是否包含最近订单')
+  },
+  async ({ query, include_orders }) => {
+    const customer = await apiFetch(\`/customers/search?q=\${encodeURIComponent(query)}\`);
+    
+    let result = \`客户信息：
+- 姓名：\${customer.name}
+- 公司：\${customer.company}
+- 联系方式：\${customer.email} / \${customer.phone}
+- 客户等级：\${customer.tier}
+- 注册时间：\${customer.created_at}\`;
+
+    if (include_orders && customer.id) {
+      const orders = await apiFetch(\`/customers/\${customer.id}/orders?limit=5\`);
+      result += \`\n\n最近 5 笔订单：\n\${orders.map((o: any) => 
+        \`- #\${o.id} \${o.created_at}: \${o.amount} 元（\${o.status}）\`
+      ).join('\n')}\`;
+    }
+
+    return { content: [{ type: 'text', text: result }] };
+  }
+);
+
+// 工具 2：查询库存
+server.tool(
+  'check_inventory',
+  '查询指定商品的库存数量和预计到货时间',
+  {
+    sku: z.string().describe('商品 SKU 编号'),
+    warehouse: z.enum(['beijing', 'shanghai', 'guangzhou', 'all']).default('all').describe('查询的仓库')
+  },
+  async ({ sku, warehouse }) => {
+    const inventory = await apiFetch(\`/inventory/\${sku}?warehouse=\${warehouse}\`);
+    
+    const lines = warehouse === 'all'
+      ? inventory.warehouses.map((w: any) => \`- \${w.name}：\${w.stock} 件\`)
+      : [\`- 当前库存：\${inventory.stock} 件\`];
+    
+    return {
+      content: [{
+        type: 'text',
+        text: \`商品 \${sku} 库存情况：
+\${lines.join('\n')}
+总库存：\${inventory.total} 件
+预计补货日期：\${inventory.restock_date ?? '暂无计划'}\`
+      }]
+    };
+  }
+);
+
+// 工具 3：创建工单
+server.tool(
+  'create_ticket',
+  '创建客服工单，适合需要人工跟进的问题',
+  {
+    customer_id: z.string().describe('客户 ID'),
+    category: z.enum(['refund', 'delivery', 'product', 'other']).describe('工单类型'),
+    description: z.string().min(10).describe('问题描述（至少 10 个字）'),
+    priority: z.enum(['low', 'normal', 'high', 'urgent']).default('normal')
+  },
+  async ({ customer_id, category, description, priority }) => {
+    const ticket = await apiFetch('/tickets', {
+      method: 'POST',
+      body: JSON.stringify({ customer_id, category, description, priority })
+    });
+    
+    return {
+      content: [{
+        type: 'text',
+        text: \`✅ 工单创建成功！
+- 工单号：\${ticket.id}
+- 优先级：\${priority}
+- 预计响应时间：\${ticket.sla_deadline}
+- 负责人：\${ticket.assigned_to ?? '待分配'}\`
+      }]
+    };
+  }
+);
+
+const transport = new StdioServerTransport();
+await server.connect(transport);
+\`\`\`
+
+---
+
+## 第四步：错误处理最佳实践
+
+\`\`\`typescript
+// ✅ 好的错误处理：给 AI 友好的错误信息
+server.tool('get_customer', '...', { query: z.string() }, async ({ query }) => {
+  try {
+    const data = await apiFetch(\`/customers/search?q=\${query}\`);
+    if (!data || data.length === 0) {
+      return {
+        content: [{ type: 'text', text: \`未找到匹配"\${query}"的客户。请检查拼写或尝试其他关键词。\` }],
+        isError: true
+      };
+    }
+    return { content: [{ type: 'text', text: formatCustomer(data[0]) }] };
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    return {
+      content: [{ type: 'text', text: \`查询失败：\${message}。请稍后重试。\` }],
+      isError: true  // 标记为错误，AI 会知道这次调用失败了
+    };
+  }
+});
+\`\`\`
+
+---
+
+## 第五步：在 Claude Desktop 中测试
+
+1. 构建项目：\`npm run build\`
+
+2. 添加到 Claude Desktop 配置（\`~/Library/Application Support/Claude/claude_desktop_config.json\`）：
+
+\`\`\`json
+{
+  "mcpServers": {
+    "company-api": {
+      "command": "node",
+      "args": ["/绝对路径/my-mcp-server/dist/index.js"],
+      "env": {
+        "INTERNAL_API_URL": "https://api.company.internal",
+        "INTERNAL_API_TOKEN": "your-token-here"
+      }
+    }
+  }
+}
+\`\`\`
+
+3. 重启 Claude Desktop
+
+4. 测试：
+   - "帮我查一下客户张三的信息"
+   - "检查 SKU-12345 在上海仓库的库存"
+   - "为客户 C001 创建一个关于退款的高优先级工单"
+
+---
+
+## 第六步：发布为 npm 包（可选）
+
+如果你想让团队成员也能用：
+
+\`\`\`bash
+# 修改 package.json
+{
+  "name": "@your-org/mcp-server-company",
+  "version": "1.0.0",
+  "bin": { "mcp-server-company": "./dist/index.js" }
+}
+
+npm publish --access restricted  # 发布到私有 npm Registry
+\`\`\`
+
+团队成员配置：
+
+\`\`\`json
+{
+  "mcpServers": {
+    "company-api": {
+      "command": "npx",
+      "args": ["@your-org/mcp-server-company"],
+      "env": { "INTERNAL_API_TOKEN": "..." }
+    }
+  }
+}
+\`\`\`
+
+---
+
+## 生产部署注意事项
+
+| 事项 | 建议 |
+|------|------|
+| **密钥管理** | 使用环境变量，绝不硬编码在代码里 |
+| **权限最小化** | 只开放 AI 真正需要的接口 |
+| **日志记录** | 用 \`console.error\` 记录到 stderr，便于调试 |
+| **超时控制** | 每个工具调用设置 30s 超时 |
+| **输入验证** | 用 Zod Schema 严格验证所有参数 |
+| **只读优先** | 查询类工具不要有副作用 |
+| **操作确认** | 写操作（创建、删除）在工具描述中说明会修改数据 |
+
+---
+
+## 常见问题
+
+**Q：MCP Server 必须用 TypeScript 吗？**
+A：不是，官方提供了 Python SDK（\`mcp\` 包），Go SDK 也在开发中。
+
+**Q：MCP Server 能处理并发请求吗？**
+A：stdio 模式是串行的（一次一个请求）。高并发场景可以用 SSE（Server-Sent Events）模式。
+
+**Q：如何调试 MCP Server？**
+A：推荐用 [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector)，官方提供的可视化调试工具，可以手动测试工具调用。
+
+\`\`\`bash
+npx @modelcontextprotocol/inspector dist/index.js
+# 打开浏览器访问 http://localhost:5173
+\`\`\``,
+    level: 'advanced',
+    category: 'mcp',
+    tags: ['MCP Server', '开发教程', 'TypeScript', '自定义工具', '生产部署'],
+    estimated_minutes: 30,
+    related_tools: ['filesystem', 'github', 'sequential-thinking'],
+    is_featured: true,
+    published_at: '2026-02-10T08:00:00Z'
+  },
+  {
+    slug: 'manus-vs-autogpt-vs-openclaw',
+    title: 'Manus vs AutoGPT vs OpenClaw：2026 年通用 Agent 深度对比',
+    subtitle: '三款最具代表性的通用 AI Agent 全方位横评',
+    summary: 'Manus、AutoGPT 和 OpenClaw 是目前最受关注的三款通用 AI Agent，但它们的定位、能力、适用场景差异极大。本文从任务完成能力、开源程度、部署成本、社区生态四个维度深度对比，帮你选出最适合自己的一款。',
+    content: `# Manus vs AutoGPT vs OpenClaw：2026 年通用 Agent 深度对比
+
+> **测评时间**：2026 年 1 月  
+> **测评维度**：任务完成率、开源程度、部署成本、社区生态、适用场景
+
+---
+
+## 三款 Agent 的背景
+
+### Manus
+- **出生**：2025 年初横空出世，一夜爆火，被认为是"通用 Agent 里程碑"
+- **归宿**：已于 2025 年 12 月以 20 亿美元被 Meta 收购
+- **定位**：商业闭源，面向企业用户和重度专业用户
+- **核心特点**：任务分解 + 执行闭环能力业界最强，可完成复杂的多步骤任务
+
+### AutoGPT
+- **出生**：2023 年，开源 Agent 的鼻祖
+- **定位**：教育向 + 实验向，展示了 Agent 的可能性
+- **核心特点**：最早的自主 Agent，GPT-4 驱动，开源社区最大
+- **现状**：仍在维护，但已不再是性能最强的选择
+
+### OpenClaw
+- **出生**：2026 年 1 月，GitHub 10 天冲上 Top 10
+- **定位**：Manus 的开源平替，专注可自托管、隐私优先
+- **核心特点**：完全开源、社区驱动、支持自托管，生态爆发中
+
+---
+
+## 能力对比：五类任务横评
+
+### 任务 1：研究报告生成
+**测试场景**：生成一份关于"2026 年 AI Agent 投资机会"的 3000 字专业报告，需要包含数据引用。
+
+| | Manus | AutoGPT | OpenClaw |
+|-|-------|---------|----------|
+| 报告质量 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ |
+| 数据引用准确性 | 高 | 中 | 高 |
+| 完成时间 | ~8 分钟 | ~25 分钟 | ~12 分钟 |
+| 成功率 | 95% | 65% | 85% |
+
+**点评**：Manus 的搜索+分析+写作闭环最成熟，信息整合能力最强。OpenClaw 表现令人惊喜，差距不大。AutoGPT 偶尔会陷入循环或生成低质量内容。
+
+---
+
+### 任务 2：代码开发任务
+**测试场景**：实现一个 Python 爬虫，抓取指定网站的新闻标题，保存为 CSV 文件。
+
+| | Manus | AutoGPT | OpenClaw |
+|-|-------|---------|----------|
+| 代码可运行率 | 90% | 55% | 80% |
+| 错误自修复 | ✅ 强 | ❌ 弱 | ✅ 中等 |
+| 代码质量 | 高 | 中 | 中高 |
+| 需要人工干预 | 很少 | 频繁 | 偶尔 |
+
+**点评**：代码任务对"调试闭环"要求很高——写出代码后，Agent 需要能运行、看到报错、自动修复。Manus 在这方面明显领先。
+
+---
+
+### 任务 3：多步骤工作流
+**测试场景**：监控竞品官网，发现新产品页面时，发送 Slack 通知并创建 Notion 任务。
+
+| | Manus | AutoGPT | OpenClaw |
+|-|-------|---------|----------|
+| 多工具协调 | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐ |
+| 工具接入丰富度 | 100+ 内置 | 需手动配置 | MCP 生态（500+） |
+| 持久化执行 | ✅ 支持定时 | ❌ 不支持 | ✅ 支持 |
+| 失败恢复 | ✅ 自动重试 | ❌ 需人工 | ✅ 可配置 |
+
+**点评**：AutoGPT 在这类需要持久化运行的任务上明显不足。Manus 和 OpenClaw 都支持持久化，但 Manus 内置工具更丰富，无需额外配置。
+
+---
+
+### 任务 4：文件系统操作
+**测试场景**：整理桌面文件，按类型分类，生成文件清单报告。
+
+| | Manus | AutoGPT | OpenClaw |
+|-|-------|---------|----------|
+| 本地文件操作 | ✅（云端中转） | ✅（本地执行） | ✅（本地执行） |
+| 隐私安全 | ❌ 数据上传云端 | ✅ 可本地运行 | ✅ 完全本地 |
+| 权限控制 | 平台托管 | 你自己控制 | 你自己控制 |
+
+**点评**：隐私敏感场景（处理内部文件、代码）选 OpenClaw 本地部署更安心。Manus 需要把数据上传到云端处理。
+
+---
+
+### 任务 5：API 集成任务
+**测试场景**：调用 Slack API 给指定频道发消息，触发条件是某个关键词出现在指定网页上。
+
+| | Manus | AutoGPT | OpenClaw |
+|-|-------|---------|----------|
+| API 集成能力 | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐（借助 MCP） |
+| 无需代码完成 | ✅ | ❌ | ✅（借助 MCP） |
+| 自定义能力 | 受平台限制 | 高度可定制 | 高度可定制 |
+
+---
+
+## 关键维度横向评分
+
+| 维度 | Manus | AutoGPT | OpenClaw |
+|------|-------|---------|----------|
+| **任务完成率** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ |
+| **开源程度** | ❌ 闭源 | ✅ 完全开源 | ✅ 完全开源 |
+| **部署成本** | 订阅制，月费较高 | 免费（需 API Key） | 免费（需 API Key） |
+| **自托管** | ❌ 不支持 | ✅ 支持 | ✅ 支持 |
+| **工具生态** | ⭐⭐⭐⭐⭐（内置） | ⭐⭐（需配置） | ⭐⭐⭐⭐⭐（MCP 500+） |
+| **社区活跃度** | 中（企业产品） | 高（老项目） | 极高（2026 爆发） |
+| **上手门槛** | ⭐ 极低 | ⭐⭐⭐ 中等 | ⭐⭐ 低 |
+| **隐私安全** | ❌ 数据上云 | ✅ 可本地 | ✅ 完全本地 |
+
+---
+
+## 适用场景推荐
+
+### 选 Manus 如果你：
+- ✅ 需要最强的任务完成率，愿意为质量付费
+- ✅ 不想自己配置工具和环境
+- ✅ 主要处理非敏感数据
+- ✅ 企业用户，需要稳定可靠的商业支持
+
+**月费参考**：Pro 版约 $50-100/月（被 Meta 收购后定价可能调整）
+
+---
+
+### 选 OpenClaw 如果你：
+- ✅ 希望完全掌控数据，隐私优先
+- ✅ 技术背景，能自托管部署
+- ✅ 想利用 500+ MCP Server 生态
+- ✅ 预算有限，希望用开源方案
+- ✅ 愿意参与社区，贡献和定制
+
+**部署成本**：免费（只需支付 AI API 费用，推荐用 DeepSeek-V3，成本极低）
+
+---
+
+### 选 AutoGPT 如果你：
+- ✅ 主要用于学习和理解 Agent 原理
+- ✅ 想基于它做大量自定义开发
+- ✅ 不介意较低的任务成功率
+- ✅ 需要与最大的开源社区接触
+
+**建议**：AutoGPT 更适合作为**学习工具**而非生产工具。
+
+---
+
+## 总结
+
+2026 年，如果你只能选一个：
+
+> **普通用户/企业**：Manus（质量最高，开箱即用）  
+> **开发者/隐私敏感**：OpenClaw（开源自托管，MCP 生态强）  
+> **学习研究**：AutoGPT（社区最大，源码最透明）
+
+OpenClaw 的崛起意义在于：它证明了**开源社区的速度可以追上商业产品**，而且在隐私保护上天然优于闭源方案。随着 MCP 生态继续爆发，OpenClaw 的工具接入能力甚至可能超越 Manus。`,
+    level: 'intermediate',
+    category: 'agent',
+    tags: ['Manus', 'AutoGPT', 'OpenClaw', '对比', '通用Agent', '选型指南'],
+    estimated_minutes: 20,
+    related_tools: ['Manus', 'OpenClaw', 'AutoGPT', 'filesystem', 'brave-search'],
+    is_featured: true,
+    published_at: '2026-02-15T08:00:00Z'
+  },
+  {
+    slug: 'deepseek-r1-local-deployment',
+    title: 'DeepSeek-R1 本地部署完整教程：零成本运行顶级推理模型',
+    subtitle: '用 Ollama 在 Mac/Linux/Windows 上跑 DeepSeek-R1，完全离线，数据不出本地',
+    summary: 'DeepSeek-R1 是目前性价比最高的开源推理模型，数学和代码能力与 OpenAI o1 相当，但完全免费开源。本教程手把手带你在本地机器上部署 DeepSeek-R1，接入 Cursor/VS Code，实现零 API 费用的私有 AI 编程助手。',
+    content: `# DeepSeek-R1 本地部署完整教程
+
+> **适用系统**：macOS 12+、Ubuntu 20.04+、Windows 11（WSL2）  
+> **最低配置**：8GB 内存（运行 7B 版本）；推荐 32GB 内存（运行 70B 版本）
+
+---
+
+## 为什么选择 DeepSeek-R1？
+
+2025 年 1 月，DeepSeek-R1 的发布震惊了整个 AI 行业：
+
+- **性能**：数学、代码、逻辑推理能力与 OpenAI o1 相当
+- **成本**：训练成本仅为 o1 的 3%，API 价格仅为 OpenAI 的 1/20
+- **开源**：MIT 协议完全开源，可本地运行，数据不出门
+- **规模**：从 1.5B 到 671B 参数，适配从笔记本到服务器的各种硬件
+
+### 本地部署 vs 云端 API
+
+| | 本地部署（Ollama） | 云端 API（DeepSeek.com） |
+|-|-----------------|------------------------|
+| 成本 | 一次配置，永久免费 | 按 Token 计费 |
+| 隐私 | ✅ 数据完全不出本地 | ❌ 数据上传服务器 |
+| 速度 | 取决于硬件（M3 MacBook 约 30 tok/s） | 稳定快速 |
+| 离线使用 | ✅ 断网可用 | ❌ 需要网络 |
+| 模型大小 | 受本地内存限制 | 可调用最大模型 |
+
+---
+
+## 第一步：安装 Ollama
+
+Ollama 是目前最简单的本地大模型运行工具，支持 100+ 开源模型。
+
+### macOS
+
+\`\`\`bash
+# 方式 1：官网下载安装包（推荐新手）
+# 访问 https://ollama.ai 下载 .dmg 文件，双击安装
+
+# 方式 2：命令行安装
+brew install ollama
+\`\`\`
+
+### Linux
+
+\`\`\`bash
+curl -fsSL https://ollama.ai/install.sh | sh
+\`\`\`
+
+### Windows（WSL2）
+
+\`\`\`bash
+# 先安装 WSL2，然后在 WSL 终端里运行：
+curl -fsSL https://ollama.ai/install.sh | sh
+\`\`\`
+
+验证安装：
+
+\`\`\`bash
+ollama --version
+# 输出类似：ollama version 0.5.x
+\`\`\`
+
+---
+
+## 第二步：选择适合你的 DeepSeek-R1 版本
+
+根据你的内存/显存选择合适的版本：
+
+| 版本 | 模型大小 | 最低内存 | 推荐场景 |
+|------|---------|---------|---------|
+| deepseek-r1:1.5b | ~1GB | 4GB | 轻量测试 |
+| deepseek-r1:7b | ~4.7GB | 8GB | 日常使用（推荐入门） |
+| deepseek-r1:14b | ~9GB | 16GB | 更强推理能力 |
+| deepseek-r1:32b | ~20GB | 32GB | 接近云端质量 |
+| deepseek-r1:70b | ~43GB | 64GB | 最强本地版本 |
+
+**推荐**：
+- 普通 MacBook（16GB 统一内存）→ \`deepseek-r1:14b\`
+- M3 Max MacBook Pro（32GB）→ \`deepseek-r1:32b\`
+- 高性能工作站 → \`deepseek-r1:70b\`
+
+---
+
+## 第三步：下载并运行模型
+
+\`\`\`bash
+# 下载并直接运行（第一次需要下载，约几分钟到几十分钟）
+ollama run deepseek-r1:14b
+
+# 或者先下载，后运行
+ollama pull deepseek-r1:14b
+ollama run deepseek-r1:14b
+\`\`\`
+
+成功后会看到命令行交互界面：
+
+\`\`\`
+>>> 帮我写一个快速排序算法
+
+<think>
+用户想要一个快速排序算法...
+</think>
+
+这里是 Python 实现的快速排序：
+
+def quicksort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    ...
+\`\`\`
+
+> 💡 R1 的特色：你会看到 \`<think>...</think>\` 标签，这是模型在推理过程中的"思考链"，DeepSeek-R1 会把推理过程展示出来。
+
+退出对话：输入 \`/bye\` 或按 \`Ctrl+D\`
+
+---
+
+## 第四步：常用管理命令
+
+\`\`\`bash
+# 查看已下载的模型
+ollama list
+
+# 删除模型（释放磁盘空间）
+ollama rm deepseek-r1:1.5b
+
+# 在后台运行 Ollama 服务（API 模式）
+ollama serve
+
+# 查看运行中的模型
+ollama ps
+
+# 更新模型到最新版本
+ollama pull deepseek-r1:14b
+\`\`\`
+
+---
+
+## 第五步：接入 Cursor（AI 编程助手）
+
+Ollama 提供了兼容 OpenAI API 的接口，可以无缝接入 Cursor：
+
+1. 打开 Cursor → **Settings（齿轮图标）** → **Models**
+
+2. 点击 **Add Model**，填入：
+   - Base URL: \`http://localhost:11434/v1\`
+   - Model name: \`deepseek-r1:14b\`
+   - API Key: \`ollama\`（任意填写，本地不验证）
+
+3. 在 **Chat** 面板顶部选择 \`deepseek-r1:14b\` 为当前模型
+
+4. 测试：输入"帮我优化这段代码的性能"
+
+---
+
+## 第六步：接入 VS Code（Continue 插件）
+
+[Continue](https://continue.dev) 是 VS Code 最好的 AI 编程插件，原生支持 Ollama：
+
+1. 安装 Continue 插件
+
+2. 编辑 \`~/.continue/config.json\`：
+
+\`\`\`json
+{
+  "models": [
+    {
+      "title": "DeepSeek-R1 14B (Local)",
+      "provider": "ollama",
+      "model": "deepseek-r1:14b",
+      "apiBase": "http://localhost:11434"
+    }
+  ],
+  "tabAutocompleteModel": {
+    "title": "DeepSeek-R1 1.5B (Fast)",
+    "provider": "ollama",
+    "model": "deepseek-r1:1.5b"
+  }
+}
+\`\`\`
+
+> 💡 **技巧**：用大模型做对话（14B），用小模型做 Tab 补全（1.5B），速度更快，体验更好。
+
+---
+
+## 第七步：通过 API 使用（高级）
+
+Ollama 启动后在 \`http://localhost:11434\` 提供 OpenAI 兼容的 API：
+
+\`\`\`python
+from openai import OpenAI
+
+# 指向本地 Ollama
+client = OpenAI(
+    base_url='http://localhost:11434/v1',
+    api_key='ollama'  # 任意字符串
+)
+
+response = client.chat.completions.create(
+    model='deepseek-r1:14b',
+    messages=[
+        {'role': 'user', 'content': '用 Python 写一个二分查找函数，附带完整测试'}
+    ]
+)
+
+print(response.choices[0].message.content)
+\`\`\`
+
+---
+
+## 性能优化技巧
+
+### 开启 GPU 加速（如果有独立显卡）
+
+\`\`\`bash
+# Ollama 自动检测 NVIDIA/AMD GPU，无需额外配置
+# 验证 GPU 是否被使用：
+ollama run deepseek-r1:14b
+# 运行后执行：
+ollama ps
+# 看到 GPU: NVIDIA GeForce... 表示 GPU 已启用
+\`\`\`
+
+### Apple Silicon 优化
+
+M 系列芯片的统一内存架构对 LLM 推理特别友好，14B 模型速度可达 30-50 tokens/s，接近云端 API 体验。
+
+\`\`\`bash
+# 查看实时速度
+ollama run deepseek-r1:14b --verbose
+\`\`\`
+
+### 并发请求
+
+Ollama 默认支持并发请求，适合构建多用户应用：
+
+\`\`\`bash
+# 设置最大并发数（默认 1）
+OLLAMA_NUM_PARALLEL=4 ollama serve
+\`\`\`
+
+---
+
+## 其他推荐的本地模型
+
+| 模型 | 特点 | 最适合场景 |
+|------|------|-----------|
+| \`qwen2.5-coder:7b\` | 代码专项，HumanEval 92% | 代码生成和补全 |
+| \`qwen2.5:14b\` | 中文能力极强 | 中文写作和对话 |
+| \`llama3.3:70b\` | Meta 旗舰，通用能力强 | 综合任务（需要 64GB+ 内存） |
+| \`mistral:7b\` | 速度极快 | 实时对话和补全 |
+| \`nomic-embed-text\` | 文本向量化 | RAG 知识库 |
+
+---
+
+## 常见问题
+
+**Q：模型下载速度很慢怎么办？**
+A：可以通过镜像加速（国内用户）：
+\`\`\`bash
+OLLAMA_REGISTRY_URL=https://registry.ollama.ai ollama pull deepseek-r1:14b
+\`\`\`
+或者使用 HuggingFace 镜像手动下载 GGUF 文件后导入。
+
+**Q：运行时出现 "context length exceeded" 错误？**
+A：减小上下文窗口：
+\`\`\`bash
+ollama run deepseek-r1:14b --context-length 4096
+\`\`\`
+
+**Q：如何让 Ollama 开机自启？**
+
+macOS:
+\`\`\`bash
+brew services start ollama
+\`\`\`
+
+Linux (systemd):
+\`\`\`bash
+sudo systemctl enable ollama
+sudo systemctl start ollama
+\`\`\`
+
+**Q：DeepSeek-R1 和 DeepSeek-V3 有什么区别？**
+A：
+- **R1**：推理专项模型，有 \`<think>\` 思考过程，适合数学/代码/逻辑问题
+- **V3**：通用旗舰模型，速度更快，适合写作/对话/日常任务
+
+编程场景推荐 R1，日常对话推荐 V3（\`ollama run deepseek-v3:8b\`）。`,
+    level: 'beginner',
+    category: 'hands-on',
+    tags: ['DeepSeek', 'R1', 'Ollama', '本地部署', '开源模型', '隐私安全', '零成本'],
+    estimated_minutes: 25,
+    related_tools: ['DeepSeek-R1', 'Cursor', 'filesystem'],
+    is_featured: true,
+    published_at: '2026-03-01T08:00:00Z'
+  },
+  // ── 原有 12 篇教程 ─────────────────────────────────────────────────────────
   {
     slug: 'what-is-ai-agent',
     title: '什么是 AI Agent？',
@@ -568,7 +2099,7 @@ const TUTORIALS_DATA = [
     title: '用 OpenClaw 5分钟搭建你的第一个私人 AI 助手',
     subtitle: '从安装到第一次对话的完整教程',
     summary: '本教程手把手带你安装和配置 OpenClaw，搭建完全私有化的 AI 助手。OpenClaw 完全开源，支持自托管，数据不出本地，适合有隐私需求的个人和企业用户。',
-    content: '# 用 OpenClaw 搭建私人 AI 助手\n\n## 准备工作\n\n- 系统：macOS / Linux / Windows (WSL2)\n- 需要：Node.js 18+ 或 Docker\n\n## 方法一：Docker 一键启动（推荐）\n\n```bash\ndocker pull openclaw/openclaw:latest\ndocker run -d -p 3000:3000 -v ~/.openclaw:/data --name openclaw openclaw/openclaw:latest\n# 访问 http://localhost:3000\n```\n\n## 方法二：本地安装\n\n```bash\ngit clone https://github.com/openclaw/openclaw\ncd openclaw\nnpm install\ncp .env.example .env\nnpm run dev\n```\n\n## 配置 AI 模型\n\nOpenClaw 支持接入任意兼容 OpenAI API 格式的模型：\n\n```env\nOPENAI_API_KEY=sk-...        # OpenAI\nANTHROPIC_API_KEY=sk-ant-... # Claude\nDEEPSEEK_API_KEY=...         # DeepSeek（推荐，性价比高）\n```\n\n## 添加你的第一个 MCP Tool\n\n在 .openclaw/config.json 中添加 mcpServers 配置，重启后 AI 助手即可读写指定文件夹。\n\n## 第一次对话\n\n试试这些指令：\n- "帮我在桌面创建一个 todo.txt 文件，写入今天的三个任务"\n- "读取我的 Documents/notes.md 并总结要点"\n- "搜索最新的 AI Agent 新闻并整理成摘要"',
+    content: '# 用 OpenClaw 搭建私人 AI 助手\n\n## 准备工作\n\n- 系统：macOS / Linux / Windows (WSL2)\n- 需要：Node.js 18+ 或 Docker\n\n## 方法一：Docker 一键启动（推荐）\n\n`\`\`bash\ndocker pull openclaw/openclaw:latest\ndocker run -d -p 3000:3000 -v ~/.openclaw:/data --name openclaw openclaw/openclaw:latest\n# 访问 http://localhost:3000\n\`\`\`\n\n## 方法二：本地安装\n\n\`\`\`bash\ngit clone https://github.com/openclaw/openclaw\ncd openclaw\nnpm install\ncp .env.example .env\nnpm run dev\n\`\`\`\n\n## 配置 AI 模型\n\nOpenClaw 支持接入任意兼容 OpenAI API 格式的模型：\n\n\`\`\`env\nOPENAI_API_KEY=sk-...        # OpenAI\nANTHROPIC_API_KEY=sk-ant-... # Claude\nDEEPSEEK_API_KEY=...         # DeepSeek（推荐，性价比高）\n\`\`\`\n\n## 添加你的第一个 MCP Tool\n\n在 .openclaw/config.json 中添加 mcpServers 配置，重启后 AI 助手即可读写指定文件夹。\n\n## 第一次对话\n\n试试这些指令：\n- "帮我在桌面创建一个 todo.txt 文件，写入今天的三个任务"\n- "读取我的 Documents/notes.md 并总结要点"\n- "搜索最新的 AI Agent 新闻并整理成摘要"',
     level: 'intermediate',
     category: 'hands-on',
     tags: ['OpenClaw', '自托管', '安装教程', '私有化'],
@@ -582,7 +2113,7 @@ const TUTORIALS_DATA = [
     title: '用 Dify 零代码构建一个客服 Agent（附模板）',
     subtitle: '30分钟搭建能回答产品问题的智能客服',
     summary: 'Dify 是目前最易用的 AI Agent 构建平台，无需编写代码，通过可视化界面就能搭建功能完整的客服 Agent。本教程提供完整步骤和可直接导入的模板。',
-    content: '# 用 Dify 构建客服 Agent\n\n## 什么是 Dify？\n\nDify 是一个开源的 LLM 应用开发平台，特点：\n- **零代码**：拖拽操作，无需编程\n- **开源可自托管**：数据完全自控\n- **工作流编排**：支持复杂的多步骤逻辑\n- **RAG 内置**：轻松接入私有知识库\n\n## 第一步：注册/部署 Dify\n\n**云端版（推荐新手）**：访问 dify.ai 注册\n\n**自托管**：\n```bash\ngit clone https://github.com/langgenius/dify\ncd dify/docker\ndocker compose up -d\n```\n\n## 第二步：上传知识库\n\n1. 进入 **知识库** → **创建知识库**\n2. 上传你的产品文档（支持 PDF、Word、Markdown）\n3. 等待向量化完成\n\n## 第三步：创建 Chatbot\n\n1. **创建应用** → 选择 **Chatbot**\n2. 在 **上下文** 中绑定刚创建的知识库\n3. 设置系统提示词，定义回答范围和风格\n\n## 第四步：添加工具增强\n\n在 **工具** 面板添加网络搜索和代码执行节点。\n\n## 发布与集成\n\n点击 **发布** → 获取 API Key，通过官方 embed 脚本嵌入到你的网站。',
+    content: '# 用 Dify 构建客服 Agent\n\n## 什么是 Dify？\n\nDify 是一个开源的 LLM 应用开发平台，特点：\n- **零代码**：拖拽操作，无需编程\n- **开源可自托管**：数据完全自控\n- **工作流编排**：支持复杂的多步骤逻辑\n- **RAG 内置**：轻松接入私有知识库\n\n## 第一步：注册/部署 Dify\n\n**云端版（推荐新手）**：访问 dify.ai 注册\n\n**自托管**：\n\`\`\`bash\ngit clone https://github.com/langgenius/dify\ncd dify/docker\ndocker compose up -d\n\`\`\`\n\n## 第二步：上传知识库\n\n1. 进入 **知识库** → **创建知识库**\n2. 上传你的产品文档（支持 PDF、Word、Markdown）\n3. 等待向量化完成\n\n## 第三步：创建 Chatbot\n\n1. **创建应用** → 选择 **Chatbot**\n2. 在 **上下文** 中绑定刚创建的知识库\n3. 设置系统提示词，定义回答范围和风格\n\n## 第四步：添加工具增强\n\n在 **工具** 面板添加网络搜索和代码执行节点。\n\n## 发布与集成\n\n点击 **发布** → 获取 API Key，通过官方 embed 脚本嵌入到你的网站。',
     level: 'intermediate',
     category: 'hands-on',
     tags: ['Dify', '零代码', '客服Agent', 'RAG'],
@@ -638,7 +2169,7 @@ const TUTORIALS_DATA = [
     title: '用 Dify 搭建企业知识库问答系统',
     subtitle: '30 分钟上线 RAG 应用，告别信息孤岛',
     summary: 'Dify 是最流行的开源 LLMOps 平台，内置 RAG 知识库功能。本文从零开始，教你把公司文档、内部 Wiki、产品手册全部导入，搭建一个能准确回答业务问题的企业 AI 助手，并分享提升准确率的关键调优技巧。',
-    content: '# 用 Dify 搭建企业知识库问答系统\n\n## 什么是 RAG？\n\nRAG（Retrieval-Augmented Generation）= 检索 + 生成\n\n普通 AI 回答问题只靠训练数据，RAG 会先在你的文档库中搜索相关内容，再结合搜索结果生成答案。\n\n## 1. 安装 Dify\n\n```bash\ngit clone https://github.com/langgenius/dify.git\ncd dify/docker\ncp .env.example .env\ndocker compose up -d\n# 访问 http://localhost/install 完成初始化\n```\n\n## 2. 创建知识库\n\n1. 登录 Dify → 点击 **知识库** → **创建知识库**\n2. 上传文档（支持 PDF、Word、Markdown、网页链接）\n3. 设置分块策略：分块大小 500-1000 字符，重叠长度 100 字符\n4. 选择 Embedding 模型\n\n## 3. 创建 AI 助手应用\n\n绑定知识库，配置系统提示词，设置回答范围和引用规范。\n\n## 4. 关键调优技巧\n\n- 找不到相关内容：降低相似度阈值\n- 答案不完整：增加分块大小或召回数量\n- 同时启用向量搜索和全文搜索，准确率提升 20-30%\n\n## 5. 发布和集成\n\n支持 Web 应用、REST API 集成、飞书/企业微信等多种方式。',
+    content: '# 用 Dify 搭建企业知识库问答系统\n\n## 什么是 RAG？\n\nRAG（Retrieval-Augmented Generation）= 检索 + 生成\n\n普通 AI 回答问题只靠训练数据，RAG 会先在你的文档库中搜索相关内容，再结合搜索结果生成答案。\n\n## 1. 安装 Dify\n\n\`\`\`bash\ngit clone https://github.com/langgenius/dify.git\ncd dify/docker\ncp .env.example .env\ndocker compose up -d\n# 访问 http://localhost/install 完成初始化\n\`\`\`\n\n## 2. 创建知识库\n\n1. 登录 Dify → 点击 **知识库** → **创建知识库**\n2. 上传文档（支持 PDF、Word、Markdown、网页链接）\n3. 设置分块策略：分块大小 500-1000 字符，重叠长度 100 字符\n4. 选择 Embedding 模型\n\n## 3. 创建 AI 助手应用\n\n绑定知识库，配置系统提示词，设置回答范围和引用规范。\n\n## 4. 关键调优技巧\n\n- 找不到相关内容：降低相似度阈值\n- 答案不完整：增加分块大小或召回数量\n- 同时启用向量搜索和全文搜索，准确率提升 20-30%\n\n## 5. 发布和集成\n\n支持 Web 应用、REST API 集成、飞书/企业微信等多种方式。',
     level: 'intermediate',
     category: 'hands-on',
     tags: ['Dify', 'RAG', '知识库', '企业AI', 'LLMOps'],
@@ -652,7 +2183,7 @@ const TUTORIALS_DATA = [
     title: '用 LangGraph 构建多步骤 Agent',
     subtitle: '状态机思维：让 Agent 像工作流一样可控',
     summary: 'LangGraph 是 LangChain 团队推出的 Agent 编排框架，用图（DAG）的方式组织 Agent 逻辑，支持循环、条件分支、状态持久化和人工干预点。相比 ReAct Agent，LangGraph 的行为更可预测、更易调试，是生产级 Agent 开发的首选。',
-    content: '# 用 LangGraph 构建多步骤 Agent\n\n## LangGraph vs ReAct Agent\n\n| 维度 | ReAct Agent | LangGraph |\n|------|------------|----------|\n| 控制流 | 模型自主决定 | 开发者定义图结构 |\n| 可调试性 | 难以追踪 | 每步骤状态可见 |\n| 循环支持 | 有限 | 原生支持 |\n| 人工干预 | 不支持 | 内置 Interrupt |\n| 生产可用 | 一般 | 推荐 |\n\n## 核心概念\n\n- State（状态）：Agent 的记忆，贯穿整个执行过程\n- Node（节点）：执行具体工作的函数\n- Edge（边）：节点间的连接，可以是条件跳转\n- Graph（图）：所有节点和边的集合\n\n## 安装\n\n```bash\npip install langgraph langchain-anthropic\n```\n\n## 最佳实践\n\n1. **状态不可变**：每个节点返回新状态，不直接修改\n2. **节点单一职责**：每个节点只做一件事\n3. **条件边用枚举**：返回字符串 key，避免拼写错误\n4. **持久化检查点**：生产环境使用 PostgresSaver 而非 MemorySaver',
+    content: '# 用 LangGraph 构建多步骤 Agent\n\n## LangGraph vs ReAct Agent\n\n| 维度 | ReAct Agent | LangGraph |\n|------|------------|----------|\n| 控制流 | 模型自主决定 | 开发者定义图结构 |\n| 可调试性 | 难以追踪 | 每步骤状态可见 |\n| 循环支持 | 有限 | 原生支持 |\n| 人工干预 | 不支持 | 内置 Interrupt |\n| 生产可用 | 一般 | 推荐 |\n\n## 核心概念\n\n- State（状态）：Agent 的记忆，贯穿整个执行过程\n- Node（节点）：执行具体工作的函数\n- Edge（边）：节点间的连接，可以是条件跳转\n- Graph（图）：所有节点和边的集合\n\n## 安装\n\n\`\`\`bash\npip install langgraph langchain-anthropic\n\`\`\`\n\n## 最佳实践\n\n1. **状态不可变**：每个节点返回新状态，不直接修改\n2. **节点单一职责**：每个节点只做一件事\n3. **条件边用枚举**：返回字符串 key，避免拼写错误\n4. **持久化检查点**：生产环境使用 PostgresSaver 而非 MemorySaver',
     level: 'advanced',
     category: 'agent',
     tags: ['LangGraph', 'Agent', 'Python', '状态机', '可控AI'],
@@ -666,7 +2197,7 @@ const TUTORIALS_DATA = [
     title: '本地运行 DeepSeek：零成本私有 AI 部署',
     subtitle: '用 Ollama 在 Mac/Linux 上跑开源大模型',
     summary: '不想把数据发给 OpenAI？本文教你用 Ollama 在本地机器上运行 DeepSeek-R1 等开源模型，完全离线、零 API 费用、数据不出本地。从安装到配置 Cursor/Continue 接入本地模型，全程图文指南。',
-    content: '# 本地运行 DeepSeek：零成本私有 AI 部署\n\n## 为什么选择本地部署？\n\n- **隐私安全**：代码、文档永不离开本地\n- **零费用**：一次配置，无限使用\n- **低延迟**：局域网速度，无网络延迟\n- **离线可用**：断网也能正常工作\n\n## 1. 安装 Ollama\n\n```bash\ncurl -fsSL https://ollama.ai/install.sh | sh\nollama --version\n```\n\n## 2. 下载并运行 DeepSeek\n\n```bash\nollama pull deepseek-r1:7b\nollama run deepseek-r1:7b\n```\n\n## 3. 接入 Cursor/VS Code\n\nCursor Settings → Models → 添加自定义模型：Base URL http://localhost:11434/v1，Model deepseek-r1:7b\n\n## 4. OpenAI 兼容 API\n\nOllama 提供 OpenAI 兼容的 API，任何支持 OpenAI API 的工具都可以无缝接入。\n\n## 其他推荐本地模型\n\n- qwen2.5-coder:7b — 代码专项\n- qwen2.5:14b — 中文能力最强\n- llama3.3:70b — 通用推理（需要 32GB+ 内存）',
+    content: '# 本地运行 DeepSeek：零成本私有 AI 部署\n\n## 为什么选择本地部署？\n\n- **隐私安全**：代码、文档永不离开本地\n- **零费用**：一次配置，无限使用\n- **低延迟**：局域网速度，无网络延迟\n- **离线可用**：断网也能正常工作\n\n## 1. 安装 Ollama\n\n\`\`\`bash\ncurl -fsSL https://ollama.ai/install.sh | sh\nollama --version\n\`\`\`\n\n## 2. 下载并运行 DeepSeek\n\n\`\`\`bash\nollama pull deepseek-r1:7b\nollama run deepseek-r1:7b\n\`\`\`\n\n## 3. 接入 Cursor/VS Code\n\nCursor Settings → Models → 添加自定义模型：Base URL http://localhost:11434/v1，Model deepseek-r1:7b\n\n## 4. OpenAI 兼容 API\n\nOllama 提供 OpenAI 兼容的 API，任何支持 OpenAI API 的工具都可以无缝接入。\n\n## 其他推荐本地模型\n\n- qwen2.5-coder:7b — 代码专项\n- qwen2.5:14b — 中文能力最强\n- llama3.3:70b — 通用推理（需要 32GB+ 内存）',
     level: 'beginner',
     category: 'hands-on',
     tags: ['DeepSeek', 'Ollama', '本地部署', '开源模型', '隐私安全'],
@@ -680,7 +2211,7 @@ const TUTORIALS_DATA = [
     title: '用 n8n + AI Agent 自动化你的日常工作流',
     subtitle: '零代码连接 200+ 应用，让 AI 接管重复性工作',
     summary: 'n8n 是目前最强大的开源自动化平台，结合 AI Agent 能力，可以将你的日常重复工作完全自动化。本教程以"每日新闻摘要"和"邮件自动处理"为例，展示如何快速搭建工作流。',
-    content: '# n8n + AI Agent 工作流教程\n\n## 为什么选择 n8n？\n\n- **完全开源**：可自托管，数据不外流\n- **400+ 集成**：Gmail、Slack、GitHub、Notion...\n- **可视化编排**：拖拽连接节点，无需写代码\n- **AI 原生**：内置 OpenAI、Claude 等 AI 节点\n\n## 安装 n8n\n\n```bash\ndocker run -it --rm -p 5678:5678 -v ~/.n8n:/home/node/.n8n n8nio/n8n\n# 访问 http://localhost:5678\n```\n\n## 实战 1：每日 AI 新闻摘要邮件\n\n定时触发（每天 8:00）→ HTTP Request 抓取 AI 新闻 RSS → AI Agent（Claude）总结今日要点 → Gmail 发送摘要邮件\n\n## 实战 2：智能邮件处理\n\nGmail Trigger（新邮件到达）→ AI Agent 判断邮件类型和优先级 → Switch 节点分流处理\n\n## 进阶技巧\n\n- 使用 **Code 节点** 处理复杂数据转换\n- 使用 **Sub-workflow** 复用工作流模块\n- 配置 **Error Workflow** 处理失败情况',
+    content: '# n8n + AI Agent 工作流教程\n\n## 为什么选择 n8n？\n\n- **完全开源**：可自托管，数据不外流\n- **400+ 集成**：Gmail、Slack、GitHub、Notion...\n- **可视化编排**：拖拽连接节点，无需写代码\n- **AI 原生**：内置 OpenAI、Claude 等 AI 节点\n\n## 安装 n8n\n\n\`\`\`bash\ndocker run -it --rm -p 5678:5678 -v ~/.n8n:/home/node/.n8n n8nio/n8n\n# 访问 http://localhost:5678\n\`\`\`\n\n## 实战 1：每日 AI 新闻摘要邮件\n\n定时触发（每天 8:00）→ HTTP Request 抓取 AI 新闻 RSS → AI Agent（Claude）总结今日要点 → Gmail 发送摘要邮件\n\n## 实战 2：智能邮件处理\n\nGmail Trigger（新邮件到达）→ AI Agent 判断邮件类型和优先级 → Switch 节点分流处理\n\n## 进阶技巧\n\n- 使用 **Code 节点** 处理复杂数据转换\n- 使用 **Sub-workflow** 复用工作流模块\n- 配置 **Error Workflow** 处理失败情况',
     level: 'intermediate',
     category: 'workflow',
     tags: ['n8n', '工作流', '自动化', '邮件处理'],

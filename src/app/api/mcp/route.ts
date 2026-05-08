@@ -30,6 +30,18 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(data ?? []);
   }
 
+  // slug lookup
+  const slug = searchParams.get('slug');
+  if (slug) {
+    const { data, error } = await supabaseAdmin
+      .from('mcp_servers')
+      .select('*')
+      .eq('slug', slug)
+      .single();
+    if (error) return NextResponse.json(null, { status: 404 });
+    return NextResponse.json(data);
+  }
+
   const page = Number(searchParams.get('page') ?? 1);
   const limit = Number(searchParams.get('limit') ?? 50);
   const search = searchParams.get('search') ?? undefined;

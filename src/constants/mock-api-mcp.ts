@@ -16,6 +16,7 @@ export type McpCategory =
 
 export type McpServer = {
   id: number;
+  slug: string;
   name: string;
   description: string;
   url: string;
@@ -31,6 +32,7 @@ export type McpServer = {
 const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
   // ── 文件系统 ──────────────────────────────────────────────────────────────
   {
+    slug: 'filesystem',
     name: 'filesystem',
     description: '读写本地文件系统，支持文件创建、修改、删除、目录遍历，是最常用的 MCP Server 之一',
     url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem',
@@ -38,10 +40,11 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     is_official: true,
     install_cmd: 'npx @modelcontextprotocol/server-filesystem',
     tags: ['文件读写', '目录', '本地文件', '官方'],
-    stars: 28000,
+    stars: 85000,
     is_featured: true
   },
   {
+    slug: 'everything',
     name: 'everything',
     description: 'Windows 平台文件极速搜索，通过 Everything 引擎实现毫秒级文件定位',
     url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/everything',
@@ -49,36 +52,39 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     is_official: true,
     install_cmd: 'npx @modelcontextprotocol/server-everything',
     tags: ['Windows', '文件搜索', 'Everything', '官方'],
-    stars: 28000,
+    stars: 85000,
     is_featured: false
   },
   // ── 数据库 ────────────────────────────────────────────────────────────────
   {
+    slug: 'sqlite',
     name: 'sqlite',
     description: '读写 SQLite 数据库，支持执行 SQL 查询、创建表、插入更新数据，适合本地开发调试',
-    url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite',
+    url: 'https://github.com/modelcontextprotocol/servers-archived',
     category: 'database',
     is_official: true,
     install_cmd: 'npx @modelcontextprotocol/server-sqlite',
     tags: ['SQLite', '数据库', 'SQL', '官方'],
-    stars: 28000,
+    stars: 85000,
     is_featured: true
   },
   {
+    slug: 'postgres',
     name: 'postgres',
     description: '连接 PostgreSQL 数据库执行查询，支持完整的 SQL 操作，适合生产环境数据分析',
-    url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/postgres',
+    url: 'https://github.com/modelcontextprotocol/servers-archived',
     category: 'database',
     is_official: true,
     install_cmd: 'npx @modelcontextprotocol/server-postgres',
     tags: ['PostgreSQL', '数据库', 'SQL', '官方'],
-    stars: 28000,
+    stars: 85000,
     is_featured: false
   },
   {
+    slug: 'mysql',
     name: 'mysql',
     description: '连接 MySQL/MariaDB 数据库，支持查询、插入、更新等完整操作，社区维护',
-    url: 'https://github.com/benborla/mcp-server-mysql',
+    url: 'https://github.com/benborla29/mcp-server-mysql',
     category: 'database',
     is_official: false,
     install_cmd: 'npx mcp-server-mysql',
@@ -88,18 +94,20 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
   },
   // ── 浏览器/网页 ───────────────────────────────────────────────────────────
   {
+    slug: 'puppeteer',
     name: 'puppeteer',
     description:
       '通过 Puppeteer 控制 Chrome 浏览器，支持网页截图、表单填写、点击操作、JavaScript 执行',
-    url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer',
+    url: 'https://github.com/modelcontextprotocol/servers-archived',
     category: 'browser',
     is_official: true,
     install_cmd: 'npx @modelcontextprotocol/server-puppeteer',
     tags: ['Puppeteer', '浏览器自动化', 'Chrome', '官方'],
-    stars: 28000,
+    stars: 85000,
     is_featured: true
   },
   {
+    slug: 'fetch',
     name: 'fetch',
     description: '抓取网页内容并转换为 Markdown 格式，AI 可直接阅读和分析任意网页',
     url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/fetch',
@@ -107,10 +115,11 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     is_official: true,
     install_cmd: 'npx @modelcontextprotocol/server-fetch',
     tags: ['网页抓取', 'Markdown', 'HTTP', '官方'],
-    stars: 28000,
+    stars: 85000,
     is_featured: true
   },
   {
+    slug: 'browserbase',
     name: 'browserbase',
     description: '云端无头浏览器控制，无需本地安装 Chrome，通过 API 实现规模化浏览器自动化',
     url: 'https://github.com/browserbase/mcp-server-browserbase',
@@ -123,28 +132,31 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
   },
   // ── 开发工具 ──────────────────────────────────────────────────────────────
   {
+    slug: 'github',
     name: 'github',
     description: '完整的 GitHub 操作：创建 PR、查看 Issues、提交代码、管理仓库，开发者必备',
-    url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/github',
+    url: 'https://github.com/github/github-mcp-server',
     category: 'devtools',
     is_official: true,
     install_cmd: 'npx @modelcontextprotocol/server-github',
     tags: ['GitHub', 'PR', 'Issues', '代码仓库', '官方'],
-    stars: 28000,
+    stars: 12000,
     is_featured: true
   },
   {
+    slug: 'gitlab',
     name: 'gitlab',
     description: '对接 GitLab 实例，支持仓库操作、Merge Request、Pipeline 状态查询',
-    url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/gitlab',
+    url: 'https://github.com/modelcontextprotocol/servers-archived',
     category: 'devtools',
     is_official: true,
     install_cmd: 'npx @modelcontextprotocol/server-gitlab',
     tags: ['GitLab', 'MR', 'CI/CD', '官方'],
-    stars: 28000,
+    stars: 85000,
     is_featured: false
   },
   {
+    slug: 'git',
     name: 'git',
     description: '本地 Git 仓库操作：commit、diff、log、branch 管理，无需离开 AI 界面',
     url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/git',
@@ -152,44 +164,48 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     is_official: true,
     install_cmd: 'npx @modelcontextprotocol/server-git',
     tags: ['Git', 'Commit', 'Diff', '版本控制', '官方'],
-    stars: 28000,
+    stars: 85000,
     is_featured: false
   },
   // ── 效率工具 ──────────────────────────────────────────────────────────────
   {
+    slug: 'slack',
     name: 'slack',
     description: '在 Slack 中收发消息、查询频道历史、管理通知，让 AI 融入团队沟通',
-    url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/slack',
+    url: 'https://github.com/modelcontextprotocol/servers-archived',
     category: 'productivity',
     is_official: true,
     install_cmd: 'npx @modelcontextprotocol/server-slack',
     tags: ['Slack', '消息', '团队协作', '官方'],
-    stars: 28000,
+    stars: 85000,
     is_featured: false
   },
   {
+    slug: 'google-drive',
     name: 'google-drive',
     description: '读写 Google Drive 文件，支持 Docs、Sheets、Slides 的创建和编辑',
-    url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/gdrive',
+    url: 'https://github.com/modelcontextprotocol/servers-archived',
     category: 'productivity',
     is_official: true,
     install_cmd: 'npx @modelcontextprotocol/server-gdrive',
     tags: ['Google Drive', 'Docs', 'Sheets', '云存储', '官方'],
-    stars: 28000,
+    stars: 85000,
     is_featured: false
   },
   {
+    slug: 'google-maps',
     name: 'google-maps',
     description: '地图搜索、地址解析、路线规划、周边 POI 查询，地理位置相关任务必备',
-    url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/google-maps',
+    url: 'https://github.com/modelcontextprotocol/servers-archived',
     category: 'productivity',
     is_official: true,
     install_cmd: 'npx @modelcontextprotocol/server-google-maps',
     tags: ['Google Maps', '地图', '地址查询', '官方'],
-    stars: 28000,
+    stars: 85000,
     is_featured: false
   },
   {
+    slug: 'notion',
     name: 'notion',
     description: '操作 Notion 数据库和页面，支持创建、查询、更新 Block，知识管理利器',
     url: 'https://github.com/makenotion/notion-mcp-server',
@@ -202,17 +218,19 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
   },
   // ── 数据/搜索 ─────────────────────────────────────────────────────────────
   {
+    slug: 'brave-search',
     name: 'brave-search',
     description: 'Brave 搜索引擎实时搜索，无追踪隐私保护，返回结构化搜索结果',
-    url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search',
+    url: 'https://github.com/modelcontextprotocol/servers-archived',
     category: 'search',
     is_official: true,
     install_cmd: 'npx @modelcontextprotocol/server-brave-search',
     tags: ['Brave', '搜索', '实时', '隐私', '官方'],
-    stars: 28000,
+    stars: 85000,
     is_featured: true
   },
   {
+    slug: 'tavily',
     name: 'tavily',
     description: 'AI 优化的搜索 API，专为 Agent 设计，返回高质量摘要而非原始链接列表',
     url: 'https://github.com/tavily-ai/tavily-mcp',
@@ -224,6 +242,7 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     is_featured: true
   },
   {
+    slug: 'exa',
     name: 'exa',
     description: '语义搜索引擎，理解搜索意图而非关键词匹配，适合复杂研究任务',
     url: 'https://github.com/exa-labs/exa-mcp-server',
@@ -236,9 +255,10 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
   },
   // ── AI 模型 ───────────────────────────────────────────────────────────────
   {
+    slug: 'openai',
     name: 'openai',
     description: '在 Claude 中调用 GPT 系列模型，实现多模型协作，适合需要图像生成或特定能力的场景',
-    url: 'https://github.com/openai/openai-mcp',
+    url: 'https://github.com/openai/openai-mcp-server',
     category: 'ai',
     is_official: false,
     install_cmd: 'npx openai-mcp',
@@ -247,6 +267,7 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     is_featured: false
   },
   {
+    slug: 'sequential-thinking',
     name: 'sequential-thinking',
     description: '链式推理增强 Server，让 AI 在复杂问题上逐步思考，显著提升逻辑推理质量',
     url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking',
@@ -254,11 +275,12 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     is_official: true,
     install_cmd: 'npx @modelcontextprotocol/server-sequential-thinking',
     tags: ['推理增强', '链式思考', 'CoT', '官方'],
-    stars: 28000,
+    stars: 85000,
     is_featured: true
   },
-  // ── 新增：效率工具 ──────────────────────────────────────────────────────────
+  // ── 效率工具（扩展） ────────────────────────────────────────────────────────
   {
+    slug: 'linear',
     name: 'linear',
     description: '连接 Linear 项目管理工具，AI 可查询/创建 Issues、管理 Sprint、追踪工作进度',
     url: 'https://github.com/linear/linear-mcp-server',
@@ -270,9 +292,10 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     is_featured: false
   },
   {
+    slug: 'jira',
     name: 'jira',
     description: '集成 Atlassian Jira，支持创建和查询 Tickets、管理 Sprint、读取项目看板状态',
-    url: 'https://github.com/atlassian-labs/atlassian-mcp-server',
+    url: 'https://github.com/atlassian-labs/mcp-atlassian',
     category: 'productivity',
     is_official: false,
     install_cmd: 'npx @atlassian/mcp-server',
@@ -281,20 +304,22 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     is_featured: false
   },
   {
+    slug: 'calendar',
     name: 'calendar',
     description: 'Google Calendar 读写，AI 可查询日程、创建会议、设置提醒，提升时间管理效率',
-    url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/gcalendar',
+    url: 'https://github.com/modelcontextprotocol/servers-archived',
     category: 'productivity',
     is_official: true,
     install_cmd: 'npx @modelcontextprotocol/server-gcalendar',
     tags: ['Google Calendar', '日程管理', '会议创建', '官方'],
-    stars: 28000,
+    stars: 85000,
     is_featured: false
   },
   {
+    slug: 'discord',
     name: 'discord',
     description: '读取 Discord 频道消息、发送通知、管理服务器，适合构建自动化社区管理 Agent',
-    url: 'https://github.com/discordjs/discord-mcp-server',
+    url: 'https://github.com/v-3/discordmcp',
     category: 'productivity',
     is_official: false,
     install_cmd: 'npx discord-mcp',
@@ -303,9 +328,10 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     is_featured: false
   },
   {
+    slug: 'confluence',
     name: 'confluence',
     description: '读写 Atlassian Confluence Wiki，AI 可搜索文档、创建页面、更新知识库内容',
-    url: 'https://github.com/atlassian-labs/confluence-mcp-server',
+    url: 'https://github.com/atlassian-labs/mcp-atlassian',
     category: 'productivity',
     is_official: false,
     install_cmd: 'npx @atlassian/confluence-mcp',
@@ -313,8 +339,9 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     stars: 1400,
     is_featured: false
   },
-  // ── 新增：开发工具 ──────────────────────────────────────────────────────────
+  // ── 开发工具（扩展） ────────────────────────────────────────────────────────
   {
+    slug: 'docker',
     name: 'docker',
     description: '管理 Docker 容器和镜像，AI 可启动/停止容器、查看日志、管理 Docker Compose',
     url: 'https://github.com/ckreiling/mcp-server-docker',
@@ -326,6 +353,7 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     is_featured: true
   },
   {
+    slug: 'kubernetes',
     name: 'kubernetes',
     description: '管理 Kubernetes 集群，查询 Pod 状态、部署应用、查看事件日志，DevOps 必备',
     url: 'https://github.com/strowk/mcp-k8s-go',
@@ -337,6 +365,7 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     is_featured: false
   },
   {
+    slug: 'sentry',
     name: 'sentry',
     description: '连接 Sentry 错误追踪，AI 可查询错误详情、分析堆栈跟踪、关联代码问题',
     url: 'https://github.com/getsentry/sentry-mcp',
@@ -348,9 +377,10 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     is_featured: false
   },
   {
+    slug: 'aws',
     name: 'aws',
     description: '访问 AWS 云服务，查询 EC2/S3/Lambda 状态，管理云资源，适合 DevOps 自动化',
-    url: 'https://github.com/aws/aws-mcp-server',
+    url: 'https://github.com/awslabs/mcp',
     category: 'devtools',
     is_official: false,
     install_cmd: 'npx @aws/mcp-server',
@@ -358,11 +388,12 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     stars: 4500,
     is_featured: true
   },
-  // ── 新增：数据库 ────────────────────────────────────────────────────────────
+  // ── 数据库（扩展） ──────────────────────────────────────────────────────────
   {
+    slug: 'redis',
     name: 'redis',
     description: '操作 Redis 缓存数据库，支持 GET/SET/查询 Key、分析内存使用、监控连接状态',
-    url: 'https://github.com/redis-py/redis-mcp',
+    url: 'https://github.com/redis/mcp-redis',
     category: 'database',
     is_official: false,
     install_cmd: 'npx redis-mcp',
@@ -371,9 +402,10 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     is_featured: false
   },
   {
+    slug: 'mongodb',
     name: 'mongodb',
     description: '连接 MongoDB 文档数据库，AI 可执行查询、聚合管道分析，无需记忆 Query 语法',
-    url: 'https://github.com/mongodb-labs/mongodb-mcp-server',
+    url: 'https://github.com/mongodb-js/mongodb-mcp-server',
     category: 'database',
     is_official: false,
     install_cmd: 'npx mongodb-mcp',
@@ -382,9 +414,10 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     is_featured: false
   },
   {
+    slug: 'supabase',
     name: 'supabase',
     description: '连接 Supabase 后端服务，支持数据库查询、文件存储、认证管理，开发者最爱',
-    url: 'https://github.com/supabase/mcp-server-supabase',
+    url: 'https://github.com/supabase-community/supabase-mcp',
     category: 'database',
     is_official: false,
     install_cmd: 'npx @supabase/mcp-server',
@@ -392,11 +425,12 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     stars: 5200,
     is_featured: true
   },
-  // ── 新增：AI模型 ────────────────────────────────────────────────────────────
+  // ── AI 模型（扩展） ─────────────────────────────────────────────────────────
   {
+    slug: 'huggingface',
     name: 'huggingface',
     description: 'Hugging Face 模型推理 MCP Server，让 AI 直接调用 HF 上的数万个开源模型',
-    url: 'https://github.com/huggingface/huggingface-mcp',
+    url: 'https://github.com/huggingface/huggingface-mcp-server',
     category: 'ai',
     is_official: false,
     install_cmd: 'npx huggingface-mcp',
@@ -405,9 +439,10 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     is_featured: false
   },
   {
+    slug: 'replicate',
     name: 'replicate',
     description: '调用 Replicate 上的 AI 模型（图像生成、语音合成等），一行命令运行任意 AI 模型',
-    url: 'https://github.com/replicate/replicate-mcp',
+    url: 'https://github.com/deepfates/mcp-replicate',
     category: 'ai',
     is_official: false,
     install_cmd: 'npx replicate-mcp',
@@ -415,11 +450,12 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     stars: 2300,
     is_featured: false
   },
-  // ── 新增：搜索 ─────────────────────────────────────────────────────────────
+  // ── 搜索（扩展） ─────────────────────────────────────────────────────────────
   {
+    slug: 'perplexity-search',
     name: 'perplexity-search',
     description: 'Perplexity AI 搜索 MCP，带 AI 摘要的实时搜索，特别适合研究型 Agent 任务',
-    url: 'https://github.com/ppl-ai/perplexity-mcp',
+    url: 'https://github.com/ppl-ai/modelcontextprotocol',
     category: 'search',
     is_official: false,
     install_cmd: 'npx perplexity-mcp',
@@ -428,6 +464,7 @@ const MCP_DATA: Omit<McpServer, 'id' | 'created_at'>[] = [
     is_featured: false
   },
   {
+    slug: 'arxiv',
     name: 'arxiv',
     description: '搜索 arXiv 学术论文数据库，获取最新研究成果，适合科研型 Agent',
     url: 'https://github.com/blazickjp/arxiv-mcp-server',
@@ -495,6 +532,11 @@ export const fakeMcpServers = {
   async getById(id: number): Promise<McpServer | null> {
     await delay(150);
     return this.records.find((m) => m.id === id) ?? null;
+  },
+
+  async getBySlug(slug: string): Promise<McpServer | null> {
+    await delay(150);
+    return this.records.find((m) => m.slug === slug) ?? null;
   },
 
   async create(payload: Omit<McpServer, 'id' | 'created_at'>): Promise<McpServer> {

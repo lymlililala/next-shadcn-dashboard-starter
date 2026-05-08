@@ -56,6 +56,7 @@ create table if not exists news (
 -- ── MCP_SERVERS ─────────────────────────────────────────────
 create table if not exists mcp_servers (
   id           bigserial primary key,
+  slug         text unique,
   name         text not null,
   description  text,
   url          text not null,
@@ -186,6 +187,8 @@ create policy "service_all_seo"        on seo_config   for all using (auth.role(
 alter table skills add column if not exists platform     text not null default 'aggregator';
 alter table skills add column if not exists region       text not null default 'global';
 alter table skills add column if not exists review_note  text;
+-- PATCH: 给 mcp_servers 表添加 slug 列（如果还没有）
+alter table mcp_servers add column if not exists slug text unique;
 -- 删除旧版不需要的 category/stars 列（可选，不影响功能）
 -- alter table skills drop column if exists category;
 -- alter table skills drop column if exists stars;
