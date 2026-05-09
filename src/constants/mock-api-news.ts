@@ -378,6 +378,72 @@ const NEWS_DATA: Omit<NewsItem, 'id' | 'created_at' | 'updated_at'>[] = [
     status: 'published',
     is_featured: false,
     published_at: '2024-11-13T10:00:00Z'
+  },
+  // ── 2025 年新增资讯 ─────────────────────────────────────────────────────────
+  {
+    slug: 'google-adk-agent-development-kit',
+    title: 'Google 发布 ADK：让任何开发者都能构建多 Agent 系统',
+    summary:
+      'Google 正式开源 Agent Development Kit（ADK），这是一个 Python 框架，专为构建、测试和部署多 Agent 工作流设计。ADK 原生支持 Gemini 模型，内置工具调用、状态管理、Agent 间通信机制，并与 Google Cloud Vertex AI 深度集成，支持一键部署到生产环境。不同于 LangChain 的通用设计，ADK 的 Agent 编排以「对话树」为核心，更接近真实业务流程的建模方式。发布后首周 GitHub Star 突破 8000。',
+    source_url: 'https://github.com/google/adk-python',
+    source_name: 'Google Developers',
+    category: '框架',
+    tags: ['Google', 'ADK', '多Agent', 'Vertex AI', '开源'],
+    status: 'published',
+    is_featured: true,
+    published_at: '2025-04-10T09:00:00Z'
+  },
+  {
+    slug: 'openai-gpt4o-realtime-function-calling',
+    title: 'GPT-4o 实时语音 + 函数调用：Agent 进入「听说做」新时代',
+    summary:
+      'OpenAI 大幅升级 GPT-4o 的实时 API，新增对话中途函数调用（mid-conversation function calling）能力，允许 Agent 在与用户实时对话的同时查询数据库、调用工具、执行代码，结果无缝回流对话。这一能力打通了语音 Agent 的最后一公里：Agent 不再只是「会说话的助手」，而是能在通话中实时帮你完成订单、查余额、操控系统的执行者。国内多家语音 SaaS 已宣布接入。',
+    source_url: 'https://platform.openai.com/docs/guides/realtime',
+    source_name: 'OpenAI Platform',
+    category: '模型',
+    tags: ['GPT-4o', '实时语音', '函数调用', '语音Agent'],
+    status: 'published',
+    is_featured: false,
+    published_at: '2025-03-28T14:00:00Z'
+  },
+  {
+    slug: 'coze-cn-agent-marketplace-500k-bots',
+    title: '扣子（Coze）国内版 Bot 数量突破 50 万，成最大中文 Agent 平台',
+    summary:
+      '字节跳动旗下 AI Agent 构建平台扣子（Coze）宣布，国内版用户创建的 Bot 数量突破 50 万，覆盖客服、内容创作、数据分析、教育辅导等 20+ 行业场景。扣子凭借「零代码拖拽搭建 + 插件市场 + 多平台一键发布（抖音/飞书/微信）」三大优势，在中国市场迅速击败 Dify 等竞争对手，成为中小企业部署 AI Agent 的首选工具。平台 API 调用量日均已超 10 亿次。',
+    source_url: 'https://www.coze.cn',
+    source_name: '扣子官方',
+    category: '工具',
+    tags: ['扣子', 'Coze', '字节跳动', '国内Agent平台', '无代码'],
+    status: 'published',
+    is_featured: true,
+    published_at: '2025-04-22T10:00:00Z'
+  },
+  {
+    slug: 'anthropic-claude-4-agent-benchmark',
+    title: 'Claude 4 刷新 Agent 基准：SWE-bench 突破 72%，超越人类初级程序员',
+    summary:
+      'Anthropic 发布 Claude 4，在软件工程基准 SWE-bench Verified 上得分达到 72.5%，首次明显超越人类初级工程师的平均表现（约 60%）。Claude 4 引入「扩展思考（Extended Thinking）」模式，允许模型在给出最终答案前进行长达数分钟的内部推理，在需要多步骤规划的 Agent 任务上尤为突出。Cursor、Windsurf 等 AI IDE 已宣布优先接入 Claude 4 作为默认 Agent 引擎。',
+    source_url: 'https://www.anthropic.com/claude',
+    source_name: 'Anthropic',
+    category: '模型',
+    tags: ['Claude 4', 'Anthropic', 'SWE-bench', 'Agent基准', '编程AI'],
+    status: 'published',
+    is_featured: false,
+    published_at: '2025-05-06T11:00:00Z'
+  },
+  {
+    slug: 'mcp-authorization-spec-enterprise-ready',
+    title: 'MCP 发布授权规范 1.1：企业级安全 Agent 部署成为可能',
+    summary:
+      'MCP 工作组正式发布 Authorization Spec 1.1，引入 OAuth 2.0 集成、细粒度权限控制（per-tool scopes）、审计日志和 Token 撤销机制。这一更新解决了企业在部署 Agent 时最担心的「AI 权限失控」问题：现在管理员可以精确控制每个 Agent 能调用哪些工具、访问哪些数据，并留有完整操作记录。Salesforce、Atlassian、GitHub 已宣布其 MCP Server 升级到新规范，企业级 Agent 采购潮被分析师预测将在 2025 年 Q3 爆发。',
+    source_url: 'https://modelcontextprotocol.io/specification',
+    source_name: 'MCP 官方',
+    category: '框架',
+    tags: ['MCP', '授权规范', '企业级', '安全', 'OAuth'],
+    status: 'published',
+    is_featured: false,
+    published_at: '2025-04-30T16:00:00Z'
   }
 ];
 

@@ -1071,6 +1071,615 @@ Switch 节点：
     related_tools: ['n8n', 'Claude', 'notion'],
     is_featured: false,
     published_at: '2025-06-01T08:00:00Z'
+  },
+  // ── 新增教程 ──────────────────────────────────────────────────────────────
+  {
+    slug: 'coze-wechat-customer-service-bot',
+    title: '用扣子（Coze）10分钟搭建微信客服 Bot',
+    subtitle: '零代码接入企业微信，自动回答产品问题',
+    summary:
+      '扣子是国内最流行的 AI Bot 平台，支持一键发布到企业微信、飞书、抖音等平台。本教程以"电商退款客服 Bot"为例，带你完成从创建 Bot 到上线的全流程，无需任何编程基础。',
+    content: `# 用扣子搭建微信客服 Bot
+
+## 什么是扣子？
+
+扣子（Coze）是字节跳动推出的 AI Bot 构建平台，核心优势：
+
+- **零代码**：拖拽配置，无需写一行代码
+- **国内可用**：无需翻墙，支持国内大模型
+- **多平台发布**：企业微信/飞书/抖音/微信服务号
+- **插件丰富**：200+ 内置插件，可调用天气、快递、搜索等
+
+## 第一步：注册并创建 Bot
+
+1. 访问 [coze.cn](https://www.coze.cn) 注册账号
+2. 点击「创建 Bot」，选择「从空白创建」
+3. 填写 Bot 名称：「退款客服助手」
+4. 选择模型：**豆包 Pro**（国内稳定，效果好）
+
+## 第二步：配置人设和提示词
+
+在「人设与回复逻辑」中填写：
+
+\`\`\`
+你是一个专业的电商客服助手，名字叫「小美」。
+
+你的职责：
+1. 回答客户关于退款、换货的问题
+2. 查询订单状态（通过查询插件）
+3. 遇到复杂问题，引导客户联系人工客服
+
+回答原则：
+- 语气亲切，称呼客户为「亲」
+- 回复简洁，不超过 100 字
+- 无法处理的问题说「我帮您转接人工客服」
+\`\`\`
+
+## 第三步：添加知识库
+
+1. 点击「知识库」→「新建知识库」
+2. 上传退款政策 PDF 或填写常见问题文档
+3. 设置「触发知识库」条件：包含「退款/退货/换货」关键词时优先查知识库
+
+## 第四步：配置插件
+
+添加「订单查询」插件（需填写你的电商平台 API）：
+
+\`\`\`
+插件类型：HTTP 请求
+接口地址：https://api.yourshop.com/orders/query
+参数：order_id（从用户消息中提取）
+\`\`\`
+
+## 第五步：发布到企业微信
+
+1. 点击「发布」→「企业微信」
+2. 扫码授权企业微信管理后台
+3. 选择发布为「客服账号」
+4. 测试：用企业微信向 Bot 发送「我要退款」
+
+## 常见问题
+
+**Q：Bot 回答不准确怎么办？**
+在「调试」模式下查看 Bot 的思考过程，优化提示词或补充知识库。
+
+**Q：如何处理用户的图片（快递单截图）？**
+在模型设置中选择「豆包 Vision」（多模态模型），Bot 即可识别图片内容。
+`,
+    level: 'beginner',
+    category: 'hands-on',
+    tags: ['扣子', 'Coze', '客服Bot', '企业微信', '零代码'],
+    estimated_minutes: 20,
+    related_tools: ['Coze（扣子）', 'n8n'],
+    is_featured: true,
+    published_at: '2025-04-15T08:00:00Z'
+  },
+  {
+    slug: 'multi-agent-collaboration-patterns',
+    title: '多 Agent 协作：3种模式让复杂任务自动完成',
+    subtitle: '串行、并行、监督者模式的选择和实现',
+    summary:
+      '单个 Agent 能力有限，多 Agent 协作才是处理复杂任务的正确姿势。本文介绍串行流水线、并行分工、监督者-执行者三种多 Agent 模式，并用 Dify 实现一个真实案例：自动生成竞品分析报告。',
+    content: `# 多 Agent 协作：3种核心模式
+
+## 为什么需要多 Agent 协作？
+
+单 Agent 的问题：
+- **上下文窗口限制**：处理超长任务会遗忘前面内容
+- **能力单一**：一个 Agent 很难既擅长搜索又擅长写作
+- **并行效率低**：顺序执行耗时长
+
+多 Agent 解决方案：分工合作，各司其职。
+
+---
+
+## 模式一：串行流水线（Pipeline）
+
+**适用场景**：任务有明确先后依赖关系
+
+\`\`\`
+搜索 Agent → 分析 Agent → 写作 Agent → 校对 Agent
+\`\`\`
+
+**实现要点**：
+- 每个 Agent 的输入是上一个的输出
+- 在 Dify 中用「LLM 节点」顺序连接
+- 适合：文章生成、报告撰写
+
+---
+
+## 模式二：并行分工（Parallel）
+
+**适用场景**：子任务相互独立，可同时进行
+
+\`\`\`
+              ┌→ 研究竞品A → ┐
+主 Agent ──→ ├→ 研究竞品B → ├→ 汇总 Agent
+              └→ 研究竞品C → ┘
+\`\`\`
+
+**实现要点**：
+- Dify 中用「并行分支」节点
+- 设置超时：单个分支失败不阻塞整体
+- 适合：多来源数据收集、批量处理
+
+---
+
+## 模式三：监督者-执行者（Supervisor）
+
+**适用场景**：任务需要动态规划，无法预先设计全部步骤
+
+\`\`\`
+用户目标 → 监督者 Agent
+               ↓（分配子任务）
+          执行者 Agent 1, 2, 3...
+               ↓（汇报结果）
+          监督者 Agent（评估 + 再分配）
+               ↓
+          最终输出
+\`\`\`
+
+**实现要点**：
+- 监督者负责分解目标 + 验证结果质量
+- 执行者专注具体操作（搜索/计算/写作）
+- 适合：开放式研究任务、复杂项目管理
+
+---
+
+## 实战：竞品分析报告（并行模式）
+
+用 Dify 实现同时分析3个竞品：
+
+### 工作流设计
+
+\`\`\`
+输入：目标公司名称
+    ↓
+并行分支：
+  Branch 1：Brave Search 搜索公司官网 + 产品特性
+  Branch 2：搜索 GitHub 查看技术栈
+  Branch 3：搜索融资信息和市场评价
+    ↓
+汇总节点：合并三路结果
+    ↓
+分析 Agent：生成结构化竞品分析报告
+    ↓
+输出：Markdown 格式报告
+\`\`\`
+
+### 关键配置
+
+Branch 搜索提示词模板：
+\`\`\`
+搜索关键词：{{company_name}} 产品功能 定价
+返回：官网链接、核心功能列表、价格方案
+\`\`\`
+
+分析 Agent 提示词：
+\`\`\`
+基于以下三路信息，生成竞品分析报告：
+[产品信息]：{{branch1_result}}
+[技术信息]：{{branch2_result}}
+[市场信息]：{{branch3_result}}
+
+报告结构：
+1. 产品定位（一句话）
+2. 核心功能对比
+3. 定价策略
+4. 优劣势总结
+\`\`\`
+
+## 选择哪种模式？
+
+| 任务特征 | 推荐模式 |
+|---------|---------|
+| 步骤固定、顺序明确 | 串行流水线 |
+| 子任务独立、可并行 | 并行分工 |
+| 目标模糊、需动态规划 | 监督者-执行者 |
+`,
+    level: 'intermediate',
+    category: 'agent',
+    tags: ['多Agent', '协作模式', 'Dify', '并行', '工作流设计'],
+    estimated_minutes: 20,
+    related_tools: ['Dify', 'n8n', 'OpenClaw'],
+    is_featured: true,
+    published_at: '2025-04-28T08:00:00Z'
+  },
+  {
+    slug: 'rag-knowledge-base-best-practices',
+    title: 'RAG 实战避坑指南：让知识库问答真正好用',
+    subtitle: '分块策略、向量检索、重排序——影响效果的关键细节',
+    summary:
+      '「搭了 RAG 但效果很差」是最常见的抱怨。本文从用户真实痛点出发，讲清楚影响 RAG 效果的 5 个关键决策：文档分块、Embedding 模型选择、检索策略、重排序（Reranking）和提示词工程，附带 Dify 配置截图。',
+    content: `# RAG 实战避坑指南
+
+## RAG 为什么经常效果差？
+
+做了 RAG 但问答效果差，90% 的问题出在这里：
+
+1. **分块太粗**：整页文档塞进一个 Chunk，检索到的内容包含大量无关信息
+2. **分块太细**：句子级别分块，丢失上下文，AI 无法理解语义
+3. **Embedding 模型不匹配**：用英文模型处理中文文档
+4. **只用相似度检索**：关键词完全匹配的文档反而排名靠后
+5. **提示词没有限制**：AI 开始「创作」而不是「引用」
+
+---
+
+## 关键决策一：分块策略
+
+### 推荐配置
+
+| 文档类型 | 分块大小 | 重叠 |
+|---------|---------|------|
+| 产品文档/FAQ | 500 token | 50 token |
+| 法律合同 | 800 token | 100 token |
+| 技术教程 | 300 token（按标题分） | 0 |
+| 新闻/长文 | 1000 token | 100 token |
+
+### 实用技巧
+
+\`\`\`python
+# 按语义边界分块（推荐）
+# 不要在句子中间切断，保留完整段落
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=500,
+    chunk_overlap=50,
+    separators=["\\n\\n", "\\n", "。", "！", "？", " "]  # 中文优先
+)
+\`\`\`
+
+---
+
+## 关键决策二：Embedding 模型选择
+
+### 中文文档推荐
+
+| 模型 | 适用场景 | 费用 |
+|------|---------|------|
+| **智谱 Embedding** | 通用中文，效果最好 | 付费 |
+| **BAAI/bge-m3** | 多语言，可本地部署 | 免费 |
+| **text-embedding-3-small** | 中英混合文档 | 低价 |
+
+> ⚠️ **不要用** \`text-embedding-ada-002\` 处理纯中文文档，中文效果差。
+
+---
+
+## 关键决策三：混合检索
+
+只用向量检索会漏掉关键词精确匹配的文档。**混合检索 = 向量相似度 + BM25 关键词**。
+
+在 Dify 中配置：
+\`\`\`
+检索模式：混合检索
+向量权重：0.7
+关键词权重：0.3
+Top K：5（检索前5个结果）
+\`\`\`
+
+---
+
+## 关键决策四：重排序（Reranking）
+
+检索到 5 个候选结果后，用 Reranker 对它们重新打分，确保最相关的排在最前：
+
+\`\`\`
+推荐 Reranker：
+- Cohere Rerank（效果最好，付费）
+- BAAI/bge-reranker-v2（本地部署，免费）
+\`\`\`
+
+在 Dify 中：知识库设置 → 检索设置 → 开启「Rerank 模型」。
+
+---
+
+## 关键决策五：限制提示词
+
+\`\`\`
+# 好的 RAG 提示词
+请严格基于以下参考资料回答问题，不要使用资料以外的知识：
+
+[参考资料]
+{{context}}
+
+[用户问题]
+{{question}}
+
+如果参考资料中没有相关内容，请明确回复「根据现有资料无法回答此问题」，不要猜测。
+\`\`\`
+
+---
+
+## 效果评估
+
+用这 3 个指标评估你的 RAG 系统：
+
+- **召回率**：相关文档有没有被检索到（目标 > 80%）
+- **精确率**：检索到的文档中有多少是真正相关的（目标 > 70%）
+- **答案忠实度**：AI 的回答有没有超出文档内容（目标：无幻觉）
+`,
+    level: 'intermediate',
+    category: 'hands-on',
+    tags: ['RAG', '知识库', '向量检索', 'Embedding', 'Dify', '避坑'],
+    estimated_minutes: 25,
+    related_tools: ['Dify', 'OpenClaw'],
+    is_featured: true,
+    published_at: '2025-05-12T08:00:00Z'
+  },
+  {
+    slug: 'build-your-first-mcp-server',
+    title: '从零开发一个 MCP Server：让 AI 读取你的私有数据',
+    subtitle: '用 TypeScript 实现一个查询内部 Wiki 的 MCP 工具',
+    summary:
+      '自己写 MCP Server 并不难。本教程用 TypeScript 从零实现一个能查询内部 Wiki/Confluence 的 MCP Server，让 Claude 或 Cursor 直接访问你公司的私有知识，全程代码不超过 100 行。',
+    content: `# 从零开发一个 MCP Server
+
+## 需要什么基础？
+
+- Node.js 基础（会写 JS/TS 函数）
+- 理解 HTTP API 调用
+- 已安装：Node.js 18+, npm
+
+## 项目目标
+
+创建一个 MCP Server，暴露一个工具：\`search_wiki\`
+
+当 Claude 调用时：
+\`\`\`
+User: 我们公司的请假流程是什么？
+Claude: [调用 search_wiki("请假流程")]
+        → 返回 Wiki 相关页面内容
+        → "根据公司 Wiki，请假流程为..."
+\`\`\`
+
+## 第一步：初始化项目
+
+\`\`\`bash
+mkdir my-wiki-mcp && cd my-wiki-mcp
+npm init -y
+npm install @modelcontextprotocol/sdk zod
+npm install -D typescript @types/node ts-node
+\`\`\`
+
+创建 \`tsconfig.json\`：
+\`\`\`json
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "Node16",
+    "moduleResolution": "Node16",
+    "outDir": "./dist",
+    "strict": true
+  }
+}
+\`\`\`
+
+## 第二步：实现 MCP Server
+
+创建 \`src/index.ts\`：
+
+\`\`\`typescript
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { z } from 'zod';
+
+// 创建 MCP Server 实例
+const server = new McpServer({
+  name: 'company-wiki',
+  version: '1.0.0'
+});
+
+// 模拟 Wiki 数据（替换为真实 Confluence/Notion API）
+const WIKI_DATA = [
+  { title: '请假流程', content: '1. 提前3天在OA系统申请 2. 直属leader审批 3. HR备案' },
+  { title: '报销流程', content: '1. 保留发票 2. 在费控系统提交 3. 财务审核（3个工作日）' },
+  { title: '入职须知', content: '第一周：领取设备、开通权限、了解团队...' }
+];
+
+// 注册工具
+server.tool(
+  'search_wiki',                        // 工具名
+  '搜索公司内部 Wiki 知识库',             // 描述（AI 靠这个决定何时调用）
+  { query: z.string().describe('搜索关键词') },  // 参数 schema
+  async ({ query }) => {
+    // 简单关键词匹配（生产环境替换为向量搜索）
+    const results = WIKI_DATA.filter(
+      (item) =>
+        item.title.includes(query) ||
+        item.content.includes(query)
+    );
+
+    if (results.length === 0) {
+      return { content: [{ type: 'text', text: '未找到相关 Wiki 页面' }] };
+    }
+
+    const text = results
+      .map((r) => \`## \${r.title}\\n\${r.content}\`)
+      .join('\\n\\n');
+
+    return { content: [{ type: 'text', text }] };
+  }
+);
+
+// 启动 Server
+const transport = new StdioServerTransport();
+await server.connect(transport);
+console.error('Wiki MCP Server running...');
+\`\`\`
+
+## 第三步：接入 Claude Desktop
+
+编辑 \`~/.config/claude-desktop/claude_desktop_config.json\`：
+
+\`\`\`json
+{
+  "mcpServers": {
+    "company-wiki": {
+      "command": "node",
+      "args": ["/absolute/path/to/my-wiki-mcp/dist/index.js"]
+    }
+  }
+}
+\`\`\`
+
+编译并测试：
+\`\`\`bash
+npx tsc
+# 重启 Claude Desktop → 在聊天中问「公司请假流程是什么？」
+\`\`\`
+
+## 第四步：对接真实 Confluence API
+
+替换 \`search_wiki\` 内的逻辑：
+
+\`\`\`typescript
+import fetch from 'node-fetch';
+
+async function searchConfluence(query: string) {
+  const response = await fetch(
+    \`https://your-domain.atlassian.net/wiki/rest/api/content/search?cql=text~"\${query}"&limit=3\`,
+    {
+      headers: {
+        Authorization: \`Basic \${Buffer.from(\`\${EMAIL}:\${API_TOKEN}\`).toString('base64')}\`,
+        Accept: 'application/json'
+      }
+    }
+  );
+  const data = await response.json();
+  return data.results.map((r: any) => ({
+    title: r.title,
+    content: r.body?.storage?.value ?? ''
+  }));
+}
+\`\`\`
+
+## 完成！
+
+你现在有了一个能让 AI 查询内部知识的 MCP Server，进阶方向：
+
+- 添加 \`create_page\` 工具：让 AI 自动写入 Wiki
+- 添加 \`list_recent_pages\` 工具：让 AI 了解最新更新
+- 部署到服务器，支持远程访问
+`,
+    level: 'advanced',
+    category: 'mcp',
+    tags: ['MCP', 'TypeScript', 'MCP Server开发', 'Confluence', '私有数据'],
+    estimated_minutes: 35,
+    related_tools: ['Claude', 'Cursor'],
+    is_featured: false,
+    published_at: '2025-05-20T08:00:00Z'
+  },
+  {
+    slug: 'ai-product-manager-workflow',
+    title: 'AI 时代的产品经理工作流：从需求到原型全程提效',
+    subtitle: '用 AI Agent 完成竞品分析、PRD撰写、原型描述一条龙',
+    summary:
+      '产品经理是最能用 AI 提效的岗位之一。本文展示一套完整的 AI 辅助产品工作流：用 Genspark 做竞品调研，用 Claude 撰写 PRD，用 Cursor 生成前端原型，把 1 周的工作压缩到 1 天。',
+    content: `# AI 时代的产品经理工作流
+
+## 你能节省多少时间？
+
+| 传统流程 | 时间 | AI 辅助后 | 时间 |
+|---------|------|---------|------|
+| 竞品调研 | 2-3天 | Genspark 深度研究 | 2小时 |
+| PRD 撰写 | 1-2天 | Claude 协作撰写 | 3小时 |
+| 原型设计 | 2-3天 | AI 生成线框图描述 | 4小时 |
+| **合计** | **5-8天** | **合计** | **1天** |
+
+---
+
+## 第一步：竞品调研（Genspark）
+
+打开 [Genspark](https://genspark.ai)，输入：
+
+\`\`\`
+请帮我做一份关于「AI 写作助手」赛道的竞品分析，重点分析：
+1. 主要玩家（Notion AI、Jasper、Copy.ai）的产品定位
+2. 各自的核心差异化功能
+3. 定价策略对比
+4. 用户评价中反复提到的痛点
+5. 市场空白点在哪里？
+\`\`\`
+
+Genspark 会自动搜索多个来源并生成结构化报告（约10分钟）。
+
+---
+
+## 第二步：用户洞察（整理访谈/评论）
+
+把用户访谈录音转文字后，对 Claude 说：
+
+\`\`\`
+以下是10份用户访谈记录，请帮我：
+1. 提取用户最高频的3个痛点
+2. 找出用户描述问题时用的原话（原声引用）
+3. 分析哪类用户群体最迫切需要解决方案
+
+[粘贴访谈内容]
+\`\`\`
+
+---
+
+## 第三步：撰写 PRD（Claude 协作模式）
+
+不要让 AI 直接写完整 PRD，用「对话式迭代」效果更好：
+
+**对话 1：确认范围**
+\`\`\`
+我在规划一个 AI 写作助手功能，目标用户是运营人员。
+核心场景：从关键词生成 SEO 文章初稿（500-1000字）。
+请帮我列出这个功能的 MVP 范围，不超过 5 个用户故事。
+\`\`\`
+
+**对话 2：补充验收标准**
+\`\`\`
+基于上面的用户故事 1（关键词输入），帮我写 Acceptance Criteria，
+格式：Given/When/Then，至少覆盖正常流程和 3 个异常情况。
+\`\`\`
+
+**对话 3：整合成文档**
+\`\`\`
+现在把我们讨论的内容整合成一份完整的 PRD，
+按照：背景→目标→用户故事→功能规格→非功能要求→成功指标 的结构。
+\`\`\`
+
+---
+
+## 第四步：用 Cursor 生成原型
+
+把 PRD 的关键功能描述发给 Cursor Agent：
+
+\`\`\`
+基于以下功能规格，用 React + Tailwind 生成一个可交互的原型页面：
+
+功能：用户输入关键词和字数要求，点击生成按钮，显示 AI 生成的文章草稿。
+组件需要：
+- 关键词输入框（支持多个，用逗号分隔）
+- 字数滑块（500/800/1000/1500）
+- 语气选择（专业/轻松/SEO优化）
+- 生成按钮（Loading 状态）
+- 输出区域（Markdown 渲染）
+\`\`\`
+
+Cursor 会生成可以直接在浏览器预览的 HTML/React 组件。
+
+---
+
+## 最佳实践
+
+1. **PRD 不要让 AI 一次写完**：对话式迭代，每步验证，质量更高
+2. **竞品分析要指定来源**：让 AI 搜索 G2、Product Hunt 等专业评价平台
+3. **原型描述要具体**：给 AI 的组件描述越细，生成的原型越接近你想要的
+4. **用 AI 做预演**：把 PRD 给 Claude 扮演「挑剔的工程师」，提前发现问题
+`,
+    level: 'beginner',
+    category: 'workflow',
+    tags: ['产品经理', 'PRD', '竞品分析', 'AI提效', 'Genspark', 'Claude'],
+    estimated_minutes: 15,
+    related_tools: ['Genspark', 'Claude', 'Cursor', 'n8n'],
+    is_featured: true,
+    published_at: '2025-05-08T08:00:00Z'
   }
 ];
 

@@ -432,6 +432,101 @@ const USECASE_DATA: Omit<UseCase, 'id'>[] = [
     ],
     tags: ['财务分析', '异常检测', '风险预警', '审计'],
     is_featured: true
+  },
+  // ── 销售类 ────────────────────────────────────────────────────────────────
+  {
+    title: '销售线索自动评分 + 个性化跟进邮件',
+    description:
+      '让 AI Agent 从 CRM 中读取潜在客户数据，根据行业、公司规模、互动历史等维度自动评分（Lead Scoring），然后为高分客户生成个性化的跟进邮件草稿，销售代表只需一键审核发送，每日节省 2-3 小时重复性工作。',
+    tools: ['n8n', 'Dify', 'gmail', 'google-sheets'],
+    industry: 'marketing',
+    difficulty: 2,
+    estimated_time: '1.5小时搭建，每日自动运行',
+    steps: [
+      '用 n8n 从 CRM（HubSpot/Salesforce）定时拉取新增线索',
+      '设计评分规则：公司规模×行业匹配度×互动频次',
+      'AI 为每条高分线索生成个性化邮件（引用客户公司最新动态）',
+      '草稿汇总到 Google Sheets，销售审核后批量发送',
+      '追踪回复率，持续优化评分权重'
+    ],
+    tags: ['销售自动化', 'Lead Scoring', 'CRM', '个性化邮件', 'n8n'],
+    is_featured: true
+  },
+  // ── HR 类 ─────────────────────────────────────────────────────────────────
+  {
+    title: 'JD 一键生成 + 多平台自动发布招聘',
+    description:
+      '输入岗位名称、核心职责和薪资范围，AI Agent 自动生成符合 HR 规范的职位描述（JD），并通过 MCP 工具同步发布到 Boss 直聘、LinkedIn、智联招聘等多个平台，并设置关键词提醒。HR 从「写 JD + 发布」的 2 小时工作压缩到 10 分钟。',
+    tools: ['Dify', 'coze', 'browser-use', 'filesystem'],
+    industry: 'productivity',
+    difficulty: 2,
+    estimated_time: '1小时搭建',
+    steps: [
+      '在 Dify 创建「JD 生成」工作流，输入岗位关键信息',
+      'AI 根据模板和行业规范生成完整 JD',
+      '用 browser-use 控制浏览器自动登录各招聘平台',
+      '填写并发布 JD，截图存档备查',
+      '设置候选人关键词提醒，AI 预筛简历'
+    ],
+    tags: ['HR自动化', '招聘', 'JD生成', '多平台发布', 'browser-use'],
+    is_featured: false
+  },
+  // ── 产品类 ────────────────────────────────────────────────────────────────
+  {
+    title: '用户反馈自动聚类 + 产品需求洞察报告',
+    description:
+      '将 App Store 评论、用户调研、工单系统的原始反馈批量喂给 AI Agent，自动聚类相似问题、识别高频痛点、按优先级排序，生成一份结构化的「用户之声」报告，直接输出到产品 Roadmap 工具，帮助 PM 做有据可查的需求决策。',
+    tools: ['OpenClaw', 'Dify', 'notion', 'google-sheets'],
+    industry: 'productivity',
+    difficulty: 2,
+    estimated_time: '1小时搭建，随时触发',
+    steps: [
+      '接入数据源：App Store API / CSV 导入 / Zendesk 工单',
+      'AI 对每条反馈打标签：功能请求/Bug/性能/UI体验',
+      '自动聚类相似反馈，统计提及频次',
+      '按「提及量×情感强度×用户价值」排序需求',
+      '生成 Markdown 报告并同步到 Notion Roadmap'
+    ],
+    tags: ['产品经理', '用户反馈', '需求分析', 'NLP', 'Notion'],
+    is_featured: true
+  },
+  // ── 个人效率类 ─────────────────────────────────────────────────────────────
+  {
+    title: '每日信息流自动整理 + 个性化早报',
+    description:
+      '订阅微信公众号、RSS 源、Twitter/X、知乎热榜等多个信息渠道，让 AI Agent 每天早晨自动筛选、摘要、去重，按你定义的兴趣标签（AI/投资/行业动态）整理成一份 5 分钟可读完的个人早报，发送到微信或邮箱。彻底告别刷手机浪费时间。',
+    tools: ['n8n', 'coze', 'brave-search', 'gmail'],
+    industry: 'productivity',
+    difficulty: 1,
+    estimated_time: '45分钟搭建，每日自动运行',
+    steps: [
+      '在 n8n 配置信息源：RSS/Twitter API/微信公众号爬取',
+      '设定兴趣关键词和过滤规则（排除广告/低质内容）',
+      'AI 对每篇文章生成 2-3 句核心摘要',
+      '按相关性排序，合并成 Markdown 早报',
+      '通过企业微信 Bot 或邮件在每天 7:30 自动发送'
+    ],
+    tags: ['个人效率', '信息过滤', '早报', 'RSS', 'n8n'],
+    is_featured: false
+  },
+  // ── 教育类 ────────────────────────────────────────────────────────────────
+  {
+    title: '个性化学习计划 + AI 练习题生成器',
+    description:
+      '学生输入学习目标（如「30天通过 PMP 考试」）和当前知识水平，AI Agent 自动生成个性化学习计划：拆分知识点、推荐资源、每日任务安排；并根据每次练习结果动态调整难度，薄弱点自动加强训练，相当于一个全天候的私人 AI 家教。',
+    tools: ['Dify', 'coze', 'filesystem', 'notion'],
+    industry: 'research',
+    difficulty: 2,
+    estimated_time: '1小时搭建',
+    steps: [
+      '收集学员信息：目标考试/当前水平/每天可学习时长',
+      'AI 拆解考试大纲，生成带优先级的知识点地图',
+      '每日推送当天学习任务和对应资源',
+      '完成练习后 AI 批改并分析错误模式',
+      '每周生成学习进度报告，自动调整后续计划'
+    ],
+    tags: ['教育科技', '个性化学习', '练习题', '考试备考', 'AI家教'],
+    is_featured: true
   }
 ];
 
