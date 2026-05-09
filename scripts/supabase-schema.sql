@@ -192,3 +192,29 @@ alter table mcp_servers add column if not exists slug text unique;
 -- 删除旧版不需要的 category/stars 列（可选，不影响功能）
 -- alter table skills drop column if exists category;
 -- alter table skills drop column if exists stars;
+
+-- ============================================================
+-- PATCH: Link Health Check 字段
+-- 由 GitHub Actions 每周自动运行 scripts/link-health-check.mjs
+-- link_status: 'ok' | 'dead' | 'offline'（null = 未检测过）
+-- last_checked_at: 最近一次检测时间
+-- ============================================================
+
+-- agents 表
+alter table agents add column if not exists link_status    text    default null;
+alter table agents add column if not exists last_checked_at timestamptz default null;
+
+-- skills 表
+alter table skills add column if not exists link_status    text    default null;
+alter table skills add column if not exists last_checked_at timestamptz default null;
+
+-- mcp_servers 表（无 status 字段，只记录检测结果，不自动下架）
+alter table mcp_servers add column if not exists link_status    text    default null;
+alter table mcp_servers add column if not exists last_checked_at timestamptz default null;
+
+-- ai_models 表（无 status 字段，只记录检测结果，不自动下架）
+alter table ai_models add column if not exists link_status    text    default null;
+alter table ai_models add column if not exists last_checked_at timestamptz default null;
+
+-- 新增 status 值：'offline'（链接失效，暂时下架）
+-- agents / skills 的 status 允许值：published | pending | rejected | offline

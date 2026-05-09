@@ -1,0 +1,87 @@
+name: Link Health Check
+
+on:
+  schedule:
+    # 每周一 UTC 02:00（北京时间 10:00）
+    - cron: '0 2 * * 1'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: '仅检测不写库（true = 只输出报告）'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+      tables:
+        description: '要检测的表（逗号分隔，留空=全部）'
+        required: false
+        default: ''
+
+jobs:
+  check-links:
+    name: Check All URLs
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install linkinator
+        run: npm install -g linkinator
+
+      - name: Install script dependencies
+        run: npm install node-fetch@3
+
+      - name: Run link health check
+        id: check
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          LINK_CHECK_API_SECRET: ${{ secrets.LINK_CHECK_API_SECRET }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          TABLES: ${{ github.event.inputs.tables || '' }}
+          SITE_URL: ${{ vars.SITE_URL || 'https://www.aiskillnav.com' }}
+        run: node scripts/link-health-check.mjs
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-health-report-${{ github.run_id }}
+          path: /tmp/link-health-report.json
+          retention-days: 30
+
+      - name: Comment summary on failure
+        if: failure()
+        run: |
+          echo "## ❌ Link Health Check Failed" >> $GITHUB_STEP_SUMMARY
+          echo "查看 artifact 中的 link-health-report.json 获取详情" >> $GITHUB_STEP_SUMMARY
+
+      - name: Print summary
+        if: always()
+        run: |
+          if [ -f /tmp/link-health-report.json ]; then
+            node -e "
+              const r = JSON.parse(require('fs').readFileSync('/tmp/link-health-report.json','utf8'));
+              console.log('## 🔗 Link Health Check Report');
+              console.log('| 指标 | 数量 |');
+              console.log('|------|------|');
+              console.log('| 检测总数 | ' + r.summary.total + ' |');
+              console.log('| ✅ 正常 | ' + r.summary.ok + ' |');
+              console.log('| ❌ 失效 | ' + r.summary.dead + ' |');
+              console.log('| ⚠️ 跳过 | ' + r.summary.skipped + ' |');
+              if (r.summary.dead > 0) {
+                console.log('');
+                console.log('### 失效链接');
+                r.dead.forEach(d => console.log('- [' + d.table + '] ' + d.name + ': ' + d.url + ' → ' + d.status));
+              }
+            " >> $GITHUB_STEP_SUMMARY
+          fi
