@@ -34,11 +34,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install linkinator
-        run: npm install -g linkinator
-
       - name: Install script dependencies
-        run: npm install node-fetch@3
+        run: npm install @supabase/supabase-js linkinator
 
       - name: Run link health check
         id: check

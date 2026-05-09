@@ -1,11 +1,30 @@
 'use client';
 
+import { useState, useCallback, useRef } from 'react';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { Badge } from '@/components/ui/badge';
 import { Icons } from '@/components/icons';
 import { cn } from '@/lib/utils';
 import { featuredSitesOptions } from '../api/queries';
-import type { SitePlatform, SiteRegion } from '../api/types';
+import type { Site, SitePlatform, SiteRegion } from '../api/types';
+
+function prefetchExternalUrl(url: string) {
+  try {
+    const origin = new URL(url).origin;
+    if (document.querySelector(`link[href="${origin}"][rel="preconnect"]`)) return;
+    const dns = document.createElement('link');
+    dns.rel = 'dns-prefetch';
+    dns.href = origin;
+    document.head.appendChild(dns);
+    const pre = document.createElement('link');
+    pre.rel = 'preconnect';
+    pre.href = origin;
+    pre.crossOrigin = 'anonymous';
+    document.head.appendChild(pre);
+  } catch {
+    // ignore
+  }
+}
 
 const PLATFORM_CONFIG: Record<
   SitePlatform,
@@ -39,6 +58,83 @@ const REGION_CONFIG: Record<SiteRegion, { label: string; flag: string }> = {
   cn: { label: '中文', flag: '🇨🇳' }
 };
 
+function FeaturedSiteCard({ site }: { site: Site }) {
+  const platform = PLATFORM_CONFIG[site.platform];
+  const region = REGION_CONFIG[site.region];
+  const PlatformIcon = platform.icon;
+
+  const [clicking, setClicking] = useState(false);
+  const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleMouseEnter = useCallback(() => {
+    prefetchExternalUrl(site.url);
+  }, [site.url]);
+
+  const handleClick = useCallback(() => {
+    setClicking(true);
+    if (resetTimer.current) clearTimeout(resetTimer.current);
+    resetTimer.current = setTimeout(() => setClicking(false), 2000);
+  }, []);
+
+  return (
+    <a
+      href={site.url}
+      target='_blank'
+      rel='noopener noreferrer'
+      className={cn(
+        'group relative flex flex-col gap-2.5 rounded-xl border bg-card p-4 transition-all duration-200',
+        'hover:shadow-md hover:-translate-y-0.5 hover:border-primary/30',
+        clicking && 'scale-[0.99] border-primary/40 shadow-md'
+      )}
+      onMouseEnter={handleMouseEnter}
+      onClick={handleClick}
+    >
+      <div className='flex items-start gap-3'>
+        <div
+          className={cn(
+            'flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-colors',
+            platform.bg,
+            clicking && 'opacity-70'
+          )}
+        >
+          {clicking ? (
+            <Icons.spinner className={cn('h-4 w-4 animate-spin', platform.color)} />
+          ) : (
+            <PlatformIcon className={cn('h-4 w-4', platform.color)} />
+          )}
+        </div>
+        <div className='min-w-0 flex-1'>
+          <h3 className='truncate text-sm font-semibold leading-tight transition-colors group-hover:text-primary'>
+            {site.name}
+          </h3>
+          <p className='mt-0.5 truncate text-[11px] text-muted-foreground'>
+            {site.url.replace(/^https?:\/\//, '')}
+          </p>
+        </div>
+      </div>
+      <p className='line-clamp-2 text-xs leading-relaxed text-muted-foreground'>
+        {site.description}
+      </p>
+      <div className='flex items-center justify-between'>
+        <div className='flex items-center gap-1.5'>
+          <span className='text-xs'>{region.flag}</span>
+          <Badge variant='outline' className='h-4 px-1.5 text-[9px] font-medium'>
+            {platform.label}
+          </Badge>
+        </div>
+        <span
+          className={cn(
+            'flex items-center gap-1 text-xs text-muted-foreground transition-opacity',
+            clicking ? 'opacity-100 text-primary' : 'opacity-0 group-hover:opacity-100'
+          )}
+        >
+          {clicking ? '打开中…' : <Icons.externalLink className='h-3 w-3' />}
+        </span>
+      </div>
+    </a>
+  );
+}
+
 export function FeaturedSkills() {
   const { data: featured } = useSuspenseQuery(featuredSitesOptions());
 
@@ -52,51 +148,9 @@ export function FeaturedSkills() {
         </Badge>
       </div>
       <div className='grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-        {featured.map((site) => {
-          const platform = PLATFORM_CONFIG[site.platform];
-          const region = REGION_CONFIG[site.region];
-          const PlatformIcon = platform.icon;
-          return (
-            <a
-              key={site.id}
-              href={site.url}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='group relative flex flex-col gap-2.5 rounded-xl border bg-card p-4 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 hover:border-primary/30'
-            >
-              <div className='flex items-start gap-3'>
-                <div
-                  className={cn(
-                    'flex h-9 w-9 shrink-0 items-center justify-center rounded-lg',
-                    platform.bg
-                  )}
-                >
-                  <PlatformIcon className={cn('h-4 w-4', platform.color)} />
-                </div>
-                <div className='min-w-0 flex-1'>
-                  <h3 className='truncate text-sm font-semibold leading-tight group-hover:text-primary transition-colors'>
-                    {site.name}
-                  </h3>
-                  <p className='mt-0.5 truncate text-[11px] text-muted-foreground'>
-                    {site.url.replace(/^https?:\/\//, '')}
-                  </p>
-                </div>
-              </div>
-              <p className='line-clamp-2 text-xs leading-relaxed text-muted-foreground'>
-                {site.description}
-              </p>
-              <div className='flex items-center justify-between'>
-                <div className='flex items-center gap-1.5'>
-                  <span className='text-xs'>{region.flag}</span>
-                  <Badge variant='outline' className='h-4 px-1.5 text-[9px] font-medium'>
-                    {platform.label}
-                  </Badge>
-                </div>
-                <Icons.externalLink className='h-3 w-3 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity' />
-              </div>
-            </a>
-          );
-        })}
+        {featured.map((site) => (
+          <FeaturedSiteCard key={site.id} site={site} />
+        ))}
       </div>
     </div>
   );

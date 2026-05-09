@@ -1,9 +1,30 @@
 'use client';
 
+import { useState, useCallback, useRef } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Icons } from '@/components/icons';
 import { cn } from '@/lib/utils';
 import type { Agent, AgentType, AgentOpenSource } from '../api/types';
+
+/** hover 时预连接外部域名，加速后续跳转 */
+function prefetchExternalUrl(url: string) {
+  try {
+    const origin = new URL(url).origin;
+    // 避免重复插入
+    if (document.querySelector(`link[href="${origin}"][rel="preconnect"]`)) return;
+    const dns = document.createElement('link');
+    dns.rel = 'dns-prefetch';
+    dns.href = origin;
+    document.head.appendChild(dns);
+    const pre = document.createElement('link');
+    pre.rel = 'preconnect';
+    pre.href = origin;
+    pre.crossOrigin = 'anonymous';
+    document.head.appendChild(pre);
+  } catch {
+    // ignore invalid url
+  }
+}
 
 export const AGENT_TYPE_CONFIG: Record<
   AgentType,
@@ -83,6 +104,22 @@ export function AgentCard({ agent }: { agent: Agent }) {
   const oss = OPEN_SOURCE_CONFIG[agent.open_source];
   const TypeIcon = type.icon;
   const isExternal = agent.url !== '#';
+  const isGithub = agent.url.includes('github.com');
+
+  const [clicking, setClicking] = useState(false);
+  const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleMouseEnter = useCallback(() => {
+    if (isExternal) prefetchExternalUrl(agent.url);
+  }, [isExternal, agent.url]);
+
+  const handleClick = useCallback(() => {
+    if (!isExternal) return;
+    setClicking(true);
+    // 新标签页打开后 2s 重置状态（窗口不失焦时也能还原）
+    if (resetTimer.current) clearTimeout(resetTimer.current);
+    resetTimer.current = setTimeout(() => setClicking(false), 2000);
+  }, [isExternal]);
 
   const cardContent = (
     <>
@@ -99,12 +136,24 @@ export function AgentCard({ agent }: { agent: Agent }) {
       {/* Header */}
       <div className='mb-3 flex items-start gap-3'>
         <div
-          className={cn('flex h-9 w-9 shrink-0 items-center justify-center rounded-lg', type.bg)}
+          className={cn(
+            'flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-colors',
+            isGithub ? 'bg-slate-500/10' : type.bg,
+            clicking && 'opacity-70'
+          )}
         >
-          <TypeIcon className={cn('h-4 w-4', type.color)} />
+          {clicking ? (
+            <Icons.spinner
+              className={cn('h-4 w-4 animate-spin', isGithub ? 'text-slate-500' : type.color)}
+            />
+          ) : isGithub ? (
+            <Icons.github className='h-4 w-4 text-slate-600 dark:text-slate-300' />
+          ) : (
+            <TypeIcon className={cn('h-4 w-4', type.color)} />
+          )}
         </div>
         <div className='min-w-0 flex-1'>
-          <h3 className='truncate text-sm font-semibold leading-tight text-foreground group-hover:text-primary transition-colors'>
+          <h3 className='truncate text-sm font-semibold leading-tight text-foreground transition-colors group-hover:text-primary'>
             {agent.name}
           </h3>
           <p className='mt-0.5 truncate text-[11px] text-muted-foreground'>
@@ -113,9 +162,12 @@ export function AgentCard({ agent }: { agent: Agent }) {
         </div>
         <Badge
           variant='outline'
-          className={cn('shrink-0 text-[10px] font-medium px-1.5 py-0.5', type.color, type.border)}
+          className={cn(
+            'shrink-0 px-1.5 py-0.5 text-[10px] font-medium',
+            isGithub ? 'border-slate-500/20 text-slate-500' : cn(type.color, type.border)
+          )}
         >
-          {type.label}
+          {isGithub ? 'GitHub' : type.label}
         </Badge>
       </div>
 
@@ -149,8 +201,13 @@ export function AgentCard({ agent }: { agent: Agent }) {
           {oss.label}
         </Badge>
         {isExternal && (
-          <span className='flex items-center gap-1 text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity'>
-            访问 <Icons.externalLink className='h-3 w-3' />
+          <span
+            className={cn(
+              'flex items-center gap-1 text-xs text-muted-foreground transition-opacity',
+              clicking ? 'opacity-100 text-primary' : 'opacity-0 group-hover:opacity-100'
+            )}
+          >
+            {clicking ? '打开中…' : '访问'} <Icons.externalLink className='h-3 w-3' />
           </span>
         )}
         {!isExternal && <span className='text-[10px] text-muted-foreground/60'>内测中</span>}
@@ -161,12 +218,20 @@ export function AgentCard({ agent }: { agent: Agent }) {
   const cardClass = cn(
     'group relative flex flex-col rounded-xl border bg-card p-5 shadow-sm transition-all duration-200',
     'hover:shadow-md hover:-translate-y-0.5 hover:border-primary/30',
-    agent.is_featured && 'ring-1 ring-primary/20'
+    agent.is_featured && 'ring-1 ring-primary/20',
+    clicking && 'scale-[0.99] border-primary/40 shadow-md'
   );
 
   if (isExternal) {
     return (
-      <a href={agent.url} target='_blank' rel='noopener noreferrer' className={cardClass}>
+      <a
+        href={agent.url}
+        target='_blank'
+        rel='noopener noreferrer'
+        className={cardClass}
+        onMouseEnter={handleMouseEnter}
+        onClick={handleClick}
+      >
         {cardContent}
       </a>
     );

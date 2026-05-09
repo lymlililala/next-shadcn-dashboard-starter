@@ -1,9 +1,29 @@
 'use client';
 
+import { useState, useCallback, useRef } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Icons } from '@/components/icons';
 import { cn } from '@/lib/utils';
 import type { Site, SitePlatform, SiteRegion } from '../api/types';
+
+/** hover 时预连接外部域名，加速后续跳转 */
+function prefetchExternalUrl(url: string) {
+  try {
+    const origin = new URL(url).origin;
+    if (document.querySelector(`link[href="${origin}"][rel="preconnect"]`)) return;
+    const dns = document.createElement('link');
+    dns.rel = 'dns-prefetch';
+    dns.href = origin;
+    document.head.appendChild(dns);
+    const pre = document.createElement('link');
+    pre.rel = 'preconnect';
+    pre.href = origin;
+    pre.crossOrigin = 'anonymous';
+    document.head.appendChild(pre);
+  } catch {
+    // ignore invalid url
+  }
+}
 
 export const PLATFORM_CONFIG: Record<
   SitePlatform,
@@ -73,6 +93,19 @@ export function SkillCard({ site }: SiteCardProps) {
   const region = REGION_CONFIG[site.region];
   const PlatformIcon = platform.icon;
 
+  const [clicking, setClicking] = useState(false);
+  const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleMouseEnter = useCallback(() => {
+    prefetchExternalUrl(site.url);
+  }, [site.url]);
+
+  const handleClick = useCallback(() => {
+    setClicking(true);
+    if (resetTimer.current) clearTimeout(resetTimer.current);
+    resetTimer.current = setTimeout(() => setClicking(false), 2000);
+  }, []);
+
   return (
     <a
       href={site.url}
@@ -81,8 +114,11 @@ export function SkillCard({ site }: SiteCardProps) {
       className={cn(
         'group relative flex flex-col rounded-xl border bg-card p-5 shadow-sm transition-all duration-200',
         'hover:shadow-md hover:border-primary/30 hover:-translate-y-0.5',
-        site.is_featured && 'ring-1 ring-primary/20'
+        site.is_featured && 'ring-1 ring-primary/20',
+        clicking && 'scale-[0.99] border-primary/40 shadow-md'
       )}
+      onMouseEnter={handleMouseEnter}
+      onClick={handleClick}
     >
       {/* Featured badge */}
       {site.is_featured && (
@@ -98,14 +134,19 @@ export function SkillCard({ site }: SiteCardProps) {
       <div className='mb-3 flex items-start gap-3'>
         <div
           className={cn(
-            'flex h-9 w-9 shrink-0 items-center justify-center rounded-lg',
-            platform.bg
+            'flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-colors',
+            platform.bg,
+            clicking && 'opacity-70'
           )}
         >
-          <PlatformIcon className={cn('h-4 w-4', platform.color)} />
+          {clicking ? (
+            <Icons.spinner className={cn('h-4 w-4 animate-spin', platform.color)} />
+          ) : (
+            <PlatformIcon className={cn('h-4 w-4', platform.color)} />
+          )}
         </div>
         <div className='min-w-0 flex-1'>
-          <h3 className='truncate text-sm font-semibold leading-tight text-foreground group-hover:text-primary transition-colors'>
+          <h3 className='truncate text-sm font-semibold leading-tight text-foreground transition-colors group-hover:text-primary'>
             {site.name}
           </h3>
           <p className='mt-0.5 truncate text-[11px] text-muted-foreground'>
@@ -115,7 +156,7 @@ export function SkillCard({ site }: SiteCardProps) {
         <Badge
           variant='outline'
           className={cn(
-            'shrink-0 text-[10px] font-medium px-1.5 py-0.5',
+            'shrink-0 px-1.5 py-0.5 text-[10px] font-medium',
             platform.color,
             platform.border
           )}
@@ -154,8 +195,13 @@ export function SkillCard({ site }: SiteCardProps) {
           <span>{region.flag}</span>
           {region.label}
         </span>
-        <span className='flex items-center gap-1 text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity'>
-          访问
+        <span
+          className={cn(
+            'flex items-center gap-1 text-xs text-muted-foreground transition-opacity',
+            clicking ? 'opacity-100 text-primary' : 'opacity-0 group-hover:opacity-100'
+          )}
+        >
+          {clicking ? '打开中…' : '访问'}
           <Icons.externalLink className='h-3 w-3' />
         </span>
       </div>
