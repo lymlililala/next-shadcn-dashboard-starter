@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useSuspenseQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
-import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -178,7 +177,7 @@ function SiteReviewCard({ site }: { site: Site }) {
 
         {/* Footer */}
         <div className='flex items-center justify-between pt-1'>
-          <Link
+          <a
             href={site.url}
             target='_blank'
             rel='noopener noreferrer'
@@ -186,7 +185,7 @@ function SiteReviewCard({ site }: { site: Site }) {
           >
             <Icons.externalLink className='h-3 w-3' />
             查看链接
-          </Link>
+          </a>
           <div className='flex items-center gap-2'>
             <Button
               size='sm'

@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { Badge } from '@/components/ui/badge';
 import { Icons } from '@/components/icons';
@@ -58,7 +57,7 @@ export function FeaturedSkills() {
           const region = REGION_CONFIG[site.region];
           const PlatformIcon = platform.icon;
           return (
-            <Link
+            <a
               key={site.id}
               href={site.url}
               target='_blank'
@@ -95,7 +94,7 @@ export function FeaturedSkills() {
                 </div>
                 <Icons.externalLink className='h-3 w-3 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity' />
               </div>
-            </Link>
+            </a>
           );
         })}
       </div>

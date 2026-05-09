@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useSuspenseQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
-import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -170,7 +169,7 @@ function AgentReviewCard({ agent }: { agent: Agent }) {
 
         <div className='flex items-center justify-between pt-1'>
           {isExternal ? (
-            <Link
+            <a
               href={agent.url}
               target='_blank'
               rel='noopener noreferrer'
@@ -178,7 +177,7 @@ function AgentReviewCard({ agent }: { agent: Agent }) {
             >
               <Icons.externalLink className='h-3 w-3' />
               查看链接
-            </Link>
+            </a>
           ) : (
             <span className='text-[11px] text-muted-foreground/50'>内测中，暂无链接</span>
           )}

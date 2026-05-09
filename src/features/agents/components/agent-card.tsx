@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Icons } from '@/components/icons';
 import { cn } from '@/lib/utils';
@@ -167,9 +166,9 @@ export function AgentCard({ agent }: { agent: Agent }) {
 
   if (isExternal) {
     return (
-      <Link href={agent.url} target='_blank' rel='noopener noreferrer' className={cardClass}>
+      <a href={agent.url} target='_blank' rel='noopener noreferrer' className={cardClass}>
         {cardContent}
-      </Link>
+      </a>
     );
   }
 

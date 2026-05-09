@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Icons } from '@/components/icons';
 import { cn } from '@/lib/utils';
@@ -75,7 +74,7 @@ export function SkillCard({ site }: SiteCardProps) {
   const PlatformIcon = platform.icon;
 
   return (
-    <Link
+    <a
       href={site.url}
       target='_blank'
       rel='noopener noreferrer'
@@ -160,7 +159,7 @@ export function SkillCard({ site }: SiteCardProps) {
           <Icons.externalLink className='h-3 w-3' />
         </span>
       </div>
-    </Link>
+    </a>
   );
 }
 
