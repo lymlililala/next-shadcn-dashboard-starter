@@ -96,6 +96,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.85
     },
+    {
+      url: `${BASE_URL}/tutorials/cursor-claude-opus-agent-setup-2026`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.92
+    },
+    {
+      url: `${BASE_URL}/tutorials/agent-reasoning-vs-streaming-tradeoff`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9
+    },
+    // News 详情页 — 热点资讯，高价值
+    {
+      url: `${BASE_URL}/news/anthropic-claude-opus-4-1-2026-reasoning`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.88
+    },
     // 通用页面
     {
       url: `${BASE_URL}/about`,
