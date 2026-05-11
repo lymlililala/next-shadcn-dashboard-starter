@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: meta.title,
     description: meta.description,
     keywords: meta.keywords,
-    alternates: { canonical: 'https://www.aiskillnav.com/usecases' },
+    alternates: { canonical: 'https://aiskillnav.com/usecases' },
     openGraph: meta.openGraph,
     twitter: meta.twitter
   };

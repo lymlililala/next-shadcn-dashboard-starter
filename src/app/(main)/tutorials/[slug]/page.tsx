@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${t.title} | 教程中心`,
     description: t.summary,
-    alternates: { canonical: `https://www.aiskillnav.com/tutorials/${slug}` }
+    alternates: { canonical: `https://aiskillnav.com/tutorials/${slug}` }
   };
 }
 

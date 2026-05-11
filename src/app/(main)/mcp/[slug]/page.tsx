@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${server.name} MCP Server — 安装教程与使用指南`,
     description: server.description,
     keywords: server.tags,
-    alternates: { canonical: `https://www.aiskillnav.com/mcp/${server.slug}` }
+    alternates: { canonical: `https://aiskillnav.com/mcp/${server.slug}` }
   };
 }
 
