@@ -115,6 +115,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.88
     },
+    {
+      url: `${BASE_URL}/news/best-mcp-servers-2026-100-ranked-categorized`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.92
+    },
+    {
+      url: `${BASE_URL}/news/top-10-new-mcp-servers-may-2026-releases`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9
+    },
+    {
+      url: `${BASE_URL}/tutorials/best-mcp-servers-2026-ranked-comprehensive-guide`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.95
+    },
+    {
+      url: `${BASE_URL}/tutorials/how-to-install-mcp-server-claude-code-complete-guide`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.91
+    },
+    {
+      url: `${BASE_URL}/tutorials/claude-code-vs-cursor-2026-complete-comparison`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.89
+    },
     // 通用页面
     {
       url: `${BASE_URL}/about`,
