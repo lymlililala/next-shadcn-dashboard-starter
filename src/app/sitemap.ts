@@ -145,6 +145,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.89
     },
+    // News 详情页 — 新增（2026-05-12）
+    {
+      url: `${BASE_URL}/news/2025-best-ai-tools-new-releases-roundup`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.88
+    },
+    {
+      url: `${BASE_URL}/news/openai-vs-anthropic-vs-google-2025-ai-battle`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9
+    },
+    {
+      url: `${BASE_URL}/news/ai-agent-era-autonomous-ai-workflow-revolution-2025`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.91
+    },
+    {
+      url: `${BASE_URL}/news/weekly-ai-tools-roundup-may-2026`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.85
+    },
+    {
+      url: `${BASE_URL}/news/multimodal-ai-tools-explained-use-cases-2025`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.88
+    },
     // 通用页面
     {
       url: `${BASE_URL}/about`,
