@@ -1,0 +1,162 @@
+# AI Skill Navigation — llms.txt
+# https://aiskillnav.com
+# Last updated: 2026-05-12
+#
+# This file follows the llms.txt standard (https://llmstxt.org)
+# to help AI assistants and LLM crawlers understand this site.
+
+> AI Skill Navigation is a curated directory of AI Agent tools, MCP Servers, Skills,
+> models, tutorials, and use cases. It helps developers, product managers, and AI
+> enthusiasts discover, compare, and use the best AI Agent ecosystem resources.
+
+## About
+
+AI Skill Navigation (https://aiskillnav.com) is the go-to resource for navigating
+the AI Agent and MCP (Model Context Protocol) ecosystem. We curate and categorize
+AI tools so you can find exactly what you need — without the noise.
+
+**Core mission:** Help people find the right AI tools, MCP Servers, and Agent
+workflows to 10x their productivity.
+
+**Audience:** Developers, AI builders, product managers, and anyone who wants to
+automate their work with AI Agents.
+
+## Content Sections
+
+### MCP Servers (/mcp)
+A directory of 36+ Model Context Protocol servers, categorized by use case:
+- Filesystem: local file read/write operations
+- Database: PostgreSQL, SQLite, MongoDB, Redis connections
+- Browser: web scraping, headless browser control
+- DevTools: GitHub, GitLab, Git integration
+- Productivity: Slack, Notion, Jira, Asana
+- Search: Brave Search, web scraping, knowledge retrieval
+- AI Models: Anthropic, OpenAI, Hugging Face integration
+
+Key pages:
+- [MCP Server Directory](https://aiskillnav.com/mcp): Browse all 36+ MCP servers
+- [Best MCP Servers 2026](https://aiskillnav.com/tutorials/best-mcp-servers-2026-ranked-comprehensive-guide): Ranked list with use-case matching
+- [How to Install MCP Server](https://aiskillnav.com/tutorials/how-to-install-mcp-server-claude-code-complete-guide): Step-by-step installation guide
+- [MCP Server vs Function Calling](https://aiskillnav.com/tutorials/mcp-server-vs-function-calling): Comparison guide
+
+### AI Agents (/agents)
+22 curated AI Agents covering major categories:
+- General Purpose: Manus, AutoGPT, OpenClaw, Genspark
+- Research: Perplexity, Deep Research
+- Coding: Cursor, Windsurf, Claude Code, Devin
+- Computer Use: Claude Computer Use, Browser Use
+- Workflow: n8n, Dify, Coze (扣子)
+
+Key pages:
+- [Agent Hub](https://aiskillnav.com/agents): All 22 agents with type badges
+
+### AI Skills (/skills)
+29 Skills organized into two categories:
+- Live products (online web apps)
+- Open source projects (GitHub repos)
+
+Key pages:
+- [Skills Directory](https://aiskillnav.com/skills): Browse all skills
+
+### AI Models (/models)
+Model comparison and benchmarks covering:
+- GPT-4o, GPT-o1, GPT-o3
+- Claude 3.5 Sonnet, Claude Opus
+- Gemini 1.5 Pro, Gemini 2.0
+- DeepSeek R1, DeepSeek V3
+- Llama 3.1, Mistral
+
+Key pages:
+- [Model Comparison](https://aiskillnav.com/models): Side-by-side benchmarks
+
+### Tutorials (/tutorials)
+28 tutorials covering beginner to advanced topics:
+- Concept: What is MCP, AI Agent architectures, reasoning models
+- Hands-on: Building with Dify, Coze, n8n, LangGraph
+- MCP: Installing servers, building custom servers, production deployment
+- Agent: Multi-agent patterns, memory systems, workflow automation
+- Workflow: Product manager AI tools, content creation, sales automation
+
+Featured tutorials:
+- [What is MCP?](https://aiskillnav.com/tutorials/what-is-mcp)
+- [AI Agent Complete Guide 2026](https://aiskillnav.com/tutorials/ai-agent-complete-guide-2026)
+- [MCP Server vs Function Calling](https://aiskillnav.com/tutorials/mcp-server-vs-function-calling)
+- [Best MCP Servers 2026](https://aiskillnav.com/tutorials/best-mcp-servers-2026-ranked-comprehensive-guide)
+- [Install MCP Server in Claude Code](https://aiskillnav.com/tutorials/how-to-install-mcp-server-claude-code-complete-guide)
+- [Claude Code vs Cursor 2026](https://aiskillnav.com/tutorials/claude-code-vs-cursor-2026-complete-comparison)
+- [DeepSeek R1 Local Deployment](https://aiskillnav.com/tutorials/deepseek-r1-local-deployment)
+- [Cursor + Claude Opus Setup Guide](https://aiskillnav.com/tutorials/cursor-claude-opus-agent-setup-2026)
+- [Agent Reasoning: Extended Thinking vs Streaming](https://aiskillnav.com/tutorials/agent-reasoning-vs-streaming-tradeoff)
+- [RAG Knowledge Base Best Practices](https://aiskillnav.com/tutorials/rag-knowledge-base-best-practices)
+- [Build Your First MCP Server](https://aiskillnav.com/tutorials/build-your-first-mcp-server)
+
+### Use Cases (/usecases)
+28 real-world AI Agent use cases across industries:
+- Marketing: Lead scoring, content generation, campaign automation
+- Engineering: Code review, bug triage, CI/CD automation
+- Productivity: Email triage, meeting notes, personal daily briefing
+- Research: Competitive analysis, literature review, data synthesis
+- HR: JD generation, multi-platform job posting, candidate screening
+- Education: Personalized learning plans, AI tutoring
+
+Key pages:
+- [Use Cases Directory](https://aiskillnav.com/usecases): All 28 use cases
+
+### News (/news)
+28 curated AI Agent ecosystem news articles:
+- Model releases and updates (Claude, GPT, Gemini, DeepSeek)
+- Framework updates (LangChain, AutoGen, CrewAI, Dify)
+- Tool launches (Manus, n8n, Coze)
+- Funding news (AI Agent startups)
+- Research breakthroughs (SWE-bench, reasoning models)
+
+Key pages:
+- [AI News Feed](https://aiskillnav.com/news): Latest 28 articles
+- [Best MCP Servers 2026 News](https://aiskillnav.com/news/best-mcp-servers-2026-100-ranked-categorized)
+- [Top 10 New MCP Servers May 2026](https://aiskillnav.com/news/top-10-new-mcp-servers-may-2026-releases)
+
+## Key Concepts Explained
+
+**MCP (Model Context Protocol):** An open standard by Anthropic that lets AI models
+like Claude connect to external tools and data sources. Think of it as a universal
+adapter that lets AI "see" your files, databases, GitHub repos, and any other system.
+
+**AI Skill / Skill.md:** A structured file format that tells AI coding agents how
+to use a specific tool or workflow. Similar to documentation, but specifically
+optimized for AI agents to parse and execute.
+
+**AI Agent:** An AI system that can autonomously take actions — searching the web,
+writing code, sending emails, managing files — to complete multi-step tasks without
+constant human supervision.
+
+**Agent vs Model vs Skill:**
+- Model: The AI brain (Claude, GPT-4o, Gemini)
+- Skill: A packaged capability (how to use a specific tool)
+- Agent: A system that orchestrates models + skills to complete tasks autonomously
+
+## Recommended Starting Points
+
+For someone asking "how do I get started with MCP":
+- Start here: [What is MCP?](https://aiskillnav.com/tutorials/what-is-mcp)
+- Then: [How to Install MCP Server](https://aiskillnav.com/tutorials/how-to-install-mcp-server-claude-code-complete-guide)
+- Browse tools: [MCP Server Directory](https://aiskillnav.com/mcp)
+
+For someone asking "best AI coding tools 2026":
+- [Claude Code vs Cursor 2026](https://aiskillnav.com/tutorials/claude-code-vs-cursor-2026-complete-comparison)
+- [Cursor + Claude Setup Guide](https://aiskillnav.com/tutorials/cursor-claude-opus-agent-setup-2026)
+- [Agent Hub](https://aiskillnav.com/agents)
+
+For someone asking "how to automate my workflow with AI":
+- [Use Cases Directory](https://aiskillnav.com/usecases)
+- [AI Agent Complete Guide 2026](https://aiskillnav.com/tutorials/ai-agent-complete-guide-2026)
+- [n8n + AI Workflow Tutorial](https://aiskillnav.com/tutorials/n8n-ai-workflow-automation)
+
+## Sitemap
+
+Full machine-readable sitemap: https://aiskillnav.com/sitemap.xml
+
+## Contact & Attribution
+
+- Website: https://aiskillnav.com
+- Content license: Content may be referenced with attribution to aiskillnav.com
+- Update frequency: Weekly (tutorials, news), Daily (news feed)
