@@ -65,9 +65,16 @@ const DIFFICULTY_CONFIG: Record<number, { stars: string; label: string; color: s
   3: { stars: '⭐⭐⭐', label: '复杂', color: 'text-rose-600 bg-rose-500/10 border-rose-500/20' }
 };
 
+const INDUSTRY_FALLBACK = {
+  label: '其他',
+  icon: Icons.briefcase,
+  color: 'text-muted-foreground',
+  bg: 'bg-muted/30'
+};
+
 function UseCaseCard({ uc }: { uc: UseCase }) {
-  const ind = INDUSTRY_CONFIG[uc.industry];
-  const diff = DIFFICULTY_CONFIG[uc.difficulty];
+  const ind = INDUSTRY_CONFIG[uc.industry] ?? INDUSTRY_FALLBACK;
+  const diff = DIFFICULTY_CONFIG[uc.difficulty] ?? DIFFICULTY_CONFIG[1];
   const IndIcon = ind.icon;
   return (
     <div className='flex flex-col rounded-xl border bg-card p-5 shadow-sm'>
