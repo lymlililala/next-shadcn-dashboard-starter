@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import PageContainer from '@/components/layout/page-container';
 import { getNewsBySlug, getPublishedNews } from '@/features/news/api/service';
 import { Icons } from '@/components/icons';
@@ -102,7 +104,9 @@ export default async function NewsDetailPage({ params }: Props) {
             {item.title}
           </h1>
 
-          <p className='text-base leading-relaxed text-muted-foreground'>{item.summary}</p>
+          <div className='prose prose-sm dark:prose-invert max-w-none text-muted-foreground [&_h2]:text-foreground [&_h2]:text-lg [&_h2]:font-semibold [&_h2]:mt-6 [&_h2]:mb-3 [&_h3]:text-foreground [&_h3]:text-base [&_h3]:font-medium [&_h3]:mt-4 [&_h3]:mb-2 [&_p]:leading-relaxed [&_p]:mb-3 [&_ul]:my-2 [&_ol]:my-2 [&_li]:my-1 [&_strong]:text-foreground [&_table]:text-xs [&_table]:border-collapse [&_th]:border [&_th]:border-border [&_th]:bg-muted/50 [&_th]:px-3 [&_th]:py-1.5 [&_td]:border [&_td]:border-border [&_td]:px-3 [&_td]:py-1.5 [&_code]:bg-muted [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-xs [&_pre]:bg-muted [&_pre]:rounded-lg [&_pre]:p-4 [&_pre]:overflow-x-auto [&_blockquote]:border-l-4 [&_blockquote]:border-primary/40 [&_blockquote]:pl-4 [&_blockquote]:text-muted-foreground [&_hr]:border-border'>
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{item.summary}</ReactMarkdown>
+          </div>
 
           <div className='flex flex-wrap items-center gap-4 text-xs text-muted-foreground'>
             <span className='flex items-center gap-1'>
