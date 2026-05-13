@@ -176,6 +176,50 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.88
     },
+    // Tutorials 详情页 — 新增（2026-05-13）
+    {
+      url: `${BASE_URL}/tutorials/n8n-mcp-server-integration-guide-2026`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9
+    },
+    {
+      url: `${BASE_URL}/tutorials/dify-vs-coze-vs-fastgpt-2026-comparison`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.91
+    },
+    {
+      url: `${BASE_URL}/tutorials/ai-agent-prompt-engineering-guide-2026`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.92
+    },
+    {
+      url: `${BASE_URL}/tutorials/github-copilot-vs-cursor-vs-claude-code-2026`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.93
+    },
+    // News 详情页 — 新增（2026-05-13）
+    {
+      url: `${BASE_URL}/news/claude-4-opus-sonnet-2026-release-analysis`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.92
+    },
+    {
+      url: `${BASE_URL}/news/mcp-ecosystem-2026-100-servers-milestone`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9
+    },
+    {
+      url: `${BASE_URL}/news/cursor-200-million-users-ai-ide-market-2026`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.87
+    },
     // 通用页面
     {
       url: `${BASE_URL}/about`,

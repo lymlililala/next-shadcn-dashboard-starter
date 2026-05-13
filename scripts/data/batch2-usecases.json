@@ -1,0 +1,56 @@
+[
+  {
+    "title": "用 AI Agent 自动化 SEO 内容生产：从关键词到发布一条龙",
+    "description": "用 AI Agent 完成 SEO 内容生产全流程：关键词研究 → 竞品分析 → 大纲生成 → 正文写作 → 内部链接建议 → 发布。将原本需要2-3天的工作压缩到2-3小时。\n\n## 直接回答\n\n**这个场景的核心价值**：SEO 内容生产是高度标准化的重复工作，AI 可以承担80%的工作量，让内容团队专注于创意策略和质量把控。\n\n**工具组合**：Perplexity（关键词研究）+ Claude（内容生成）+ Ahrefs/SEMrush（数据验证）+ CMS API（发布）\n\n## 场景详解\n\n### 第一步：关键词机会发现\n\n使用 Perplexity AI 或 Claude + Brave Search MCP：\n```\nPrompt示例：\n「搜索 [主题] 相关的长尾关键词，重点找：\n1. 搜索意图明确（信息型/购买型/对比型）\n2. 竞争度低但搜索量可观\n3. 与我们网站 [URL] 已有内容不重复\n列出Top 20，附上搜索意图分类」\n```\n\n### 第二步：竞品内容分析\n\nAgent 自动抓取排名前5的竞品文章，分析：\n- 文章结构（H1/H2/H3 层级）\n- 字数范围（通常 1500-3000 字）\n- 覆盖的子话题\n- 缺失的内容角度（即内容差距）\n\n### 第三步：AI 生成 SEO 优化文章\n\n```\nSystem Prompt示例：\n你是一位专业的 SEO 内容写手。\n目标关键词：[keyword]\n目标读者：[audience]\n文章结构要求：\n- H1：包含目标关键词\n- H2：4-6个，覆盖用户常见问题\n- 每个 H2 下200-300字\n- 自然融入LSI关键词\n- 结尾包含1个明确的CTA\n不要过度堆砌关键词，保持自然阅读体验。\n```\n\n### 第四步：自动添加内部链接\n\nAgent 分析站内已有内容，在合适位置插入内部链接，提升站内 SEO 权重传递。\n\n### 第五步：发布到 CMS\n\n通过 CMS API（WordPress/Ghost/Webflow）自动创建草稿，人工审核后一键发布。\n\n## 实测数据\n\n- 生产一篇2000字 SEO 文章：原来4小时 → 现在45分钟（含人工审核）\n- 月均文章产出：从8篇 → 40篇\n- 6个月后自然搜索流量增长：+180%\n\n## 注意事项\n\n- AI 生成内容必须人工审核，确保事实准确\n- 避免完全相同的结构，批量内容要有差异化\n- 新文章发布后监控关键词排名，持续优化\n\n## FAQ\n\n**Q：纯 AI 生成的 SEO 文章会被 Google 惩罚吗？**\nA：Google 的立场是：有用的内容就是好内容，不管是否 AI 生成。关键是内容对用户真实有帮助，而非低质量批量灌水。\n\n**Q：需要懂技术才能搭建这个工作流吗？**\nA：基础版（用 Claude 手动操作）不需要技术；自动化版（n8n 工作流）需要初级技术能力。\n\n## 相关资源\n- n8n AI 工作流：[aiskillnav.com/tutorials/n8n-ai-workflow-automation](https://aiskillnav.com/tutorials/n8n-ai-workflow-automation)\n- AI 内容创作场景：[aiskillnav.com/usecases](https://aiskillnav.com/usecases)",
+    "tools": ["Perplexity AI", "Claude", "Brave Search MCP", "n8n", "Ahrefs"],
+    "industry": "marketing",
+    "difficulty": 2,
+    "estimated_time": "2-3小时/篇（含审核）",
+    "steps": [
+      "用 Perplexity/Claude 搜索目标关键词的竞品排名内容",
+      "分析前5名文章的结构、字数和内容差距",
+      "设计 SEO 优化的文章大纲（H1/H2/H3结构）",
+      "用 Claude 分段生成正文，自然融入关键词",
+      "Agent 扫描站内内容，添加相关内部链接",
+      "发布草稿，人工审核事实准确性，一键发布"
+    ],
+    "tags": ["SEO自动化", "AI内容生产", "关键词研究", "内容营销", "AI写作"],
+    "is_featured": true
+  },
+  {
+    "title": "AI Agent 辅助产品需求分析：从用户反馈到需求优先级排序",
+    "description": "用 AI Agent 自动化产品需求分析流程：批量处理用户反馈 → 自动分类打标 → 聚类相似需求 → 生成需求优先级矩阵。将产品经理从繁琐的数据整理中解放出来，专注于策略判断。\n\n## 直接回答\n\n**最大价值**：产品需求分析的80%是数据整理（读反馈、分类、找规律），这部分完全可以 AI 化；剩下20%是策略判断（要不要做、何时做），这需要 PM 人工决策。\n\n**工具组合**：Zapier/n8n（数据收集）+ Claude（分析引擎）+ Notion（结果输出）\n\n## 场景详解\n\n### 数据来源整合\n\n接入多个反馈渠道：\n- App Store / Google Play 评论（每日自动同步）\n- Intercom/Zendesk 工单\n- NPS 调研文本\n- 社交媒体提及（Twitter/小红书关键词监控）\n\n### AI 分析流程\n\n**第一层：打标分类**\n```\nPrompt：将以下用户反馈分类：\n- 类别：功能请求/Bug报告/性能问题/UI体验/内容质量/其他\n- 情感：正面/中性/负面\n- 优先级信号：是否影响核心使用流程\n\n反馈内容：[批量输入]\n```\n\n**第二层：需求聚类**\n将相似反馈聚合，统计提及频次。例如「加载太慢」类的反馈可能来自100条不同的表述。\n\n**第三层：优先级矩阵生成**\n```\n按「用户提及量 × 情感强度 × 战略匹配度」计算优先级分数\n生成 Markdown 报告：\n- Top 10 高优先级需求（附用户原话）\n- 下一步建议（技术调研/用户访谈/立即规划）\n```\n\n### 输出同步到 Notion\n\n自动创建 Notion 页面，包含：\n- 需求优先级排名表格\n- 每个需求的代表性用户反馈（Top 3条）\n- 建议下一步行动\n\n## 实测数据\n\n- 分析500条用户反馈：原来2天 → 现在30分钟\n- 发现的有效需求准确率：82%（与人工分析对比）\n- PM 每月节省时间：20-30小时\n\n## 配置示例（n8n 工作流）\n\n1. 触发：每天08:00自动运行\n2. 节点1：从 App Store API 拉取最新7天评论\n3. 节点2：从 Zendesk 拉取最新7天工单\n4. 节点3：合并数据，发送给 Claude API\n5. 节点4：解析 Claude 返回的结构化数据\n6. 节点5：写入 Notion 数据库，发送 Slack 提醒\n\n## FAQ\n\n**Q：AI 的分类准确率足够高吗？**\nA：经过好的 Prompt 优化，准确率可达 85-90%。建议初期每周抽检20%，持续优化 Prompt 直到稳定。\n\n**Q：如何处理非中文的用户反馈？**\nA：Claude 支持50+语言，在 Prompt 中加「统一翻译成中文后分析」即可。\n\n## 相关资源\n- AI 产品经理工作流：[aiskillnav.com/tutorials/ai-product-manager-workflow](https://aiskillnav.com/tutorials/ai-product-manager-workflow)\n- n8n 自动化教程：[aiskillnav.com/tutorials/n8n-ai-workflow-automation](https://aiskillnav.com/tutorials/n8n-ai-workflow-automation)",
+    "tools": ["Claude", "n8n", "Zapier", "Notion AI", "ChatGPT"],
+    "industry": "productivity",
+    "difficulty": 2,
+    "estimated_time": "30分钟（自动运行），2小时（初次搭建）",
+    "steps": [
+      "接入用户反馈数据源（App Store、Zendesk、NPS等）",
+      "设计 AI 分类 Prompt，定义分类维度和标签体系",
+      "用 Claude API 批量处理反馈，生成结构化数据",
+      "聚类相似需求，统计提及频次和情感强度",
+      "按优先级公式（频次×情感×战略匹配）生成排名",
+      "输出到 Notion，发送 Slack 提醒给 PM"
+    ],
+    "tags": ["产品需求分析", "用户反馈", "AI产品经理", "需求优先级", "自动化分析"],
+    "is_featured": true
+  },
+  {
+    "title": "AI 辅助销售：从线索培育到成单的全流程自动化",
+    "description": "用 AI Agent 优化销售全流程：线索评分自动化 → 个性化邮件序列 → 跟进时机预测 → 商机分析报告。将销售代表从重复性工作中解放出来，专注于高价值客户互动。\n\n## 直接回答\n\n**销售AI化的最高ROI场景**：\n1. 个性化邮件外呼（效率提升10倍，回复率提升30-50%）\n2. 线索评分自动化（准确率超越大多数人工判断）\n3. 销售复盘报告（从2小时→10分钟）\n\n**工具组合**：HubSpot CRM + Clay（数据增强）+ Claude/GPT-4o（文案生成）+ Outreach（邮件序列）\n\n## 场景一：AI 个性化邮件外呼\n\n传统方式：销售写通用模板，批量发送\nAI 方式：每封邮件都针对收件人个性化定制\n\n**实现步骤**：\n1. 从 LinkedIn/公司官网获取潜在客户信息\n2. 用 Clay 聚合数据：公司规模、最近融资、技术栈、招聘职位\n3. 用 Claude 生成个性化开场白（引用对方最近的公告或帖子）\n4. 发送序列：Day1（价值介绍）→ Day4（案例分享）→ Day7（问题引导）\n\n**实测效果**：某 SaaS 公司回复率从 3% → 12%，会议预约率提升 4 倍\n\n```\nPrompt模板：\n基于以下信息，写一封50字的开场白，引用一个具体细节表明你了解他们：\n公司：[公司名]\n最近事件：[最近融资/产品发布/招聘信号]\n我们的价值主张：[核心价值]\n```\n\n## 场景二：智能线索评分\n\n**传统线索评分**：按职位、公司规模打固定分数\n**AI 线索评分**：综合分析行为数据 + 公司特征 + 市场信号\n\n输入变量：\n- 网站访问行为（页面、时长、频次）\n- 邮件打开和点击行为\n- 公司规模和行业\n- 近期融资或扩张信号\n- 招聘相关职位（是否在招你的产品替代品）\n\n输出：0-100分 + 分数理由 + 建议下一步行动\n\n## 场景三：AI 销售复盘报告\n\n每周一 08:00 自动生成：\n- 本周管道变化（新增/流失/推进商机）\n- Win/Loss 分析（成单和丢单的共同特征）\n- Top 5 热线索（应立即跟进）\n- 销售代表绩效对比（不评判，提供数据）\n\n**节省时间**：销售总监周报：原来2小时 → 现在10分钟\n\n## 不要用 AI 做的事\n\n❌ 完全自动化发送邮件（没有人工审核）\n❌ 用 AI 替代销售与客户的真实关系建立\n❌ 对大客户用批量化的 AI 内容（高价值客户感知得到）\n\n## FAQ\n\n**Q：AI 销售工具是否会让销售团队缩减？**\nA：短期内更可能让同等规模销售团队产出翻倍，而非裁员。AI 补充了销售效率，但关系建立和复杂谈判仍需人工。\n\n**Q：最适合哪种规模的销售团队？**\nA：5-50人的 B2B 销售团队受益最大，有一定规模的线索量，但还没有成熟的销售自动化体系。\n\n## 相关资源\n- AI 营销场景：[aiskillnav.com/usecases](https://aiskillnav.com/usecases)\n- n8n 工作流自动化：[aiskillnav.com/tutorials/n8n-ai-workflow-automation](https://aiskillnav.com/tutorials/n8n-ai-workflow-automation)",
+    "tools": ["Claude", "ChatGPT", "HubSpot AI", "Clay", "n8n", "Notion AI"],
+    "industry": "marketing",
+    "difficulty": 2,
+    "estimated_time": "3-4小时搭建，每日自动运行",
+    "steps": [
+      "梳理现有销售流程，识别最耗时的重复环节",
+      "接入 CRM 数据，配置线索数据增强工具（Clay等）",
+      "设计个性化邮件 Prompt 模板，基于客户画像动态生成",
+      "搭建邮件序列（Day1/4/7/14），配置发送触发条件",
+      "配置 AI 线索评分模型，定义输入变量和权重",
+      "搭建周报自动化工作流，每周一自动生成并发送"
+    ],
+    "tags": ["销售自动化", "AI销售", "线索评分", "个性化邮件", "B2B销售"],
+    "is_featured": false
+  }
+]
