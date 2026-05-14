@@ -151,21 +151,40 @@ export function AgentGrid() {
           >
             <Icons.chevronLeft className='h-3.5 w-3.5' />
           </Button>
-          {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
-            const page = i + 1;
-            return (
-              <Button
-                key={page}
-                variant={params.agent_page === page ? 'default' : 'outline'}
-                size='sm'
-                className='h-7 w-7 p-0 text-xs'
-                onClick={() => setParams({ ...params, agent_page: page })}
-              >
-                {page}
-              </Button>
+          {(() => {
+            const current = params.agent_page;
+            // 计算需要显示的页码集合：第1页、最后1页、当前页及其前后1页
+            const visible = new Set(
+              [1, totalPages, current, current - 1, current + 1].filter(
+                (p) => p >= 1 && p <= totalPages
+              )
             );
-          })}
-          {totalPages > 5 && <span className='px-1 text-xs text-muted-foreground'>...</span>}
+            const pages = Array.from(visible).sort((a, b) => a - b);
+            const items: React.ReactNode[] = [];
+            for (let i = 0; i < pages.length; i++) {
+              // 如果与上一个不连续，插入省略号
+              if (i > 0 && pages[i] - pages[i - 1] > 1) {
+                items.push(
+                  <span key={`ellipsis-${i}`} className='px-1 text-xs text-muted-foreground'>
+                    …
+                  </span>
+                );
+              }
+              const page = pages[i];
+              items.push(
+                <Button
+                  key={page}
+                  variant={current === page ? 'default' : 'outline'}
+                  size='sm'
+                  className='h-7 w-7 p-0 text-xs'
+                  onClick={() => setParams({ ...params, agent_page: page })}
+                >
+                  {page}
+                </Button>
+              );
+            }
+            return items;
+          })()}
           <Button
             variant='outline'
             size='sm'
