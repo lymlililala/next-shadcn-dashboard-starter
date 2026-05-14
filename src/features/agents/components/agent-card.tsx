@@ -230,7 +230,7 @@ export function AgentCard({ agent }: { agent: Agent }) {
   );
 
   const cardClass = cn(
-    'group relative flex flex-col rounded-xl border bg-card p-5 shadow-sm transition-all duration-200',
+    'group relative flex h-full flex-col rounded-xl border bg-card p-5 shadow-sm transition-all duration-200',
     'hover:shadow-md hover:-translate-y-0.5 hover:border-primary/30',
     agent.is_featured && 'ring-1 ring-primary/20',
     clicking && 'scale-[0.99] border-primary/40 shadow-md'
