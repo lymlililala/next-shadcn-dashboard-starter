@@ -28,7 +28,7 @@ function batchPrefetch(urls: string[]) {
   }
 }
 
-const PAGE_SIZE = 12;
+const PAGE_SIZE = 24;
 
 /**
  * 最后一张卡的 col-span 静态映射（key = `${total%2}_${total%3}`）
@@ -79,6 +79,9 @@ export function AgentGrid() {
   const githubAgents = data.items.filter((a) => a.url.includes('github.com'));
   const innerAgents = data.items.filter((a) => a.url === '#');
 
+  // 各分组真实总数（来自后端全量统计，不受分页影响）
+  const groupCounts = data.group_counts;
+
   if (data.items.length === 0) {
     return (
       <div className='flex flex-col items-center justify-center py-16 text-center'>
@@ -107,7 +110,7 @@ export function AgentGrid() {
             <Icons.trendingUp className='h-3.5 w-3.5 text-primary' />
             <span className='text-xs font-semibold text-foreground'>应用产品</span>
             <span className='rounded-full bg-primary/10 px-1.5 py-0.5 text-[10px] font-medium text-primary'>
-              {appAgents.length}
+              {groupCounts?.app ?? appAgents.length}
             </span>
             <div className='h-px flex-1 bg-border' />
           </div>
@@ -132,7 +135,7 @@ export function AgentGrid() {
             <Icons.github className='h-3.5 w-3.5 text-muted-foreground' />
             <span className='text-xs font-semibold text-foreground'>开源项目</span>
             <span className='rounded-full bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground'>
-              {githubAgents.length}
+              {groupCounts?.github ?? githubAgents.length}
             </span>
             <div className='h-px flex-1 bg-border' />
           </div>
@@ -157,7 +160,7 @@ export function AgentGrid() {
             <Icons.info className='h-3.5 w-3.5 text-muted-foreground/60' />
             <span className='text-xs font-semibold text-muted-foreground'>内测中</span>
             <span className='rounded-full bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground'>
-              {innerAgents.length}
+              {groupCounts?.inner ?? innerAgents.length}
             </span>
             <div className='h-px flex-1 bg-border' />
           </div>

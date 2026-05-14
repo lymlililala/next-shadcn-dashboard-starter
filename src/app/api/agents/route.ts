@@ -56,6 +56,8 @@ export async function GET(request: NextRequest) {
       /* ignore */
     }
   } else {
+    // 先按类型分组：应用产品(非github非#) > 开源项目(github) > 内测(#)
+    // 再按精选和时间排序
     query = query
       .order('is_featured', { ascending: false })
       .order('created_at', { ascending: false });
@@ -64,7 +66,42 @@ export async function GET(request: NextRequest) {
   const { data, count, error } = await query.range((page - 1) * limit, page * limit - 1);
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
-  return NextResponse.json({ items: data ?? [], total_items: count ?? 0 });
+  // 统计各分组真实总数（与筛选条件一致，但不受分页影响）
+  // 应用产品 = url 不含 github.com 且不为 #
+  // 开源项目 = url 含 github.com
+  // 内测中   = url = '#'
+  const allItems = data ?? [];
+  const appCount = allItems.filter(
+    (a: { url: string }) => !a.url.includes('github.com') && a.url !== '#'
+  ).length;
+  const githubCount = allItems.filter((a: { url: string }) => a.url.includes('github.com')).length;
+  const innerCount = allItems.filter((a: { url: string }) => a.url === '#').length;
+
+  // 如果当前页包含全部数据（total_items <= limit），直接用本页统计
+  // 否则需要全量查询（仅在非分组筛选时才有意义）
+  let group_counts = { app: appCount, github: githubCount, inner: innerCount };
+
+  if ((count ?? 0) > limit) {
+    // 全量查询，只取 url 字段以节省带宽
+    let countQuery = supabaseAdmin.from('agents').select('url', { count: 'exact', head: false });
+    if (status && status !== 'all') countQuery = countQuery.eq('status', status);
+    if (agent_type && agent_type !== 'all') countQuery = countQuery.eq('agent_type', agent_type);
+    if (open_source && open_source !== 'all')
+      countQuery = countQuery.eq('open_source', open_source);
+    if (search) countQuery = countQuery.or(`name.ilike.%${search}%,description.ilike.%${search}%`);
+
+    const { data: allData } = await countQuery;
+    if (allData) {
+      group_counts = {
+        app: allData.filter((a: { url: string }) => !a.url.includes('github.com') && a.url !== '#')
+          .length,
+        github: allData.filter((a: { url: string }) => a.url.includes('github.com')).length,
+        inner: allData.filter((a: { url: string }) => a.url === '#').length
+      };
+    }
+  }
+
+  return NextResponse.json({ items: data ?? [], total_items: count ?? 0, group_counts });
 }
 
 export async function POST(request: NextRequest) {
