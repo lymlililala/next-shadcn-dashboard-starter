@@ -55,7 +55,7 @@ for (let i = 0; i < rows.length; i += BATCH) {
   const batch = rows.slice(i, i + BATCH);
   const { error, data } = await supabase
     .from('skill_tools')
-    .upsert(batch, { onConflict: 'name,url', ignoreDuplicates: true })
+    .insert(batch)
     .select('id');
 
   if (error) {

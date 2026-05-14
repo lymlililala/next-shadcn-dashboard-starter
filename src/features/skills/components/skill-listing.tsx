@@ -11,11 +11,7 @@ import {
 } from '../api/queries';
 import { SkillStats, SkillStatsSkeleton } from './skill-stats';
 import { FeaturedSkills, FeaturedSkillsSkeleton } from './featured-skills';
-import { SkillFilters } from './skill-filters';
-import { SkillGrid, SkillGridSkeleton } from './skill-grid';
-import { SkillToolFilters } from './skill-tool-filters';
-import { SkillToolGrid, SkillToolGridSkeleton } from './skill-tool-grid';
-import { SkillTabSwitcher } from './skill-tab-switcher';
+import { SkillTabContent } from './skill-tab-content';
 
 export default function SkillListingPage() {
   // 网站导航参数
@@ -24,8 +20,7 @@ export default function SkillListingPage() {
   const region = searchParamsCache.get('region') ?? 'all';
   const platform = searchParamsCache.get('platform') ?? 'all';
 
-  // Skill 工具参数
-  const skillTab = searchParamsCache.get('skill_tab') ?? 'sites';
+  // Skill 工具参数（服务端预取用）
   const toolPage = searchParamsCache.get('skill_tool_page') ?? 1;
   const toolSearch = searchParamsCache.get('skill_tool_search') ?? '';
   const toolCat = searchParamsCache.get('skill_tool_cat') ?? 'all';
@@ -67,37 +62,8 @@ export default function SkillListingPage() {
           <FeaturedSkills />
         </Suspense>
 
-        {/* Tab Switcher */}
-        <SkillTabSwitcher />
-
-        {skillTab === 'tools' ? (
-          <>
-            {/* Tool Filters */}
-            <SkillToolFilters />
-
-            {/* Tools Grid */}
-            <Suspense fallback={<SkillToolGridSkeleton />}>
-              <SkillToolGrid />
-            </Suspense>
-          </>
-        ) : (
-          <>
-            {/* Divider */}
-            <div className='flex items-center gap-3'>
-              <div className='h-px flex-1 bg-border' />
-              <span className='text-xs font-medium text-muted-foreground'>全部收录站点</span>
-              <div className='h-px flex-1 bg-border' />
-            </div>
-
-            {/* Site Filters */}
-            <SkillFilters />
-
-            {/* Sites Grid */}
-            <Suspense fallback={<SkillGridSkeleton />}>
-              <SkillGrid />
-            </Suspense>
-          </>
-        )}
+        {/* Tab 切换 + 内容（客户端组件，响应 nuqs shallow 状态变化）*/}
+        <SkillTabContent />
       </div>
     </HydrationBoundary>
   );
