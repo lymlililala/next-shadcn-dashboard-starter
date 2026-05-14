@@ -19,6 +19,20 @@ create table if not exists skills (
   updated_at   timestamptz default now()
 );
 
+-- ── SKILL_TOOLS ─────────────────────────────────────────────
+create table if not exists skill_tools (
+  id           bigserial primary key,
+  name         text not null,
+  description  text,
+  url          text not null,
+  category     text not null default 'Other',
+  source       text,                          -- 来源仓库，如 mahseema/awesome-ai-tools
+  tags         text[] default '{}',
+  is_featured  boolean default false,
+  status       text not null default 'published',
+  created_at   timestamptz default now()
+);
+
 -- ── AGENTS ──────────────────────────────────────────────────
 create table if not exists agents (
   id           bigserial primary key,
@@ -148,6 +162,7 @@ create table if not exists seo_config (
 -- ROW LEVEL SECURITY
 -- ============================================================
 
+alter table skill_tools  enable row level security;
 alter table skills       enable row level security;
 alter table agents       enable row level security;
 alter table news         enable row level security;
@@ -159,6 +174,7 @@ alter table use_cases    enable row level security;
 alter table seo_config   enable row level security;
 
 -- 公开读取（已发布内容）
+create policy "public_read_skill_tools" on skill_tools  for select using (status = 'published');
 create policy "public_read_skills"     on skills       for select using (status = 'published');
 create policy "public_read_agents"     on agents       for select using (status = 'published');
 create policy "public_read_news"       on news         for select using (status = 'published');
@@ -170,6 +186,7 @@ create policy "public_read_usecases"   on use_cases    for select using (true);
 create policy "public_read_seo"        on seo_config   for select using (true);
 
 -- 服务角色完全访问（后台管理用）
+create policy "service_all_skill_tools" on skill_tools  for all using (auth.role() = 'service_role');
 create policy "service_all_skills"     on skills       for all using (auth.role() = 'service_role');
 create policy "service_all_agents"     on agents       for all using (auth.role() = 'service_role');
 create policy "service_all_news"       on news         for all using (auth.role() = 'service_role');

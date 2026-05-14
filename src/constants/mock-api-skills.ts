@@ -38,6 +38,23 @@ export type Site = {
 export type CreateSitePayload = Omit<Site, 'id' | 'created_at' | 'updated_at'>;
 export type UpdateSitePayload = Partial<CreateSitePayload>;
 
+// ── SkillTool (来自 awesome-ai-tools 等精选列表) ─────────────────────────────
+export type SkillTool = {
+  id: number;
+  name: string;
+  description: string;
+  url: string;
+  category: string;
+  source?: string;
+  tags: string[];
+  is_featured: boolean;
+  status: SiteStatus;
+  created_at: string;
+};
+
+export type CreateSkillToolPayload = Omit<SkillTool, 'id' | 'created_at'>;
+export type UpdateSkillToolPayload = Partial<CreateSkillToolPayload>;
+
 // ── 示例数据 ─────────────────────────────────────────────────────────────────
 
 const SITE_DATA: Omit<Site, 'id' | 'created_at' | 'updated_at'>[] = [

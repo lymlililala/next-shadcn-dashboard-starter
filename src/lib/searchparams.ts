@@ -27,7 +27,12 @@ export const searchParams = {
   // MCP Hub
   mcp_page: parseAsInteger.withDefault(1),
   mcp_search: parseAsString,
-  mcp_cat: parseAsString // category filter
+  mcp_cat: parseAsString, // category filter
+  // Skill Hub — tab switcher + tool filters
+  skill_tab: parseAsString, // 'sites' | 'tools'
+  skill_tool_page: parseAsInteger.withDefault(1),
+  skill_tool_search: parseAsString,
+  skill_tool_cat: parseAsString // tool category filter
   // advanced filter
   // filters: getFiltersStateParser().withDefault([]),
   // joinOperator: parseAsStringEnum(['and', 'or']).withDefault('and')

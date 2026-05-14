@@ -4,7 +4,10 @@ export type {
   SiteRegion,
   SiteStatus,
   CreateSitePayload,
-  UpdateSitePayload
+  UpdateSitePayload,
+  SkillTool,
+  CreateSkillToolPayload,
+  UpdateSkillToolPayload
 } from '@/constants/mock-api-skills';
 
 export type SiteFilters = {
@@ -29,4 +32,23 @@ export type SiteStats = {
   rejected: number;
   byPlatform: Record<string, number>;
   byRegion: Record<string, number>;
+};
+
+export type SkillToolFilters = {
+  page?: number;
+  limit?: number;
+  search?: string;
+  category?: string;
+  status?: string;
+};
+
+export type SkillToolsResponse = {
+  items: import('@/constants/mock-api-skills').SkillTool[];
+  total_items: number;
+};
+
+export type SkillToolStats = {
+  total: number;
+  featured: number;
+  byCategory: Record<string, number>;
 };

@@ -1,6 +1,13 @@
 import { queryOptions } from '@tanstack/react-query';
-import { getSites, getSiteById, getFeaturedSites, getSiteStats } from './service';
-import type { Site, SiteFilters } from './types';
+import {
+  getSites,
+  getSiteById,
+  getFeaturedSites,
+  getSiteStats,
+  getSkillTools,
+  getSkillToolStats
+} from './service';
+import type { Site, SiteFilters, SkillToolFilters } from './types';
 
 export type { Site };
 
@@ -51,3 +58,25 @@ export const siteStatsOptions = () =>
 
 // alias
 export const skillStatsOptions = siteStatsOptions;
+
+// ── Skill Tools ──────────────────────────────────────────────────────────────
+
+export const skillToolKeys = {
+  all: ['skill-tools'] as const,
+  list: (filters: SkillToolFilters) => [...skillToolKeys.all, 'list', filters] as const,
+  stats: () => [...skillToolKeys.all, 'stats'] as const
+};
+
+export const skillToolsQueryOptions = (filters: SkillToolFilters) =>
+  queryOptions({
+    queryKey: skillToolKeys.list(filters),
+    queryFn: () => getSkillTools(filters),
+    staleTime: 60 * 1000
+  });
+
+export const skillToolStatsOptions = () =>
+  queryOptions({
+    queryKey: skillToolKeys.stats(),
+    queryFn: () => getSkillToolStats(),
+    staleTime: 60 * 1000
+  });

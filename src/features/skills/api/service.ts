@@ -5,7 +5,11 @@ import type {
   SitesResponse,
   SiteStats,
   CreateSitePayload,
-  UpdateSitePayload
+  UpdateSitePayload,
+  SkillTool,
+  SkillToolFilters,
+  SkillToolsResponse,
+  SkillToolStats
 } from './types';
 
 /** 统一 API 基地址：服务端用绝对 URL，客户端用相对 URL */
@@ -97,4 +101,31 @@ export async function reviewSite(
 ): Promise<Site | null> {
   const status = action === 'approve' ? 'published' : 'rejected';
   return updateSite(id, { status, review_note: note });
+}
+
+// ── Skill Tools ──────────────────────────────────────────────────────────────
+
+export async function getSkillTools(filters: SkillToolFilters): Promise<SkillToolsResponse> {
+  const params = new URLSearchParams();
+  if (filters.page) params.set('page', String(filters.page));
+  if (filters.limit) params.set('limit', String(filters.limit));
+  if (filters.search) params.set('search', filters.search);
+  if (filters.category && filters.category !== 'all') params.set('category', filters.category);
+  if (filters.status) params.set('status', filters.status);
+
+  const data = await safeFetch<SkillToolsResponse>(`${apiBase()}/skill-tools?${params}`);
+  if (!data) return { items: [], total_items: 0 };
+  return data;
+}
+
+export async function getSkillToolStats(): Promise<SkillToolStats> {
+  const data = await safeFetch<SkillToolStats>(`${apiBase()}/skill-tools?action=stats`);
+  if (!data) return { total: 0, featured: 0, byCategory: {} };
+  return data;
+}
+
+export async function getFeaturedSkillTools(): Promise<SkillTool[]> {
+  const data = await safeFetch<SkillTool[]>(`${apiBase()}/skill-tools?action=featured`);
+  if (!data) return [];
+  return data;
 }
