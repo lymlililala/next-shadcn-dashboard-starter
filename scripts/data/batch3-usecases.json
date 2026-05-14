@@ -1,0 +1,56 @@
+[
+  {
+    "title": "用 Perplexity AI 做竞品调研：30分钟出一份完整竞品分析报告",
+    "description": "传统竞品调研需要翻阅大量网页、整理对比表格，耗时3-5小时。本文介绍用 Perplexity AI 的 Deep Research 功能，配合结构化 Prompt，30分钟内生成带引用的完整竞品分析报告，适合产品经理、市场人员和创业者。",
+    "tools": ["Perplexity AI", "Notion", "Google Sheets"],
+    "industry": "productivity",
+    "difficulty": 1,
+    "estimated_time": "30分钟",
+    "steps": [
+      "在 Perplexity Pro 中开启 Deep Research 模式",
+      "输入结构化竞品调研 Prompt：「对比分析 [你的产品] 与 [竞品A]、[竞品B]，维度包括：功能对比、定价策略、目标用户、用户评价（来源Reddit/G2/Trustpilot）、近6个月重大更新」",
+      "等待 Deep Research 自动执行15-20次搜索（约10分钟）",
+      "审阅初稿，对每个关键数据点验证引用来源",
+      "追问深化：「用户最常提到的 [竞品名] 的缺点是什么？有哪些具体案例？」",
+      "将报告复制到 Notion，用模板格式化为标准竞品分析文档"
+    ],
+    "tags": ["竞品调研", "Perplexity AI", "产品经理", "市场分析", "Deep Research"],
+    "is_featured": true
+  },
+  {
+    "title": "用 Claude + 向量数据库搭建企业私有知识库：员工问任何问题都能秒回",
+    "description": "企业文档分散在 Confluence、飞书、本地文件夹，新员工上手慢、老员工找文档费时。本方案介绍用 Claude API + Chroma 向量数据库 + 简单 Python 脚本搭建私有知识库问答系统，无需专业工程师，4小时内可完成部署。",
+    "tools": ["Claude API", "Chroma", "Python", "LangChain"],
+    "industry": "engineering",
+    "difficulty": 2,
+    "estimated_time": "4小时",
+    "steps": [
+      "整理企业文档：从 Confluence/飞书导出 PDF/Markdown 文件",
+      "安装依赖：pip install chromadb langchain anthropic",
+      "编写文档加载脚本：读取文件、切分成 500-1000 字的 chunk、生成向量并存入 Chroma",
+      "创建问答接口：用户输入问题 → 向量搜索返回Top5相关文档 → 拼接为 Claude 的 context → 生成回答",
+      "添加引用来源：要求 Claude 在回答末尾标注「来源：[文档名称]」",
+      "部署到内部服务器或飞书机器人，员工通过对话界面直接使用"
+    ],
+    "tags": ["私有知识库", "RAG", "Claude API", "企业AI", "向量数据库"],
+    "is_featured": true
+  },
+  {
+    "title": "用 Gemini 分析会议录像：自动生成会议纪要、行动项和跟进邮件",
+    "description": "每次会议后整理纪要要花30-60分钟，还容易漏掉重要决定。Gemini 2.0 支持直接上传视频（最长1小时），一键提取会议纪要、决议事项和行动清单，再自动起草跟进邮件，整个流程5分钟完成。",
+    "tools": ["Gemini 2.0", "Google Docs", "Gmail"],
+    "industry": "productivity",
+    "difficulty": 1,
+    "estimated_time": "5分钟/次会议",
+    "steps": [
+      "录制会议视频（Zoom/腾讯会议导出 MP4，或直接使用 Google Meet 录制）",
+      "打开 gemini.google.com，上传会议录像文件（或 Google Drive 链接）",
+      "使用标准化 Prompt：「这是一段会议录像，请：1）生成结构化会议纪要（参会人/讨论主题/关键决策/遗留问题）2）列出所有行动项（负责人/截止日期/具体任务）3）标注每个行动项的视频时间戳」",
+      "等待 Gemini 分析（约2-3分钟，取决于视频长度）",
+      "追问：「根据以上会议内容，帮我起草一封发给全体参会人的跟进邮件，包含会议总结和行动项提醒」",
+      "将纪要复制到 Google Docs 归档，邮件发送到 Gmail"
+    ],
+    "tags": ["会议纪要", "Gemini 2.0", "办公效率", "视频分析", "自动化"],
+    "is_featured": false
+  }
+]

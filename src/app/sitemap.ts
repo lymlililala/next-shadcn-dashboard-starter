@@ -220,6 +220,50 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.87
     },
+    // Tutorials 详情页 — 新增（2026-05-14）
+    {
+      url: `${BASE_URL}/tutorials/gemini-2-complete-guide-2026`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.93
+    },
+    {
+      url: `${BASE_URL}/tutorials/perplexity-ai-complete-guide-tips-2026`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.92
+    },
+    {
+      url: `${BASE_URL}/tutorials/china-ai-models-comparison-2026-kimi-doubao-qwen-deepseek`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.93
+    },
+    {
+      url: `${BASE_URL}/tutorials/vector-database-comparison-pinecone-weaviate-chroma-2026`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9
+    },
+    // News 详情页 — 新增（2026-05-14）
+    {
+      url: `${BASE_URL}/news/gpt-5-release-date-features-2026-analysis`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.94
+    },
+    {
+      url: `${BASE_URL}/news/ai-agent-funding-landscape-2026-q2`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.91
+    },
+    {
+      url: `${BASE_URL}/news/openai-o3-o4-mini-benchmark-analysis-2026`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9
+    },
     // 通用页面
     {
       url: `${BASE_URL}/about`,
