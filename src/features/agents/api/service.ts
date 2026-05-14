@@ -38,6 +38,7 @@ export async function getAgents(filters: AgentFilters): Promise<AgentsResponse> 
     params.set('agent_type', filters.agent_type);
   if (filters.open_source && filters.open_source !== 'all')
     params.set('open_source', filters.open_source);
+  if (filters.url_group) params.set('url_group', filters.url_group);
   if (filters.status) params.set('status', filters.status);
   if (filters.sort) params.set('sort', filters.sort);
 

@@ -16,11 +16,11 @@ const TYPE_TABS = [
   { value: 'proactive', label: '🔮 主动感知' }
 ];
 
-const OSS_OPTIONS = [
-  { value: 'all', label: '全部开源状态' },
-  { value: 'open', label: '✅ 开源' },
-  { value: 'closed', label: '🔒 闭源' },
-  { value: 'partial', label: '⚡ 部分开源' }
+/** 应用 / 开源 来源分类 */
+const SOURCE_TABS = [
+  { value: 'all', label: '全部' },
+  { value: 'app', label: '🚀 应用产品' },
+  { value: 'github', label: '🐙 开源项目' }
 ];
 
 export function AgentFilters() {
@@ -28,13 +28,13 @@ export function AgentFilters() {
     {
       agent_search: parseAsString.withDefault(''),
       agent_type: parseAsString.withDefault('all'),
-      agent_open_source: parseAsString.withDefault('all')
+      agent_source: parseAsString.withDefault('all')
     },
     { shallow: true }
   );
 
   const hasActive =
-    params.agent_search !== '' || params.agent_type !== 'all' || params.agent_open_source !== 'all';
+    params.agent_search !== '' || params.agent_type !== 'all' || params.agent_source !== 'all';
 
   return (
     <div className='space-y-3'>
@@ -57,8 +57,9 @@ export function AgentFilters() {
         )}
       </div>
 
-      {/* Type tabs + OSS select */}
-      <div className='flex flex-wrap items-center gap-2'>
+      {/* Type tabs + Source tabs */}
+      <div className='flex flex-wrap items-center justify-between gap-2'>
+        {/* 功能分类 */}
         <div className='flex flex-wrap gap-1.5'>
           {TYPE_TABS.map((tab) => (
             <button
@@ -76,18 +77,24 @@ export function AgentFilters() {
           ))}
         </div>
 
-        <div className='ml-auto flex items-center gap-2'>
-          <select
-            value={params.agent_open_source}
-            onChange={(e) => setParams({ ...params, agent_open_source: e.target.value })}
-            className='h-7 rounded-md border bg-background px-2 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-ring'
-          >
-            {OSS_OPTIONS.map((o) => (
-              <option key={o.value} value={o.value}>
-                {o.label}
-              </option>
+        {/* 来源分类 + 重置 */}
+        <div className='flex items-center gap-2'>
+          <div className='flex gap-1'>
+            {SOURCE_TABS.map((tab) => (
+              <button
+                key={tab.value}
+                onClick={() => setParams({ ...params, agent_source: tab.value })}
+                className={cn(
+                  'rounded-full border px-3 py-1 text-xs font-medium transition-all duration-150',
+                  params.agent_source === tab.value
+                    ? 'bg-secondary text-secondary-foreground border-secondary shadow-sm'
+                    : 'bg-background text-muted-foreground hover:bg-accent hover:text-foreground'
+                )}
+              >
+                {tab.label}
+              </button>
             ))}
-          </select>
+          </div>
 
           {hasActive && (
             <Button
@@ -95,7 +102,7 @@ export function AgentFilters() {
               size='sm'
               className='h-7 gap-1 px-2 text-xs text-muted-foreground'
               onClick={() =>
-                setParams({ agent_search: '', agent_type: 'all', agent_open_source: 'all' })
+                setParams({ agent_search: '', agent_type: 'all', agent_source: 'all' })
               }
             >
               <Icons.close className='h-3 w-3' />

@@ -12,15 +12,18 @@ export default function AgentListingPage() {
   const page = searchParamsCache.get('agent_page') ?? 1;
   const search = searchParamsCache.get('agent_search') ?? '';
   const agentType = searchParamsCache.get('agent_type') ?? 'all';
-  const openSource = searchParamsCache.get('agent_open_source') ?? 'all';
+  const agentSource = searchParamsCache.get('agent_source') ?? 'all';
+
+  // agent_source → url_group
+  const urlGroup = agentSource === 'app' ? '1' : agentSource === 'github' ? '2' : undefined;
 
   const filters = {
     page,
-    limit: 12,
+    limit: 24,
     status: 'published',
     ...(search && { search }),
     ...(agentType !== 'all' && { agent_type: agentType }),
-    ...(openSource !== 'all' && { open_source: openSource })
+    ...(urlGroup && { url_group: urlGroup })
   };
 
   const queryClient = getQueryClient();

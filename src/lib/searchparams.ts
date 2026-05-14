@@ -23,7 +23,7 @@ export const searchParams = {
   agent_page: parseAsInteger.withDefault(1),
   agent_search: parseAsString,
   agent_type: parseAsString,
-  agent_open_source: parseAsString
+  agent_source: parseAsString // 'all' | 'app' | 'github'
   // advanced filter
   // filters: getFiltersStateParser().withDefault([]),
   // joinOperator: parseAsStringEnum(['and', 'or']).withDefault('and')

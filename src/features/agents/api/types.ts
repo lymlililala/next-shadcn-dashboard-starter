@@ -13,6 +13,7 @@ export type AgentFilters = {
   search?: string;
   agent_type?: string;
   open_source?: string;
+  url_group?: string; // '1'=应用产品 '2'=开源项目 '3'=内测
   status?: string;
   sort?: string;
 };

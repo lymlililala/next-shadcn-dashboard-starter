@@ -38,6 +38,7 @@ export async function GET(request: NextRequest) {
   const search = searchParams.get('search') ?? undefined;
   const agent_type = searchParams.get('agent_type') ?? undefined;
   const open_source = searchParams.get('open_source') ?? undefined;
+  const url_group = searchParams.get('url_group') ?? undefined;
   const status = searchParams.get('status') ?? 'published';
   const sort = searchParams.get('sort') ?? undefined;
 
@@ -46,6 +47,7 @@ export async function GET(request: NextRequest) {
   if (status && status !== 'all') query = query.eq('status', status);
   if (agent_type && agent_type !== 'all') query = query.eq('agent_type', agent_type);
   if (open_source && open_source !== 'all') query = query.eq('open_source', open_source);
+  if (url_group) query = query.eq('url_group', Number(url_group));
   if (search) query = query.or(`name.ilike.%${search}%,description.ilike.%${search}%`);
 
   if (sort) {
