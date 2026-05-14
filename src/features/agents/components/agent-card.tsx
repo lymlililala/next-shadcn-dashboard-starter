@@ -99,9 +99,23 @@ export const OPEN_SOURCE_CONFIG: Record<AgentOpenSource, { label: string; color:
   }
 };
 
+const AGENT_TYPE_FALLBACK: (typeof AGENT_TYPE_CONFIG)[AgentType] = {
+  label: '其他',
+  icon: Icons.sparkles,
+  color: 'text-muted-foreground',
+  bg: 'bg-muted/30',
+  border: 'border-border',
+  gradient: 'from-muted/20 to-transparent'
+};
+
+const OPEN_SOURCE_FALLBACK: (typeof OPEN_SOURCE_CONFIG)[AgentOpenSource] = {
+  label: '未知',
+  color: 'text-muted-foreground bg-muted/30 border-border'
+};
+
 export function AgentCard({ agent }: { agent: Agent }) {
-  const type = AGENT_TYPE_CONFIG[agent.agent_type];
-  const oss = OPEN_SOURCE_CONFIG[agent.open_source];
+  const type = AGENT_TYPE_CONFIG[agent.agent_type] ?? AGENT_TYPE_FALLBACK;
+  const oss = OPEN_SOURCE_CONFIG[agent.open_source] ?? OPEN_SOURCE_FALLBACK;
   const TypeIcon = type.icon;
   const isExternal = agent.url !== '#';
   const isGithub = agent.url.includes('github.com');
