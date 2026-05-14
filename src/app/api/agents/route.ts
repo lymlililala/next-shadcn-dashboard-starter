@@ -9,12 +9,15 @@ export async function GET(request: NextRequest) {
     const { data, error } = await supabaseAdmin.from('agents').select('*');
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
     const all = data ?? [];
-    const total = all.length;
-    const featured = all.filter((a) => a.is_featured).length;
+    // total / featured / openCount 只统计已发布的，与前端展示保持一致
+    const published = all.filter((a) => a.status === 'published');
+    const total = published.length;
+    const featured = published.filter((a) => a.is_featured).length;
+    const openCount = published.filter((a) => a.open_source === 'open').length;
+    // pending / rejected 用于后台管理，统计全量
     const pending = all.filter((a) => a.status === 'pending').length;
     const rejected = all.filter((a) => a.status === 'rejected').length;
-    const openCount = all.filter((a) => a.open_source === 'open').length;
-    const byType = all.reduce((acc: Record<string, number>, a) => {
+    const byType = published.reduce((acc: Record<string, number>, a) => {
       acc[a.agent_type] = (acc[a.agent_type] ?? 0) + 1;
       return acc;
     }, {});
