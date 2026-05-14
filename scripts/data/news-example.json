@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "example-news-article-1",
+    "title": "Example News Article 1",
+    "summary": "This is an example news article for testing the upload script.",
+    "source_url": "https://example.com/article-1",
+    "source_name": "Example Source",
+    "category": "工具",
+    "tags": ["example", "test"],
+    "status": "published",
+    "is_featured": false,
+    "published_at": "2026-05-15T08:00:00Z"
+  },
+  {
+    "slug": "example-news-article-2",
+    "title": "Example News Article 2",
+    "summary": "This is another example news article.",
+    "source_url": "https://example.com/article-2",
+    "source_name": "Example Source",
+    "category": "模型",
+    "tags": ["example", "ai"],
+    "status": "published",
+    "is_featured": true,
+    "published_at": "2026-05-14T09:00:00Z"
+  }
+]

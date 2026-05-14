@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "example-tutorial-1",
+    "title": "Example Tutorial 1",
+    "subtitle": "A complete guide to getting started",
+    "summary": "This is an example tutorial article.",
+    "content": "# Example Tutorial\n\nThis is the full content of the tutorial...",
+    "level": "beginner",
+    "category": "hands-on",
+    "tags": ["example", "tutorial"],
+    "estimated_minutes": 15,
+    "related_tools": ["Tool1", "Tool2"],
+    "is_featured": false,
+    "published_at": "2026-05-15T08:00:00Z"
+  },
+  {
+    "slug": "example-tutorial-2",
+    "title": "Example Tutorial 2",
+    "subtitle": "Advanced techniques",
+    "summary": "An advanced example tutorial.",
+    "content": "# Advanced Example\n\nThis is advanced content...",
+    "level": "intermediate",
+    "category": "concept",
+    "tags": ["example", "advanced"],
+    "estimated_minutes": 25,
+    "related_tools": ["Tool3"],
+    "is_featured": true,
+    "published_at": "2026-05-14T09:00:00Z"
+  }
+]

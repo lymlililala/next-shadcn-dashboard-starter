@@ -1,0 +1,33 @@
+[
+  {
+    "title": "Example Use Case 1",
+    "description": "This is an example use case description.",
+    "tools": ["Tool1", "Tool2"],
+    "industry": "productivity",
+    "difficulty": 2,
+    "estimated_time": "1 hour setup, 30 minutes daily",
+    "steps": [
+      "Step 1: Setup",
+      "Step 2: Configure",
+      "Step 3: Deploy"
+    ],
+    "tags": ["example", "automation"],
+    "is_featured": false
+  },
+  {
+    "title": "Example Use Case 2",
+    "description": "Another example use case for demonstration.",
+    "tools": ["Tool3", "Tool4"],
+    "industry": "engineering",
+    "difficulty": 3,
+    "estimated_time": "2 hours setup",
+    "steps": [
+      "Initialize",
+      "Build",
+      "Deploy",
+      "Monitor"
+    ],
+    "tags": ["example", "advanced"],
+    "is_featured": true
+  }
+]
