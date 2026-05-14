@@ -30,23 +30,6 @@ function batchPrefetch(urls: string[]) {
 
 const PAGE_SIZE = 24;
 
-/**
- * 最后一张卡的 col-span 静态映射（key = `${total%2}_${total%3}`）
- * 让最后一行不留空白：余0铺满无需处理，余1孤儿撑满整行，余2(lg)最后一张占2列
- */
-const LAST_CARD_SPAN: Record<string, string> = {
-  '0_0': '', // sm余0 lg余0：两个断点都铺满
-  '0_1': 'lg:col-span-3', // sm铺满，lg孤儿
-  '0_2': 'lg:col-span-2', // sm铺满，lg最后行差1格
-  '1_0': 'sm:col-span-2', // sm孤儿，lg铺满
-  '1_1': 'sm:col-span-2 lg:col-span-3', // sm孤儿 + lg孤儿（如1张）
-  '1_2': 'sm:col-span-2 lg:col-span-2' // sm孤儿 + lg最后行差1格（如5张）
-};
-
-function lastCardClass(total: number): string {
-  return LAST_CARD_SPAN[`${total % 2}_${total % 3}`] ?? '';
-}
-
 export function AgentGrid() {
   const [params, setParams] = useQueryStates(
     {
@@ -115,15 +98,9 @@ export function AgentGrid() {
             <div className='h-px flex-1 bg-border' />
           </div>
           <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
-            {appAgents.map((agent, i) => {
-              const isLast = i === appAgents.length - 1;
-              const spanClass = isLast ? lastCardClass(appAgents.length) : '';
-              return (
-                <div key={agent.id} className={spanClass}>
-                  <AgentCard agent={agent} />
-                </div>
-              );
-            })}
+            {appAgents.map((agent) => (
+              <AgentCard key={agent.id} agent={agent} />
+            ))}
           </div>
         </div>
       )}
@@ -140,15 +117,9 @@ export function AgentGrid() {
             <div className='h-px flex-1 bg-border' />
           </div>
           <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
-            {githubAgents.map((agent, i) => {
-              const isLast = i === githubAgents.length - 1;
-              const spanClass = isLast ? lastCardClass(githubAgents.length) : '';
-              return (
-                <div key={agent.id} className={spanClass}>
-                  <AgentCard agent={agent} />
-                </div>
-              );
-            })}
+            {githubAgents.map((agent) => (
+              <AgentCard key={agent.id} agent={agent} />
+            ))}
           </div>
         </div>
       )}
@@ -165,15 +136,9 @@ export function AgentGrid() {
             <div className='h-px flex-1 bg-border' />
           </div>
           <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
-            {innerAgents.map((agent, i) => {
-              const isLast = i === innerAgents.length - 1;
-              const spanClass = isLast ? lastCardClass(innerAgents.length) : '';
-              return (
-                <div key={agent.id} className={spanClass}>
-                  <AgentCard agent={agent} />
-                </div>
-              );
-            })}
+            {innerAgents.map((agent) => (
+              <AgentCard key={agent.id} agent={agent} />
+            ))}
           </div>
         </div>
       )}
