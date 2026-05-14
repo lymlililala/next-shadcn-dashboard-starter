@@ -57,18 +57,35 @@ export function AgentFilters() {
         )}
       </div>
 
-      {/* Type tabs + Source tabs */}
-      <div className='flex flex-wrap items-center justify-between gap-2'>
-        {/* 功能分类 */}
-        <div className='flex flex-wrap gap-1.5'>
-          {TYPE_TABS.map((tab) => (
+      {/* 第一行：功能分类 */}
+      <div className='flex flex-wrap gap-1.5'>
+        {TYPE_TABS.map((tab) => (
+          <button
+            key={tab.value}
+            onClick={() => setParams({ ...params, agent_type: tab.value })}
+            className={cn(
+              'rounded-full border px-3 py-1 text-xs font-medium transition-all duration-150',
+              params.agent_type === tab.value
+                ? 'bg-primary text-primary-foreground border-primary shadow-sm'
+                : 'bg-background text-muted-foreground hover:bg-accent hover:text-foreground'
+            )}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* 第二行：来源分类 + 重置 */}
+      <div className='flex items-center gap-2'>
+        <div className='flex gap-1.5'>
+          {SOURCE_TABS.map((tab) => (
             <button
               key={tab.value}
-              onClick={() => setParams({ ...params, agent_type: tab.value })}
+              onClick={() => setParams({ ...params, agent_source: tab.value })}
               className={cn(
                 'rounded-full border px-3 py-1 text-xs font-medium transition-all duration-150',
-                params.agent_type === tab.value
-                  ? 'bg-primary text-primary-foreground border-primary shadow-sm'
+                params.agent_source === tab.value
+                  ? 'bg-secondary text-secondary-foreground border-secondary shadow-sm'
                   : 'bg-background text-muted-foreground hover:bg-accent hover:text-foreground'
               )}
             >
@@ -77,39 +94,17 @@ export function AgentFilters() {
           ))}
         </div>
 
-        {/* 来源分类 + 重置 */}
-        <div className='flex items-center gap-2'>
-          <div className='flex gap-1'>
-            {SOURCE_TABS.map((tab) => (
-              <button
-                key={tab.value}
-                onClick={() => setParams({ ...params, agent_source: tab.value })}
-                className={cn(
-                  'rounded-full border px-3 py-1 text-xs font-medium transition-all duration-150',
-                  params.agent_source === tab.value
-                    ? 'bg-secondary text-secondary-foreground border-secondary shadow-sm'
-                    : 'bg-background text-muted-foreground hover:bg-accent hover:text-foreground'
-                )}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-
-          {hasActive && (
-            <Button
-              variant='ghost'
-              size='sm'
-              className='h-7 gap-1 px-2 text-xs text-muted-foreground'
-              onClick={() =>
-                setParams({ agent_search: '', agent_type: 'all', agent_source: 'all' })
-              }
-            >
-              <Icons.close className='h-3 w-3' />
-              重置
-            </Button>
-          )}
-        </div>
+        {hasActive && (
+          <Button
+            variant='ghost'
+            size='sm'
+            className='h-7 gap-1 px-2 text-xs text-muted-foreground'
+            onClick={() => setParams({ agent_search: '', agent_type: 'all', agent_source: 'all' })}
+          >
+            <Icons.close className='h-3 w-3' />
+            重置
+          </Button>
+        )}
       </div>
     </div>
   );
