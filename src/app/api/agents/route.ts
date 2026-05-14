@@ -56,9 +56,16 @@ export async function GET(request: NextRequest) {
       /* ignore */
     }
   } else {
-    // 先按类型分组：应用产品(非github非#) > 开源项目(github) > 内测(#)
-    // 再按精选和时间排序
+    // 先按 url_group 分组（1=应用产品 2=开源项目 3=内测），再按精选和时间排序
+    // url_group 是数据库生成列，需先在 Supabase SQL Editor 执行：
+    //   ALTER TABLE agents ADD COLUMN IF NOT EXISTS url_group integer
+    //     GENERATED ALWAYS AS (
+    //       CASE WHEN url = '#' THEN 3
+    //            WHEN url LIKE '%github.com%' THEN 2
+    //            ELSE 1 END
+    //     ) STORED;
     query = query
+      .order('url_group', { ascending: true })
       .order('is_featured', { ascending: false })
       .order('created_at', { ascending: false });
   }

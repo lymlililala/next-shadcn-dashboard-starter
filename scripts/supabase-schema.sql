@@ -218,3 +218,17 @@ alter table ai_models add column if not exists last_checked_at timestamptz defau
 
 -- 新增 status 值：'offline'（链接失效，暂时下架）
 -- agents / skills 的 status 允许值：published | pending | rejected | offline
+
+-- ============================================================
+-- PATCH: url_group 生成列（用于前端分组排序）
+-- 1 = 应用产品（非 GitHub、非内测）
+-- 2 = 开源项目（GitHub）
+-- 3 = 内测中（url = '#'）
+-- 在 Supabase SQL Editor 中执行此语句：
+-- ============================================================
+ALTER TABLE agents ADD COLUMN IF NOT EXISTS url_group integer
+  GENERATED ALWAYS AS (
+    CASE WHEN url = '#' THEN 3
+         WHEN url LIKE '%github.com%' THEN 2
+         ELSE 1 END
+  ) STORED;
