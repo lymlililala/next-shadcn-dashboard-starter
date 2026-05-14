@@ -23,7 +23,11 @@ export const searchParams = {
   agent_page: parseAsInteger.withDefault(1),
   agent_search: parseAsString,
   agent_type: parseAsString,
-  agent_source: parseAsString // 'all' | 'app' | 'github'
+  agent_source: parseAsString, // 'all' | 'app' | 'github'
+  // MCP Hub
+  mcp_page: parseAsInteger.withDefault(1),
+  mcp_search: parseAsString,
+  mcp_cat: parseAsString // category filter
   // advanced filter
   // filters: getFiltersStateParser().withDefault([]),
   // joinOperator: parseAsStringEnum(['and', 'or']).withDefault('and')
