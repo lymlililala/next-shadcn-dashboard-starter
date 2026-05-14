@@ -6,7 +6,18 @@ export async function GET(request: NextRequest) {
   const action = searchParams.get('action');
 
   if (action === 'stats') {
-    const [totalRes, officialRes, featuredRes, byCatRes] = await Promise.all([
+    const KNOWN_CATEGORIES = [
+      'filesystem',
+      'database',
+      'browser',
+      'devtools',
+      'productivity',
+      'search',
+      'ai'
+    ];
+
+    // 所有 count 查询并发执行，避免 select('*') 被 Supabase 默认 1000 行截断
+    const [totalRes, officialRes, featuredRes, ...catResults] = await Promise.all([
       supabaseAdmin.from('mcp_servers').select('*', { count: 'exact', head: true }),
       supabaseAdmin
         .from('mcp_servers')
@@ -16,16 +27,20 @@ export async function GET(request: NextRequest) {
         .from('mcp_servers')
         .select('*', { count: 'exact', head: true })
         .eq('is_featured', true),
-      supabaseAdmin.from('mcp_servers').select('category')
+      ...KNOWN_CATEGORIES.map((cat) =>
+        supabaseAdmin
+          .from('mcp_servers')
+          .select('*', { count: 'exact', head: true })
+          .eq('category', cat)
+      )
     ]);
 
     if (totalRes.error)
       return NextResponse.json({ error: totalRes.error.message }, { status: 500 });
 
-    const byCategory = (byCatRes.data ?? []).reduce((acc: Record<string, number>, m) => {
-      if (m.category) acc[m.category] = (acc[m.category] ?? 0) + 1;
-      return acc;
-    }, {});
+    const byCategory = Object.fromEntries(
+      KNOWN_CATEGORIES.map((cat, i) => [cat, catResults[i].count ?? 0])
+    );
 
     return NextResponse.json({
       total: totalRes.count ?? 0,
@@ -67,7 +82,8 @@ export async function GET(request: NextRequest) {
   let query = supabaseAdmin.from('mcp_servers').select('*', { count: 'exact' });
 
   if (category && category !== 'all') query = query.eq('category', category);
-  if (is_official !== null) query = query.eq('is_official', is_official === 'true');
+  if (is_official !== null && is_official !== undefined)
+    query = query.eq('is_official', is_official === 'true');
   if (search) query = query.or(`name.ilike.%${search}%,description.ilike.%${search}%`);
 
   query = query.order('is_featured', { ascending: false }).order('stars', { ascending: false });
