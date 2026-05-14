@@ -16,23 +16,11 @@ const CATEGORY_CONFIG: Record<
   McpCategory,
   { label: string; icon: React.ComponentType<{ className?: string }>; color: string; bg: string }
 > = {
-  filesystem: {
-    label: '文件系统',
-    icon: Icons.page,
-    color: 'text-blue-600 dark:text-blue-400',
-    bg: 'bg-blue-500/10'
-  },
-  database: {
-    label: '数据库',
+  utility: {
+    label: '通用工具',
     icon: Icons.settings,
-    color: 'text-emerald-600 dark:text-emerald-400',
-    bg: 'bg-emerald-500/10'
-  },
-  browser: {
-    label: '浏览器',
-    icon: Icons.laptop,
-    color: 'text-orange-600 dark:text-orange-400',
-    bg: 'bg-orange-500/10'
+    color: 'text-sky-600 dark:text-sky-400',
+    bg: 'bg-sky-500/10'
   },
   devtools: {
     label: '开发工具',
@@ -46,6 +34,54 @@ const CATEGORY_CONFIG: Record<
     color: 'text-violet-600 dark:text-violet-400',
     bg: 'bg-violet-500/10'
   },
+  data: {
+    label: '数据处理',
+    icon: Icons.trendingUp,
+    color: 'text-cyan-600 dark:text-cyan-400',
+    bg: 'bg-cyan-500/10'
+  },
+  database: {
+    label: '数据库',
+    icon: Icons.page,
+    color: 'text-emerald-600 dark:text-emerald-400',
+    bg: 'bg-emerald-500/10'
+  },
+  cloud: {
+    label: '云服务',
+    icon: Icons.laptop,
+    color: 'text-blue-600 dark:text-blue-400',
+    bg: 'bg-blue-500/10'
+  },
+  automation: {
+    label: '自动化',
+    icon: Icons.sparkles,
+    color: 'text-indigo-600 dark:text-indigo-400',
+    bg: 'bg-indigo-500/10'
+  },
+  browser: {
+    label: '浏览器',
+    icon: Icons.laptop,
+    color: 'text-orange-600 dark:text-orange-400',
+    bg: 'bg-orange-500/10'
+  },
+  monitoring: {
+    label: '监控运维',
+    icon: Icons.trendingUp,
+    color: 'text-red-600 dark:text-red-400',
+    bg: 'bg-red-500/10'
+  },
+  location: {
+    label: '地理位置',
+    icon: Icons.search,
+    color: 'text-green-600 dark:text-green-400',
+    bg: 'bg-green-500/10'
+  },
+  filesystem: {
+    label: '文件系统',
+    icon: Icons.page,
+    color: 'text-blue-600 dark:text-blue-400',
+    bg: 'bg-blue-500/10'
+  },
   search: {
     label: '搜索',
     icon: Icons.search,
@@ -57,6 +93,30 @@ const CATEGORY_CONFIG: Record<
     icon: Icons.sparkles,
     color: 'text-pink-600 dark:text-pink-400',
     bg: 'bg-pink-500/10'
+  },
+  knowledge: {
+    label: '知识管理',
+    icon: Icons.post,
+    color: 'text-teal-600 dark:text-teal-400',
+    bg: 'bg-teal-500/10'
+  },
+  finance: {
+    label: '金融',
+    icon: Icons.trendingUp,
+    color: 'text-yellow-600 dark:text-yellow-400',
+    bg: 'bg-yellow-500/10'
+  },
+  memory: {
+    label: '记忆存储',
+    icon: Icons.settings,
+    color: 'text-purple-600 dark:text-purple-400',
+    bg: 'bg-purple-500/10'
+  },
+  reasoning: {
+    label: '推理',
+    icon: Icons.sparkles,
+    color: 'text-rose-600 dark:text-rose-400',
+    bg: 'bg-rose-500/10'
   }
 };
 

@@ -8,13 +8,19 @@ import { cn } from '@/lib/utils';
 
 const CATEGORY_TABS = [
   { value: 'all', label: '全部' },
-  { value: 'filesystem', label: '📁 文件系统' },
-  { value: 'database', label: '🗄️ 数据库' },
-  { value: 'browser', label: '🌐 浏览器' },
-  { value: 'devtools', label: '🔧 开发工具' },
+  { value: 'utility', label: '🔧 通用工具' },
+  { value: 'devtools', label: '💻 开发工具' },
   { value: 'productivity', label: '⚡ 效率工具' },
+  { value: 'data', label: '📊 数据处理' },
+  { value: 'database', label: '🗄️ 数据库' },
+  { value: 'cloud', label: '☁️ 云服务' },
+  { value: 'automation', label: '🤖 自动化' },
+  { value: 'browser', label: '🌐 浏览器' },
+  { value: 'monitoring', label: '📡 监控运维' },
+  { value: 'location', label: '📍 地理位置' },
+  { value: 'filesystem', label: '📁 文件系统' },
   { value: 'search', label: '🔍 搜索' },
-  { value: 'ai', label: '🤖 AI 模型' }
+  { value: 'ai', label: '✨ AI 模型' }
 ];
 
 export function McpFilters() {

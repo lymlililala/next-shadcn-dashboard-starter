@@ -7,13 +7,23 @@ export async function GET(request: NextRequest) {
 
   if (action === 'stats') {
     const KNOWN_CATEGORIES = [
-      'filesystem',
-      'database',
-      'browser',
+      'utility',
       'devtools',
       'productivity',
+      'data',
+      'database',
+      'cloud',
+      'automation',
+      'browser',
+      'monitoring',
+      'location',
+      'filesystem',
       'search',
-      'ai'
+      'ai',
+      'knowledge',
+      'finance',
+      'memory',
+      'reasoning'
     ];
 
     // 所有 count 查询并发执行，避免 select('*') 被 Supabase 默认 1000 行截断
@@ -47,6 +57,33 @@ export async function GET(request: NextRequest) {
       official: officialRes.count ?? 0,
       featured: featuredRes.count ?? 0,
       byCategory
+    });
+  }
+
+  // 调试：分页聚合查询数据库中所有 category 值及数量（绕过 1000 行限制）
+  if (action === 'categories') {
+    const PAGE = 1000;
+    const counts: Record<string, number> = {};
+    let offset = 0;
+    let total = Infinity;
+    while (offset < total) {
+      const { data, count, error } = await supabaseAdmin
+        .from('mcp_servers')
+        .select('category', { count: 'exact' })
+        .range(offset, offset + PAGE - 1);
+      if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+      total = count ?? 0;
+      for (const row of data ?? []) {
+        const key = (row.category as string | null) ?? '__null__';
+        counts[key] = (counts[key] ?? 0) + 1;
+      }
+      offset += PAGE;
+    }
+    return NextResponse.json({
+      total,
+      distribution: Object.entries(counts)
+        .sort((a, b) => b[1] - a[1])
+        .map(([cat, n]) => ({ category: cat, count: n }))
     });
   }
 

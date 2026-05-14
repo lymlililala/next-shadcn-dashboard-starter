@@ -6,13 +6,23 @@ import { matchSorter } from 'match-sorter';
 import { delay } from './mock-api';
 
 export type McpCategory =
-  | 'filesystem' // 文件系统
-  | 'database' // 数据库
-  | 'browser' // 浏览器/网页
+  | 'utility' // 通用工具
   | 'devtools' // 开发工具
   | 'productivity' // 效率工具
-  | 'search' // 数据/搜索
-  | 'ai'; // AI 模型
+  | 'data' // 数据处理
+  | 'database' // 数据库
+  | 'cloud' // 云服务
+  | 'automation' // 自动化
+  | 'browser' // 浏览器/网页
+  | 'monitoring' // 监控运维
+  | 'location' // 地理位置
+  | 'filesystem' // 文件系统
+  | 'search' // 搜索
+  | 'ai' // AI 模型
+  | 'knowledge' // 知识管理
+  | 'finance' // 金融
+  | 'memory' // 记忆/存储
+  | 'reasoning'; // 推理
 
 export type McpServer = {
   id: number;
