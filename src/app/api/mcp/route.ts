@@ -6,17 +6,33 @@ export async function GET(request: NextRequest) {
   const action = searchParams.get('action');
 
   if (action === 'stats') {
-    const { data, error } = await supabaseAdmin.from('mcp_servers').select('*');
-    if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-    const all = data ?? [];
-    const total = all.length;
-    const official = all.filter((m) => m.is_official).length;
-    const featured = all.filter((m) => m.is_featured).length;
-    const byCategory = all.reduce((acc: Record<string, number>, m) => {
-      acc[m.category] = (acc[m.category] ?? 0) + 1;
+    const [totalRes, officialRes, featuredRes, byCatRes] = await Promise.all([
+      supabaseAdmin.from('mcp_servers').select('*', { count: 'exact', head: true }),
+      supabaseAdmin
+        .from('mcp_servers')
+        .select('*', { count: 'exact', head: true })
+        .eq('is_official', true),
+      supabaseAdmin
+        .from('mcp_servers')
+        .select('*', { count: 'exact', head: true })
+        .eq('is_featured', true),
+      supabaseAdmin.from('mcp_servers').select('category')
+    ]);
+
+    if (totalRes.error)
+      return NextResponse.json({ error: totalRes.error.message }, { status: 500 });
+
+    const byCategory = (byCatRes.data ?? []).reduce((acc: Record<string, number>, m) => {
+      if (m.category) acc[m.category] = (acc[m.category] ?? 0) + 1;
       return acc;
     }, {});
-    return NextResponse.json({ total, official, featured, byCategory });
+
+    return NextResponse.json({
+      total: totalRes.count ?? 0,
+      official: officialRes.count ?? 0,
+      featured: featuredRes.count ?? 0,
+      byCategory
+    });
   }
 
   if (action === 'featured') {
