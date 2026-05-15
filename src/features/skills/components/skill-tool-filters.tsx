@@ -6,21 +6,18 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
-// 主要分类（按数量降序）
+// OpenClaw Skills 分类
 const CATEGORY_TABS = [
   { value: 'all', label: '全部' },
-  { value: 'Text', label: '📝 文本' },
-  { value: 'Image', label: '🖼️ 图像' },
-  { value: 'Code', label: '💻 代码' },
-  { value: 'Audio', label: '🎵 音频' },
-  { value: 'Video', label: '🎬 视频' },
-  { value: 'Web-Based Tools', label: '🌐 Web 工具' },
-  { value: 'Developer tools', label: '🔧 开发者工具' },
-  { value: 'IDE Extensions', label: '🧩 IDE 插件' },
-  { value: 'Autonomous agents', label: '🤖 自主 Agent' },
-  { value: 'Coding Assistants', label: '⚡ 编程助手' },
-  { value: 'AI-Native IDEs', label: '🚀 AI IDE' },
-  { value: 'Other', label: '📦 其他' }
+  { value: '开发工具', label: '🛠️ 开发工具' },
+  { value: '效率与协作', label: '📋 效率与协作' },
+  { value: '中文平台', label: '🇨🇳 中文平台' },
+  { value: '内容生成', label: '🎨 内容生成' },
+  { value: 'AI Agent', label: '🤖 AI Agent' },
+  { value: '网页与浏览器', label: '🌐 网页与浏览器' },
+  { value: '邮件与通信', label: '📧 邮件与通信' },
+  { value: '安全与审计', label: '🔒 安全与审计' },
+  { value: '工具与运维', label: '🔧 工具与运维' }
 ];
 
 export function SkillToolFilters() {
@@ -39,7 +36,7 @@ export function SkillToolFilters() {
       <div className='relative'>
         <Icons.search className='absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground' />
         <Input
-          placeholder='搜索 AI 工具名称、描述...'
+          placeholder='搜索 Skill 名称、描述...'
           value={params.skill_tool_search}
           onChange={(e) => setParams({ ...params, skill_tool_search: e.target.value || '' })}
           className='h-9 pl-9 pr-8'

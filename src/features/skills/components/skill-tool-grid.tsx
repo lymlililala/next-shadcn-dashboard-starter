@@ -12,24 +12,23 @@ import type { SkillTool } from '../api/types';
 
 const PAGE_SIZE = 24;
 
-// 分类颜色映射
+// OpenClaw Skills 分类颜色映射
 const CATEGORY_STYLE: Record<string, { color: string; bg: string }> = {
-  Text: { color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-500/10' },
-  Image: { color: 'text-pink-600 dark:text-pink-400', bg: 'bg-pink-500/10' },
-  Code: { color: 'text-emerald-600 dark:text-emerald-400', bg: 'bg-emerald-500/10' },
-  Audio: { color: 'text-violet-600 dark:text-violet-400', bg: 'bg-violet-500/10' },
-  Video: { color: 'text-orange-600 dark:text-orange-400', bg: 'bg-orange-500/10' },
-  'Web-Based Tools': { color: 'text-sky-600 dark:text-sky-400', bg: 'bg-sky-500/10' },
-  'Developer tools': { color: 'text-slate-600 dark:text-slate-400', bg: 'bg-slate-500/10' },
-  'IDE Extensions': { color: 'text-cyan-600 dark:text-cyan-400', bg: 'bg-cyan-500/10' },
-  'Autonomous agents': { color: 'text-indigo-600 dark:text-indigo-400', bg: 'bg-indigo-500/10' },
-  'Coding Assistants': { color: 'text-teal-600 dark:text-teal-400', bg: 'bg-teal-500/10' },
-  'AI-Native IDEs': { color: 'text-rose-600 dark:text-rose-400', bg: 'bg-rose-500/10' },
-  Other: { color: 'text-muted-foreground', bg: 'bg-muted/30' }
+  开发工具: { color: 'text-emerald-600 dark:text-emerald-400', bg: 'bg-emerald-500/10' },
+  效率与协作: { color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-500/10' },
+  中文平台: { color: 'text-red-600 dark:text-red-400', bg: 'bg-red-500/10' },
+  内容生成: { color: 'text-pink-600 dark:text-pink-400', bg: 'bg-pink-500/10' },
+  'AI Agent': { color: 'text-indigo-600 dark:text-indigo-400', bg: 'bg-indigo-500/10' },
+  网页与浏览器: { color: 'text-sky-600 dark:text-sky-400', bg: 'bg-sky-500/10' },
+  邮件与通信: { color: 'text-amber-600 dark:text-amber-400', bg: 'bg-amber-500/10' },
+  安全与审计: { color: 'text-orange-600 dark:text-orange-400', bg: 'bg-orange-500/10' },
+  工具与运维: { color: 'text-slate-600 dark:text-slate-400', bg: 'bg-slate-500/10' }
 };
 
+const DEFAULT_STYLE = { color: 'text-muted-foreground', bg: 'bg-muted/30' };
+
 function getStyle(category: string) {
-  return CATEGORY_STYLE[category] ?? CATEGORY_STYLE.Other;
+  return CATEGORY_STYLE[category] ?? DEFAULT_STYLE;
 }
 
 function SkillToolCard({ tool }: { tool: SkillTool }) {
@@ -74,7 +73,7 @@ function SkillToolCard({ tool }: { tool: SkillTool }) {
 
       {tool.source && (
         <div className='flex items-center gap-1 text-[10px] text-muted-foreground/70'>
-          <Icons.github className='h-3 w-3' />
+          <Icons.externalLink className='h-3 w-3' />
           <span className='truncate'>{tool.source}</span>
         </div>
       )}
@@ -129,7 +128,7 @@ export function SkillToolGrid() {
         <div className='mb-3 flex h-12 w-12 items-center justify-center rounded-xl border bg-muted/50'>
           <Icons.search className='h-5 w-5 text-muted-foreground' />
         </div>
-        <p className='text-sm font-medium'>未找到相关 AI 工具</p>
+        <p className='text-sm font-medium'>未找到相关 Skill</p>
         <p className='mt-1 text-xs text-muted-foreground'>尝试调整搜索词或分类筛选</p>
       </div>
     );
@@ -138,7 +137,7 @@ export function SkillToolGrid() {
   return (
     <div className='space-y-6'>
       <p className='text-xs text-muted-foreground'>
-        共 <span className='font-medium text-foreground'>{data.total_items}</span> 个 AI 工具
+        共 <span className='font-medium text-foreground'>{data.total_items}</span> 个 Skill
         {hasFilter && <span>（已过滤）</span>}
       </p>
 

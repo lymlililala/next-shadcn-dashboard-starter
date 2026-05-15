@@ -13,9 +13,9 @@ const TABS = [
   },
   {
     value: 'tools',
-    label: 'AI 工具',
+    label: 'OpenClaw Skills',
     icon: Icons.sparkles,
-    desc: '精选 AI 工具库'
+    desc: 'clawhub.ai 官方 Skill 库'
   }
 ];
 

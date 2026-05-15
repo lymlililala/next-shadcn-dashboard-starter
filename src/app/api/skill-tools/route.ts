@@ -22,18 +22,15 @@ export async function GET(request: NextRequest) {
 
     // 分类统计 — 用 count:exact 分别查，避免 1000 行截断
     const KNOWN_CATEGORIES = [
-      'Text',
-      'Image',
-      'Code',
-      'Audio',
-      'Video',
-      'Web-Based Tools',
-      'Developer tools',
-      'IDE Extensions',
-      'Autonomous agents',
-      'Coding Assistants',
-      'AI-Native IDEs',
-      'Other'
+      '开发工具',
+      '效率与协作',
+      '中文平台',
+      '内容生成',
+      'AI Agent',
+      '网页与浏览器',
+      '邮件与通信',
+      '安全与审计',
+      '工具与运维'
     ];
     const catResults = await Promise.all(
       KNOWN_CATEGORIES.map((cat) =>
