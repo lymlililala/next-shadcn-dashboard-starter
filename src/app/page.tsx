@@ -268,24 +268,24 @@ export default async function HomePage() {
           <div className='flex flex-wrap justify-center gap-3'>
             <Link
               href='/skills'
-              className='inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md'
+              className='inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-md transition-all duration-200 hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0'
             >
-              <Icons.skillsHub className='h-4 w-4' />
+              <Icons.skillsHub className='h-4.5 w-4.5 h-[18px] w-[18px]' />
               浏览 Skills
             </Link>
             <Link
               href='/agents'
-              className='inline-flex items-center gap-2 rounded-xl border bg-card px-5 py-2.5 text-sm font-semibold shadow-sm transition-all hover:bg-accent hover:shadow-md'
+              className='inline-flex items-center gap-2 rounded-xl border border-border/80 bg-card px-5 py-3 text-sm font-semibold shadow-[0_1px_3px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-border hover:bg-accent hover:-translate-y-0.5 hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.08)] active:translate-y-0'
             >
-              <Icons.sparkles className='h-4 w-4' />
+              <Icons.sparkles className='h-[18px] w-[18px]' />
               探索 Agents
             </Link>
             <Link
-              href='/news'
-              className='inline-flex items-center gap-2 rounded-xl border bg-card px-5 py-2.5 text-sm font-semibold shadow-sm transition-all hover:bg-accent hover:shadow-md'
+              href='/mcp'
+              className='inline-flex items-center gap-2 rounded-xl border border-border/80 bg-card px-5 py-3 text-sm font-semibold shadow-[0_1px_3px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-border hover:bg-accent hover:-translate-y-0.5 hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.08)] active:translate-y-0'
             >
-              <Icons.trendingUp className='h-4 w-4' />
-              AI News
+              <Icons.settings className='h-[18px] w-[18px]' />
+              MCP 专区
             </Link>
           </div>
         </div>
@@ -396,23 +396,23 @@ export default async function HomePage() {
           <div className='flex flex-wrap justify-center gap-3'>
             <Link
               href='/tutorials/what-is-ai-agent'
-              className='inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors'
+              className='inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-md transition-all duration-200 hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0'
             >
-              <Icons.post className='h-4 w-4' />
+              <Icons.post className='h-[18px] w-[18px]' />
               新手入门教程
             </Link>
             <Link
               href='/mcp'
-              className='inline-flex items-center gap-2 rounded-xl border bg-card px-5 py-2.5 text-sm font-semibold shadow-sm hover:bg-accent transition-colors'
+              className='inline-flex items-center gap-2 rounded-xl border border-border/80 bg-card px-5 py-3 text-sm font-semibold shadow-[0_1px_3px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-border hover:bg-accent hover:-translate-y-0.5 hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.08)] active:translate-y-0'
             >
-              <Icons.settings className='h-4 w-4' />
+              <Icons.settings className='h-[18px] w-[18px]' />
               MCP 专区
             </Link>
             <Link
               href='/usecases'
-              className='inline-flex items-center gap-2 rounded-xl border bg-card px-5 py-2.5 text-sm font-semibold shadow-sm hover:bg-accent transition-colors'
+              className='inline-flex items-center gap-2 rounded-xl border border-border/80 bg-card px-5 py-3 text-sm font-semibold shadow-[0_1px_3px_0_rgba(0,0,0,0.08),0_1px_2px_0_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-border hover:bg-accent hover:-translate-y-0.5 hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.08)] active:translate-y-0'
             >
-              <Icons.checks className='h-4 w-4' />
+              <Icons.checks className='h-[18px] w-[18px]' />
               场景库
             </Link>
           </div>
