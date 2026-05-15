@@ -178,12 +178,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // Tutorials 详情页 — 新增（2026-05-13）
     {
-      url: `${BASE_URL}/tutorials/n8n-mcp-server-integration-guide-2026`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.9
-    },
-    {
       url: `${BASE_URL}/tutorials/dify-vs-coze-vs-fastgpt-2026-comparison`,
       lastModified: now,
       changeFrequency: 'monthly',
@@ -263,6 +257,38 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.9
+    },
+    // Tutorials 详情页 — 新增（2026-05-15）SEO/GEO 优化
+    {
+      url: `${BASE_URL}/tutorials/n8n-mcp-server-integration-guide-2026`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.93
+    },
+    {
+      url: `${BASE_URL}/tutorials/dify-enterprise-knowledge-base`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.92
+    },
+    {
+      url: `${BASE_URL}/tutorials/rag-knowledge-base-best-practices`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.91
+    },
+    // News 详情页 — 新增（2026-05-15）SEO/GEO 优化
+    {
+      url: `${BASE_URL}/news/mcp-ecosystem-architecture-evolution-2026`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.92
+    },
+    {
+      url: `${BASE_URL}/news/ai-agent-framework-comparison-langgraph-crewai-autogen-2026`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.91
     },
     // 通用页面
     {
