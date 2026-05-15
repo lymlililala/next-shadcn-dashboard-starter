@@ -10,7 +10,6 @@ import {
   skillToolStatsOptions
 } from '../api/queries';
 import { SkillStats, SkillStatsSkeleton } from './skill-stats';
-import { FeaturedSkills, FeaturedSkillsSkeleton } from './featured-skills';
 import { SkillTabContent } from './skill-tab-content';
 
 export default function SkillListingPage() {
@@ -57,12 +56,7 @@ export default function SkillListingPage() {
           <SkillStats />
         </Suspense>
 
-        {/* Featured Sites */}
-        <Suspense fallback={<FeaturedSkillsSkeleton />}>
-          <FeaturedSkills />
-        </Suspense>
-
-        {/* Tab 切换 + 内容（客户端组件，响应 nuqs shallow 状态变化）*/}
+        {/* Tab 切换 + 内容（紧接统计数据，客户端组件响应 nuqs shallow 状态变化）*/}
         <SkillTabContent />
       </div>
     </HydrationBoundary>
