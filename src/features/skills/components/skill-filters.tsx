@@ -40,7 +40,7 @@ export function SkillFilters() {
       <div className='relative'>
         <Icons.search className='absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground' />
         <Input
-          placeholder='搜索站点名称、描述、标签...'
+          placeholder='搜索 Hub 名称，如「Coze」「Dify」「FlowGPT」…'
           value={params.search}
           onChange={(e) => setParams({ ...params, search: e.target.value || '' })}
           className='h-9 pl-9 pr-8'
